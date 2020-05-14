@@ -1,0 +1,68 @@
+@startuml
+
+left to right direction
+skinparam packageStyle rectangle
+
+actor User
+actor Admin
+User <|- Admin
+
+rectangle Database{
+  (query sequence) as (GBD1)
+  (query sequence family) as (GBD2)
+  (add sequence) as (GBD3)
+  (modify sequence) as (GBD4)
+  (remove sequence) as (GBD5)
+  (add sequence family) as (GBD6)
+}
+
+User -- GBD1
+User -- GBD2
+Admin -- GBD3
+Admin -- GBD4
+Admin -- GBD5
+Admin -- GBD6
+
+rectangle Sequence_Computing{
+  (start computation proccess) as (CDS1)
+        (search sequence) as (CDS1_1)
+        (search sequence family) as (CDS1_2)
+        CDS1 <|-down- CDS1_1
+        CDS1 <|-down- CDS1_2
+   (get computation proccess information) as (CDS2)
+   (stop computation proccess) as (CDS3)
+}
+
+CDS1_1 ..> GBD3: << include >>
+note top on link
+When the computation ends, all
+sequences found will be added to
+the database
+end note
+
+CDS1_2 ..> GBD6: << include >>
+note top on link
+When the computation ends, all
+families found will be added to
+the database
+end note
+
+Admin -- CDS1
+Admin -- CDS2
+Admin -- CDS3
+
+rectangle Role_Administration{
+    (add admin permissions) as (RA1)
+    (revoke admin permissions) as (RA2)
+    (get permissions info) as (RA3)
+
+    RA3 <.. RA1 : << include >>
+    RA3 <.. RA2 : << include >>
+
+}
+
+Admin -- RA1
+Admin -- RA2
+Admin -- RA3
+
+@enduml

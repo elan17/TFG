@@ -1,0 +1,20 @@
+@startuml
+
+actor Admin
+left to right direction
+
+rectangle Sequence_Computing{
+  (start computation proccess) as (CDS1)
+        (search sequence) as (CDS1_1)
+        (search sequence family) as (CDS1_2)
+        CDS1 <|-down- CDS1_1
+        CDS1 <|-down- CDS1_2
+        (get computation proccess information) as (CDS2)
+        (stop computation proccess) as (CDS3)
+}
+
+Admin -- CDS1
+Admin -- CDS2
+Admin -- CDS3
+
+@enduml

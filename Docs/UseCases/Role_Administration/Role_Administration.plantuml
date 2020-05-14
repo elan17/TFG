@@ -1,0 +1,17 @@
+@startuml
+
+actor Admin
+left to right direction
+
+rectangle Role_Administration{
+    (add admin permissions) as (RA1)
+    (revoke admin permissions) as (RA2)
+    (get permissions info) as (RA3)
+    RA3 <.. RA1 : << include >>
+    RA3 <.. RA2 : << include >>
+}
+
+Admin -- RA1
+Admin -- RA2
+Admin -- RA3
+@enduml

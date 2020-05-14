@@ -1,0 +1,23 @@
+@startuml
+
+left to right direction
+
+User <|- Admin
+
+rectangle Database{
+  (query sequence) as (GBD1)
+  (query sequence family) as (GBD2)
+  (add sequence) as (GBD3)
+  (modify sequence) as (GBD4)
+  (remove sequence) as (GBD5)
+  (add sequence family) as (GBD6)
+}
+
+User -- GBD1
+User -- GBD2
+Admin -- GBD3
+Admin -- GBD4
+Admin -- GBD5
+Admin -- GBD6
+
+@enduml
