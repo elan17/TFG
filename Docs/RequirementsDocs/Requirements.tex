@@ -95,7 +95,7 @@ bachelor thesis(Juan Toca) and the client is defined as his thesis director
 (Domingo Gómez).\\
 
 In case someone wants to build in top of this project, this document provides
-the starter point to get a general idea of which issues have been tackled and
+the starting point to get a general idea of which issues have been tackled and
 in which ways the project could be improved.\\
 
 TODO\\
@@ -123,7 +123,7 @@ of it's higly specialized public.\\
 
 \section{References}
 
-TODO\\ 
+TODO\\
 
 $<$List any other documents or Web addresses to which this SRS refers. These may
 include user interface style guides, contracts, standards, system requirements
@@ -135,6 +135,9 @@ including title, author, version number, date, and source or location.$>$
 \chapter{Overall Description}
 
 \section{Product Perspective}
+
+TODO\\
+
 $<$Describe the context and origin of the product being specified in this SRS.
 For example, state whether this product is a follow-on member of a product
 family, a replacement for certain existing systems, or a new, self-contained
@@ -145,42 +148,77 @@ components of the overall system, subsystem interconnections, and external
 interfaces can be helpful.$>$
 
 \section{Product Functions}
-$<$Summarize the major functions the product must perform or must let the user
-perform. Details will be provided in Section 3, so only a high level summary
-(such as a bullet list) is needed here. Organize the functions to make them
-understandable to any reader of the SRS. A picture of the major groups of
-related requirements and how they relate, such as a top level data flow diagram
-or object class diagram, is often effective.$>$
+
+We will summarize in a general way the functionalities we expect from
+this software.
+
+\begin{itemize}
+  \item Perform computations in search for sequences.\\
+          \begin{itemize}
+            \item Obtain real-time information of the computation proccess
+            \item Change dedicated resources to computation
+          \end{itemize}
+  \item Manage the set of found sequences
+          \begin{itemize}
+            \item Query by different parameters of the sequences
+            \item Handle found sequences manually
+            \item Plot sequence properties
+          \end{itemize}
+  \item Manage permissions
+\end{itemize}
 
 \section{User Classes and Characteristics}
-$<$Identify the various user classes that you anticipate will use this product.
-User classes may be differentiated based on frequency of use, subset of product
-functions used, technical expertise, security or privilege levels, educational
-level, or experience. Describe the pertinent characteristics of each user class.
-Certain requirements may pertain only to certain user classes. Distinguish the
-most important user classes for this product from those who are less important
-to satisfy.$>$
+
+Users of this can be divided in 2 main groups:\\
+
+Researchers that will control the search for new sequences, being capable of
+starting computations and modifying the database. This researchers are highly
+specialized personal and are expected to understand common abbreviations in
+the field as well as knowing which parameters are more promising to get a
+successful computation.\\
+
+Engineers that will query the database searching for sequences to apply in
+a practical use. They are not expected to know about each single detail about
+how this sequences are obtained, although they know their properties and how
+can be applied in the real world.\\
 
 \section{Operating Environment}
+
+The computation module is expected to run in highly paralelized systems such
+as super-computers. This is the enviroment in which researchers work so it
+would be a shame if we didn't design the software to take advantage of
+that.\\
+
+Taking his into account, we should target the software installed in those
+enviroments. This leads us to assume a Linux enviroment(as most supercomputers
+run it) and a Python interpreter(as it's a popular language in the scientific
+community).\\
+
 $<$Describe the environment in which the software will operate, including the
 hardware platform, operating system and versions, and any other software
 components or applications with which it must peacefully coexist.$>$
 
-\section{Design and Implementation Constraints}
-$<$Describe any items or issues that will limit the options available to the
-developers. These might include: corporate or regulatory policies; hardware
-limitations (timing requirements, memory requirements); interfaces to other
-applications; specific technologies, tools, and databases to be used; parallel
-operations; language requirements; communications protocols; security
-considerations; design conventions or programming standards (for example, if the
-customer’s organization will be responsible for maintaining the delivered
-software).$>$
+%\section{Design and Implementation Constraints}
+%$<$Describe any items or issues that will limit the options available to the
+%developers. These might include: corporate or regulatory policies; hardware
+%limitations (timing requirements, memory requirements); interfaces to other
+%applications; specific technologies, tools, and databases to be used; parallel
+%operations; language requirements; communications protocols; security
+%considerations; design conventions or programming standards (for example, if the
+%customer’s organization will be responsible for maintaining the delivered
+%software).$>$
 
 \section{User Documentation}
-$<$List the user documentation components (such as user manuals, on-line help,
-and tutorials) that will be delivered along with the software. Identify any
-known user documentation delivery formats or standards.$>$
+
+As this project has a limited scope, we think there is no need in a complete
+user manual/wiki appart from a well documented README.md and a man page.\\
+
+%$<$List the user documentation components (such as user manuals, on-line help,
+%and tutorials) that will be delivered along with the software. Identify any
+%known user documentation delivery formats or standards.$>$
 \section{Assumptions and Dependencies}
+
+DOES NOT APPLY\\
 
 $<$List any assumed factors (as opposed to known facts) that could affect the
 requirements stated in the SRS. These could include third-party or commercial
@@ -195,6 +233,9 @@ example, in the vision and scope document or the project plan).$>$
 \chapter{External Interface Requirements}
 
 \section{User Interfaces}
+
+
+
 $<$Describe the logical characteristics of each interface between the software
 product and the users. This may include sample screen images, any GUI standards
 or product family style guides that are to be followed, screen layout
