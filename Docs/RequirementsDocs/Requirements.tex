@@ -31,11 +31,11 @@
     linkcolor=blue,       % color of internal links
     citecolor=black,       % color of links to bibliography
     filecolor=black,        % color of file links
-    urlcolor=purple,        % color of external links
     linktoc=page            % only page is linked
 }%
 \def\myversion{1.0 }
 \date{}
+urlcolor=purple,        % color of external links
 %\title{%
 
 %}
@@ -44,21 +44,21 @@
 
 \begin{flushright}
     \rule{16cm}{5pt}\vskip1cm
-    \begin{bfseries}
         \Huge{SOFTWARE REQUIREMENTS\\ SPECIFICATION}\\
         \vspace{1.9cm}
         for\\
+        \begin{bfseries}
         \vspace{1.9cm}
         Support program for sequence's research\\
         \vspace{1.9cm}
         \LARGE{Version \myversion approved}\\
         \vspace{1.9cm}
         Prepared by Juan Toca Mateo\\
-        \vspace{1.9cm}
         Universidad de Cantabria\\
         \vspace{1.9cm}
         \today\\
     \end{bfseries}
+    \vspace{1.9cm}
 \end{flushright}
 
 \tableofcontents
@@ -77,13 +77,13 @@ future use.
 
 TODO\\
 
-$<$Describe any standards or typographical conventions that were followed when
-writing this SRS, such as fonts or highlighting that have special significance.
-For example, state whether priorities  for higher-level requirements are assumed
-to be inherited by detailed requirements, or whether every requirement statement
-is to have its own priority.$>$
+%$<$Describe any standards or typographical conventions that were followed when
+%writing this SRS, such as fonts or highlighting that have special significance.
+%For example, state whether priorities  for higher-level requirements are assumed
+%to be inherited by detailed requirements, or whether every requirement statement
+%is to have its own priority.$>$
 
-\section{Intended Audience and Reading Suggestions}
+\section{Intended Audience}
 
 This document is aimed to each agent involved in the development of this
 software project. In one hand, the developer will take it as a guide of the
@@ -98,14 +98,13 @@ In case someone wants to build in top of this project, this document provides
 the starting point to get a general idea of which issues have been tackled and
 in which ways the project could be improved.\\
 
-TODO\\
 
-$<$Describe the different types of reader that the document is intended for,
-such as developers, project managers, marketing staff, users, testers, and
-documentation writers. Describe what the rest of this SRS contains and how it is
-organized. Suggest a sequence for reading the document, beginning with the
-overview sections and proceeding through the sections that are most pertinent to
-each reader type.$>$
+%$<$Describe the different types of reader that the document is intended for,
+%such as developers, project managers, marketing staff, users, testers, and
+%documentation writers. Describe what the rest of this SRS contains and how it is
+%organized. Suggest a sequence for reading the document, beginning with the
+%overview sections and proceeding through the sections that are most pertinent to
+%each reader type.$>$
 
 \section{Project Scope}
 
@@ -125,11 +124,11 @@ of it's higly specialized public.\\
 
 TODO\\
 
-$<$List any other documents or Web addresses to which this SRS refers. These may
-include user interface style guides, contracts, standards, system requirements
-specifications, use case documents, or a vision and scope document. Provide
-enough information so that the reader could access a copy of each reference,
-including title, author, version number, date, and source or location.$>$
+%$<$List any other documents or Web addresses to which this SRS refers. These may
+%include user interface style guides, contracts, standards, system requirements
+%specifications, use case documents, or a vision and scope document. Provide
+%enough information so that the reader could access a copy of each reference,
+%including title, author, version number, date, and source or location.$>$
 
 
 \chapter{Overall Description}
@@ -138,14 +137,14 @@ including title, author, version number, date, and source or location.$>$
 
 TODO\\
 
-$<$Describe the context and origin of the product being specified in this SRS.
-For example, state whether this product is a follow-on member of a product
-family, a replacement for certain existing systems, or a new, self-contained
-product. If the SRS defines a component of a larger system, relate the
-requirements of the larger system to the functionality of this software and
-identify interfaces between the two. A simple diagram that shows the major
-components of the overall system, subsystem interconnections, and external
-interfaces can be helpful.$>$
+%$<$Describe the context and origin of the product being specified in this SRS.
+%For example, state whether this product is a follow-on member of a product
+%family, a replacement for certain existing systems, or a new, self-contained
+%product. If the SRS defines a component of a larger system, relate the
+%requirements of the larger system to the functionality of this software and
+%identify interfaces between the two. A simple diagram that shows the major
+%components of the overall system, subsystem interconnections, and external
+%interfaces can be helpful.$>$
 
 \section{Product Functions}
 
@@ -194,9 +193,9 @@ enviroments. This leads us to assume a Linux enviroment(as most supercomputers
 run it) and a Python interpreter(as it's a popular language in the scientific
 community).\\
 
-$<$Describe the environment in which the software will operate, including the
-hardware platform, operating system and versions, and any other software
-components or applications with which it must peacefully coexist.$>$
+%$<$Describe the environment in which the software will operate, including the
+%hardware platform, operating system and versions, and any other software
+%components or applications with which it must peacefully coexist.$>$
 
 %\section{Design and Implementation Constraints}
 %$<$Describe any items or issues that will limit the options available to the
@@ -213,6 +212,9 @@ components or applications with which it must peacefully coexist.$>$
 As this project has a limited scope, we think there is no need in a complete
 user manual/wiki appart from a well documented README.md and a man page.\\
 
+Keeping in mind that the end user is supposed to have knowledge in the topic,
+contextual help explaining the concepts doesn't need to be too extense.
+
 %$<$List the user documentation components (such as user manuals, on-line help,
 %and tutorials) that will be delivered along with the software. Identify any
 %known user documentation delivery formats or standards.$>$
@@ -220,21 +222,19 @@ user manual/wiki appart from a well documented README.md and a man page.\\
 
 DOES NOT APPLY\\
 
-$<$List any assumed factors (as opposed to known facts) that could affect the
-requirements stated in the SRS. These could include third-party or commercial
-components that you plan to use, issues around the development or operating
-environment, or constraints. The project could be affected if these assumptions
-are incorrect, are not shared, or change. Also identify any dependencies the
-project has on external factors, such as software components that you intend to
-reuse from another project, unless they are already documented elsewhere (for
-example, in the vision and scope document or the project plan).$>$
+%$<$List any assumed factors (as opposed to known facts) that could affect the
+%requirements stated in the SRS. These could include third-party or commercial
+%components that you plan to use, issues around the development or operating
+%environment, or constraints. The project could be affected if these assumptions
+%are incorrect, are not shared, or change. Also identify any dependencies the
+%project has on external factors, such as software components that you intend to
+%reuse from another project, unless they are already documented elsewhere (for
+%example, in the vision and scope document or the project plan).$>$
 
 
 \chapter{External Interface Requirements}
 
 \section{User Interfaces}
-
-
 
 $<$Describe the logical characteristics of each interface between the software
 product and the users. This may include sample screen images, any GUI standards
@@ -246,11 +246,23 @@ the user interface design should be documented in a separate user interface
 specification.$>$
 
 \section{Hardware Interfaces}
-$<$Describe the logical and physical characteristics of each interface between
-the software product and the hardware components of the system. This may include
-the supported device types, the nature of the data and control interactions
-between the software and the hardware, and communication protocols to be
-used.$>$
+
+Taking into account that the software module in charge of running the
+computations might be deployed in a cluster, we must consider their
+characteristics. Their architecture of highly paralelized systems rely on
+a problematic choke point, the interconnection network.\\
+
+Each time a proccess needs to read/write data in a memory address shared with
+a proccess in other node, this information must be sent through the
+interconnection network. This will slow down significantly the performance of
+the nodes involved.We must take this hardware constraint into account when
+choosing the parallel programming model.\\
+
+%$<$Describe the logical and physical characteristics of each interface between
+%the software product and the hardware components of the system. This may include
+%the supported device types, the nature of the data and control interactions
+%between the software and the hardware, and communication protocols to be
+%used.$>$
 
 \section{Software Interfaces}
 $<$Describe the connections between this product and other specific software
@@ -265,6 +277,7 @@ global data area in a multitasking operating system), specify this as an
 implementation constraint.$>$
 
 \section{Communications Interfaces}
+
 $<$Describe the requirements associated with any communications functions
 required by this product, including e-mail, web browser, network server
 communications protocols, electronic forms, and so on. Define any pertinent
