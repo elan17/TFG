@@ -18,4 +18,12 @@
 .*.lb
 *.synctex.gz
 *.fdb_latexmk
+
+### IDEs metadata
 .idea/
+
+### Compiled files
+*.so
+*.pdf # We will only track latex files
+*.out
+*.o
