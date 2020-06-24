@@ -18,3 +18,4 @@
 .*.lb
 *.synctex.gz
 *.fdb_latexmk
+.idea/
