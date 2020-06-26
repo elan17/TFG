@@ -27,3 +27,4 @@
 *.pdf # We will only track latex files
 *.out
 *.o
+*.pyc
