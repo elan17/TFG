@@ -25,4 +25,12 @@
 
 ##### Work for next day
 
-* Look for a substitute to Numpy, probably a stablised C library, that minimizes the overhead. 
+* Look for a substitute to Numpy, probably a stablised C library, that minimizes the overhead.
+
+### 01/07/2020
+
+* Found GSL GNU, a C library that implements the necesary primitives for the project
+  * Added a benchmark of a GSL version to the autocorrelation version
+  * There is a 5.5% speedup from the CPython version
+* GSL has it's own overheads that could be tackled with a bare-metal implementation(for example, using raw pointers)
+  * There exist more efficient implementations but GSL is a good comparison on complexity vs performance
