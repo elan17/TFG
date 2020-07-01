@@ -382,40 +382,37 @@ body.cython { font-family: courier; font-size: 12; }
 </pre><pre class="cython line score-0">&#xA0;<span class="">06</span>: </pre>
 <pre class="cython line score-0">&#xA0;<span class="">07</span>: <span class="nd">@cython</span><span class="o">.</span><span class="n">boundscheck</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">08</span>: <span class="nd">@cython</span><span class="o">.</span><span class="n">wraparound</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span></pre>
-<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">09</span>: <span class="k">cdef</span> <span class="kr">inline</span> <span class="kt">int</span> <span class="nf">dot</span><span class="p">(</span><span class="nb">int</span><span class="p">[:]</span><span class="n">slice1</span><span class="p">,</span> <span class="nb">int</span><span class="p">[:]</span><span class="n">slice2</span><span class="p">)</span> <span class="k">nogil</span><span class="p">:</span></pre>
-<pre class='cython code score-0 '>static CYTHON_INLINE int __pyx_f_22bench_cython_optimized_dot(__Pyx_memviewslice __pyx_v_slice1, __Pyx_memviewslice __pyx_v_slice2) {
-  Py_ssize_t __pyx_v_l;
-  int __pyx_v_r;
+<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">09</span>: <span class="k">cdef</span> <span class="kr">inline</span> <span class="kt">double</span> <span class="nf">dot</span><span class="p">(</span><span class="n">double</span><span class="p">[:]</span><span class="n">slice1</span><span class="p">,</span> <span class="n">double</span><span class="p">[:]</span><span class="n">slice2</span><span class="p">,</span> <span class="n">Py_ssize_t</span> <span class="n">l</span><span class="p">)</span> <span class="k">nogil</span><span class="p">:</span></pre>
+<pre class='cython code score-0 '>static CYTHON_INLINE double __pyx_f_22bench_cython_optimized_dot(__Pyx_memviewslice __pyx_v_slice1, __Pyx_memviewslice __pyx_v_slice2, Py_ssize_t __pyx_v_l) {
+  double __pyx_v_r;
   Py_ssize_t __pyx_v_x;
-  int __pyx_r;
+  double __pyx_r;
 /* … */
   /* function exit code */
   __pyx_L0:;
   return __pyx_r;
 }
-</pre><pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">10</span>:   <span class="k">cdef</span> <span class="kt">Py_ssize_t</span> <span class="nf">l</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">slice1</span><span class="p">)</span></pre>
-<pre class='cython code score-2 '>  __pyx_t_1 = <span class='pyx_c_api'>__Pyx_MemoryView_Len</span>(__pyx_v_slice1); 
-  __pyx_v_l = __pyx_t_1;
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">11</span>:   <span class="k">cdef</span> <span class="kt">int</span> <span class="nf">r</span> <span class="o">=</span> <span class="mf">0</span></pre>
-<pre class='cython code score-0 '>  __pyx_v_r = 0;
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">12</span>:   <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">l</span><span class="p">):</span></pre>
-<pre class='cython code score-0 '>  __pyx_t_2 = __pyx_v_l;
-  __pyx_t_3 = __pyx_t_2;
-  for (__pyx_t_4 = 0; __pyx_t_4 &lt; __pyx_t_3; __pyx_t_4+=1) {
-    __pyx_v_x = __pyx_t_4;
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">13</span>:     <span class="n">r</span> <span class="o">+=</span> <span class="n">slice1</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">+</span> <span class="n">slice2</span><span class="p">[</span><span class="n">x</span><span class="p">]</span></pre>
-<pre class='cython code score-0 '>    __pyx_t_5 = __pyx_v_x;
-    __pyx_t_6 = __pyx_v_x;
-    __pyx_v_r = (__pyx_v_r + ((*((int *) ( /* dim=0 */ (__pyx_v_slice1.data + __pyx_t_5 * __pyx_v_slice1.strides[0]) ))) + (*((int *) ( /* dim=0 */ (__pyx_v_slice2.data + __pyx_t_6 * __pyx_v_slice2.strides[0]) )))));
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">10</span>:   <span class="k">cdef</span> <span class="kt">double</span> <span class="nf">r</span> <span class="o">=</span> <span class="mf">0</span></pre>
+<pre class='cython code score-0 '>  __pyx_v_r = 0.0;
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">11</span>:   <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">l</span><span class="p">):</span></pre>
+<pre class='cython code score-0 '>  __pyx_t_1 = __pyx_v_l;
+  __pyx_t_2 = __pyx_t_1;
+  for (__pyx_t_3 = 0; __pyx_t_3 &lt; __pyx_t_2; __pyx_t_3+=1) {
+    __pyx_v_x = __pyx_t_3;
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">12</span>:     <span class="n">r</span> <span class="o">+=</span> <span class="n">slice1</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">*</span> <span class="n">slice2</span><span class="p">[</span><span class="n">x</span><span class="p">]</span></pre>
+<pre class='cython code score-0 '>    __pyx_t_4 = __pyx_v_x;
+    __pyx_t_5 = __pyx_v_x;
+    __pyx_v_r = (__pyx_v_r + ((*((double *) ( /* dim=0 */ (__pyx_v_slice1.data + __pyx_t_4 * __pyx_v_slice1.strides[0]) ))) * (*((double *) ( /* dim=0 */ (__pyx_v_slice2.data + __pyx_t_5 * __pyx_v_slice2.strides[0]) )))));
   }
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">14</span>:   <span class="k">return</span> <span class="n">r</span></pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">13</span>:   <span class="k">return</span> <span class="n">r</span></pre>
 <pre class='cython code score-0 '>  __pyx_r = __pyx_v_r;
   goto __pyx_L0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">15</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">16</span>: <span class="nd">@cython</span><span class="o">.</span><span class="n">boundscheck</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">17</span>: <span class="nd">@cython</span><span class="o">.</span><span class="n">wraparound</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span></pre>
-<pre class="cython line score-33" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">18</span>: <span class="k">def</span> <span class="nf">autocorrelation</span><span class="p">(</span><span class="n">cnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">[</span><span class="n">cnp</span><span class="o">.</span><span class="n">int32_t</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mf">1</span><span class="p">]</span><span class="n">vec</span><span class="p">):</span></pre>
-<pre class='cython code score-33 '>/* Python wrapper */
+</pre><pre class="cython line score-0">&#xA0;<span class="">14</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">15</span>: <span class="nd">@cython</span><span class="o">.</span><span class="n">boundscheck</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">16</span>: <span class="nd">@cython</span><span class="o">.</span><span class="n">wraparound</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">17</span>: <span class="nd">@cython</span><span class="o">.</span><span class="n">cdivision</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span></pre>
+<pre class="cython line score-30" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">18</span>: <span class="k">def</span> <span class="nf">autocorrelation</span><span class="p">(</span><span class="n">cnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">[</span><span class="n">cnp</span><span class="o">.</span><span class="n">float64_t</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mf">1</span><span class="p">]</span><span class="n">vec</span><span class="p">):</span></pre>
+<pre class='cython code score-30 '>/* Python wrapper */
 static PyObject *__pyx_pw_22bench_cython_optimized_1autocorrelation(PyObject *__pyx_self, PyObject *__pyx_v_vec); /*proto*/
 static PyMethodDef __pyx_mdef_22bench_cython_optimized_1autocorrelation = {"autocorrelation", (PyCFunction)__pyx_pw_22bench_cython_optimized_1autocorrelation, METH_O, 0};
 static PyObject *__pyx_pw_22bench_cython_optimized_1autocorrelation(PyObject *__pyx_self, PyObject *__pyx_v_vec) {
@@ -440,19 +437,14 @@ static PyObject *__pyx_pw_22bench_cython_optimized_1autocorrelation(PyObject *__
 static PyObject *__pyx_pf_22bench_cython_optimized_autocorrelation(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_vec) {
   Py_ssize_t __pyx_v_x;
   Py_ssize_t __pyx_v_l;
+  Py_ssize_t __pyx_v_off;
   __Pyx_memviewslice __pyx_v_n = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_n1 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  PyObject *__pyx_v_returneo = NULL;
-  __Pyx_memviewslice __pyx_v_returneo_view = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_returneo = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_s1 = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_s2 = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_ns1 = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_ns2 = { 0, 0, { 0 }, { 0 }, { 0 } };
-  int __pyx_v_d1;
-  int __pyx_v_d2;
-  CYTHON_UNUSED PyObject *__pyx_v_np_dot = NULL;
-  CYTHON_UNUSED PyObject *__pyx_v_np_add = NULL;
-  Py_ssize_t __pyx_v_off;
   __Pyx_LocalBuf_ND __pyx_pybuffernd_vec;
   __Pyx_Buffer __pyx_pybuffer_vec;
   PyObject *__pyx_r = NULL;
@@ -464,7 +456,7 @@ static PyObject *__pyx_pf_22bench_cython_optimized_autocorrelation(CYTHON_UNUSED
   __pyx_pybuffernd_vec.rcbuffer = &amp;__pyx_pybuffer_vec;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(<span class='pyx_c_api'>__Pyx_GetBufferAndValidate</span>(&amp;__pyx_pybuffernd_vec.rcbuffer-&gt;pybuffer, (PyObject*)__pyx_v_vec, &amp;__Pyx_TypeInfo_nn___pyx_t_5numpy_int32_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) <span class='error_goto'>__PYX_ERR(0, 18, __pyx_L1_error)</span>
+    if (unlikely(<span class='pyx_c_api'>__Pyx_GetBufferAndValidate</span>(&amp;__pyx_pybuffernd_vec.rcbuffer-&gt;pybuffer, (PyObject*)__pyx_v_vec, &amp;__Pyx_TypeInfo_nn___pyx_t_5numpy_float64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) <span class='error_goto'>__PYX_ERR(0, 18, __pyx_L1_error)</span>
   }
   __pyx_pybuffernd_vec.diminfo[0].strides = __pyx_pybuffernd_vec.rcbuffer-&gt;pybuffer.strides[0]; __pyx_pybuffernd_vec.diminfo[0].shape = __pyx_pybuffernd_vec.rcbuffer-&gt;pybuffer.shape[0];
 /* … */
@@ -488,35 +480,32 @@ static PyObject *__pyx_pf_22bench_cython_optimized_autocorrelation(CYTHON_UNUSED
   __pyx_L2:;
   __PYX_XDEC_MEMVIEW(&amp;__pyx_v_n, 1);
   __PYX_XDEC_MEMVIEW(&amp;__pyx_v_n1, 1);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_v_returneo);
-  __PYX_XDEC_MEMVIEW(&amp;__pyx_v_returneo_view, 1);
+  __PYX_XDEC_MEMVIEW(&amp;__pyx_v_returneo, 1);
   __PYX_XDEC_MEMVIEW(&amp;__pyx_v_s1, 1);
   __PYX_XDEC_MEMVIEW(&amp;__pyx_v_s2, 1);
   __PYX_XDEC_MEMVIEW(&amp;__pyx_v_ns1, 1);
   __PYX_XDEC_MEMVIEW(&amp;__pyx_v_ns2, 1);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_v_np_dot);
-  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_v_np_add);
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 /* … */
-  __pyx_tuple__26 = <span class='py_c_api'>PyTuple_Pack</span>(16, __pyx_n_s_vec, __pyx_n_s_x, __pyx_n_s_l, __pyx_n_s_n, __pyx_n_s_n1, __pyx_n_s_returneo, __pyx_n_s_returneo_view, __pyx_n_s_s1, __pyx_n_s_s2, __pyx_n_s_ns1, __pyx_n_s_ns2, __pyx_n_s_d1, __pyx_n_s_d2, __pyx_n_s_np_dot, __pyx_n_s_np_add, __pyx_n_s_off);<span class='error_goto'> if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 18, __pyx_L1_error)</span>
-  <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_tuple__26);
-  <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_tuple__26);
+  __pyx_tuple__24 = <span class='py_c_api'>PyTuple_Pack</span>(11, __pyx_n_s_vec, __pyx_n_s_x, __pyx_n_s_l, __pyx_n_s_off, __pyx_n_s_n, __pyx_n_s_n1, __pyx_n_s_returneo, __pyx_n_s_s1, __pyx_n_s_s2, __pyx_n_s_ns1, __pyx_n_s_ns2);<span class='error_goto'> if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 18, __pyx_L1_error)</span>
+  <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_tuple__24);
+  <span class='refnanny'>__Pyx_GIVEREF</span>(__pyx_tuple__24);
 /* … */
   __pyx_t_1 = PyCFunction_NewEx(&amp;__pyx_mdef_22bench_cython_optimized_1autocorrelation, NULL, __pyx_n_s_bench_cython_optimized);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
   if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_d, __pyx_n_s_autocorrelation, __pyx_t_1) &lt; 0) <span class='error_goto'>__PYX_ERR(0, 18, __pyx_L1_error)</span>
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_codeobj__27 = (PyObject*)<span class='pyx_c_api'>__Pyx_PyCode_New</span>(1, 0, 16, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__26, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_bench_cython_optimized_pyx, __pyx_n_s_autocorrelation, 18, __pyx_empty_bytes);<span class='error_goto'> if (unlikely(!__pyx_codeobj__27)) __PYX_ERR(0, 18, __pyx_L1_error)</span>
-</pre><pre class="cython line score-0">&#xA0;<span class="">19</span>:     <span class="k">cdef</span> <span class="kt">Py_ssize_t</span> <span class="nf">x</span><span class="p">,</span> <span class="nf">l</span></pre>
-<pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">20</span>:     <span class="k">cdef</span> <span class="kt">int</span>[<span class="p">:]</span><span class="n">n</span> <span class="o">=</span> <span class="n">vec</span></pre>
-<pre class='cython code score-2 '>  __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyObject_to_MemoryviewSlice_ds_int</span>(((PyObject *)__pyx_v_vec), PyBUF_WRITABLE);<span class='error_goto'> if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 20, __pyx_L1_error)</span>
+  __pyx_codeobj__25 = (PyObject*)<span class='pyx_c_api'>__Pyx_PyCode_New</span>(1, 0, 11, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_bench_cython_optimized_pyx, __pyx_n_s_autocorrelation, 18, __pyx_empty_bytes);<span class='error_goto'> if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 18, __pyx_L1_error)</span>
+</pre><pre class="cython line score-0">&#xA0;<span class="">19</span>:     <span class="k">cdef</span> <span class="kt">Py_ssize_t</span> <span class="nf">x</span><span class="p">,</span> <span class="nf">l</span><span class="p">,</span> <span class="nf">off</span></pre>
+<pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">20</span>:     <span class="k">cdef</span> <span class="kt">double</span>[<span class="p">:]</span><span class="n">n</span> <span class="o">=</span> <span class="n">vec</span></pre>
+<pre class='cython code score-2 '>  __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyObject_to_MemoryviewSlice_ds_double</span>(((PyObject *)__pyx_v_vec), PyBUF_WRITABLE);<span class='error_goto'> if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 20, __pyx_L1_error)</span>
   __pyx_v_n = __pyx_t_1;
   __pyx_t_1.memview = NULL;
   __pyx_t_1.data = NULL;
-</pre><pre class="cython line score-22" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">21</span>:     <span class="k">cdef</span> <span class="kt">int</span>[<span class="p">:]</span><span class="n">n1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span></pre>
+</pre><pre class="cython line score-22" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">21</span>:     <span class="k">cdef</span> <span class="kt">double</span>[<span class="p">:]</span><span class="n">n1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span></pre>
 <pre class='cython code score-22 '>  <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_t_3, __pyx_n_s_np);<span class='error_goto'> if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 21, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_3);
   __pyx_t_4 = <span class='pyx_c_api'>__Pyx_PyObject_GetAttrStr</span>(__pyx_t_3, __pyx_n_s_conj);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 21, __pyx_L1_error)</span>
@@ -537,7 +526,7 @@ static PyObject *__pyx_pf_22bench_cython_optimized_autocorrelation(CYTHON_UNUSED
   if (unlikely(!__pyx_t_2)) <span class='error_goto'>__PYX_ERR(0, 21, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_2);
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyObject_to_MemoryviewSlice_ds_int</span>(__pyx_t_2, PyBUF_WRITABLE);<span class='error_goto'> if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 21, __pyx_L1_error)</span>
+  __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyObject_to_MemoryviewSlice_ds_double</span>(__pyx_t_2, PyBUF_WRITABLE);<span class='error_goto'> if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 21, __pyx_L1_error)</span>
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_n1 = __pyx_t_1;
   __pyx_t_1.memview = NULL;
@@ -545,8 +534,8 @@ static PyObject *__pyx_pf_22bench_cython_optimized_autocorrelation(CYTHON_UNUSED
 </pre><pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">22</span>:     <span class="n">l</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="p">)</span></pre>
 <pre class='cython code score-2 '>  __pyx_t_5 = <span class='pyx_c_api'>__Pyx_MemoryView_Len</span>(__pyx_v_n); 
   __pyx_v_l = __pyx_t_5;
-</pre><pre class="cython line score-19" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">23</span>:     <span class="n">returneo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span></pre>
-<pre class='cython code score-19 '>  <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_t_4, __pyx_n_s_np);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 23, __pyx_L1_error)</span>
+</pre><pre class="cython line score-22" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">23</span>:     <span class="k">cdef</span> <span class="kt">double</span>[<span class="p">:]</span> <span class="n">returneo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span></pre>
+<pre class='cython code score-22 '>  <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_t_4, __pyx_n_s_np);<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 23, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_4);
   __pyx_t_3 = <span class='pyx_c_api'>__Pyx_PyObject_GetAttrStr</span>(__pyx_t_4, __pyx_n_s_empty_like);<span class='error_goto'> if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_3);
@@ -566,37 +555,18 @@ static PyObject *__pyx_pf_22bench_cython_optimized_autocorrelation(CYTHON_UNUSED
   if (unlikely(!__pyx_t_2)) <span class='error_goto'>__PYX_ERR(0, 23, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_2);
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_v_returneo = __pyx_t_2;
-  __pyx_t_2 = 0;
-</pre><pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">24</span>:     <span class="k">cdef</span> <span class="kt">int</span>[<span class="p">:]</span> <span class="n">returneo_view</span> <span class="o">=</span> <span class="n">returneo</span></pre>
-<pre class='cython code score-2 '>  __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyObject_to_MemoryviewSlice_ds_int</span>(__pyx_v_returneo, PyBUF_WRITABLE);<span class='error_goto'> if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 24, __pyx_L1_error)</span>
-  __pyx_v_returneo_view = __pyx_t_1;
+  __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyObject_to_MemoryviewSlice_ds_double</span>(__pyx_t_2, PyBUF_WRITABLE);<span class='error_goto'> if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 23, __pyx_L1_error)</span>
+  <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_v_returneo = __pyx_t_1;
   __pyx_t_1.memview = NULL;
   __pyx_t_1.data = NULL;
-</pre><pre class="cython line score-0">&#xA0;<span class="">25</span>:     <span class="k">cdef</span> <span class="kt">int</span>[<span class="p">:]</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">ns1</span><span class="p">,</span> <span class="n">ns2</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">26</span>:     <span class="k">cdef</span> <span class="kt">int</span> <span class="nf">d1</span><span class="p">,</span> <span class="nf">d2</span></pre>
-<pre class="cython line score-5" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">27</span>:     <span class="n">np_dot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span></pre>
-<pre class='cython code score-5 '>  <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_t_2, __pyx_n_s_np);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 27, __pyx_L1_error)</span>
-  <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_2);
-  __pyx_t_3 = <span class='pyx_c_api'>__Pyx_PyObject_GetAttrStr</span>(__pyx_t_2, __pyx_n_s_dot);<span class='error_goto'> if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 27, __pyx_L1_error)</span>
-  <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_3);
-  <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_v_np_dot = __pyx_t_3;
-  __pyx_t_3 = 0;
-</pre><pre class="cython line score-5" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">28</span>:     <span class="n">np_add</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span></pre>
-<pre class='cython code score-5 '>  <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_t_3, __pyx_n_s_np);<span class='error_goto'> if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 28, __pyx_L1_error)</span>
-  <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_3);
-  __pyx_t_2 = <span class='pyx_c_api'>__Pyx_PyObject_GetAttrStr</span>(__pyx_t_3, __pyx_n_s_add);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 28, __pyx_L1_error)</span>
-  <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_2);
-  <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_v_np_add = __pyx_t_2;
-  __pyx_t_2 = 0;
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">29</span>:     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">l</span><span class="p">):</span></pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">24</span>:     <span class="k">cdef</span> <span class="kt">double</span>[<span class="p">:]</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">ns1</span><span class="p">,</span> <span class="n">ns2</span></pre>
+<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">25</span>:     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">l</span><span class="p">):</span></pre>
 <pre class='cython code score-0 '>  __pyx_t_6 = __pyx_v_l;
   __pyx_t_7 = __pyx_t_6;
   for (__pyx_t_8 = 0; __pyx_t_8 &lt; __pyx_t_7; __pyx_t_8+=1) {
     __pyx_v_x = __pyx_t_8;
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">30</span>:         <span class="n">s1</span> <span class="o">=</span> <span class="n">n</span><span class="p">[:</span><span class="n">x</span><span class="p">]</span></pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">26</span>:         <span class="n">s1</span> <span class="o">=</span> <span class="n">n</span><span class="p">[:</span><span class="n">x</span><span class="p">]</span></pre>
 <pre class='cython code score-0 '>    __pyx_t_1.data = __pyx_v_n.data;
     __pyx_t_1.memview = __pyx_v_n.memview;
     __PYX_INC_MEMVIEW(&amp;__pyx_t_1, 0);
@@ -609,6 +579,86 @@ static PyObject *__pyx_pf_22bench_cython_optimized_autocorrelation(CYTHON_UNUSED
     &amp;__pyx_t_9,
     0,
     __pyx_v_x,
+    0,
+    0,
+    1,
+    0,
+    1) &lt; 0))
+{
+    <span class='error_goto'>__PYX_ERR(0, 26, __pyx_L1_error)</span>
+}
+
+__PYX_XDEC_MEMVIEW(&amp;__pyx_v_s1, 1);
+    __pyx_v_s1 = __pyx_t_1;
+    __pyx_t_1.memview = NULL;
+    __pyx_t_1.data = NULL;
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">27</span>:         <span class="n">s2</span> <span class="o">=</span> <span class="n">n</span><span class="p">[</span><span class="n">x</span><span class="p">:]</span></pre>
+<pre class='cython code score-0 '>    __pyx_t_1.data = __pyx_v_n.data;
+    __pyx_t_1.memview = __pyx_v_n.memview;
+    __PYX_INC_MEMVIEW(&amp;__pyx_t_1, 0);
+    __pyx_t_9 = -1;
+    if (unlikely(__pyx_memoryview_slice_memviewslice(
+    &amp;__pyx_t_1,
+    __pyx_v_n.shape[0], __pyx_v_n.strides[0], __pyx_v_n.suboffsets[0],
+    0,
+    0,
+    &amp;__pyx_t_9,
+    __pyx_v_x,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1) &lt; 0))
+{
+    <span class='error_goto'>__PYX_ERR(0, 27, __pyx_L1_error)</span>
+}
+
+__PYX_XDEC_MEMVIEW(&amp;__pyx_v_s2, 1);
+    __pyx_v_s2 = __pyx_t_1;
+    __pyx_t_1.memview = NULL;
+    __pyx_t_1.data = NULL;
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">28</span>:         <span class="n">off</span> <span class="o">=</span> <span class="n">l</span><span class="o">-</span><span class="n">x</span></pre>
+<pre class='cython code score-0 '>    __pyx_v_off = (__pyx_v_l - __pyx_v_x);
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">29</span>:         <span class="n">ns1</span> <span class="o">=</span> <span class="n">n1</span><span class="p">[</span><span class="n">off</span><span class="p">:]</span></pre>
+<pre class='cython code score-0 '>    __pyx_t_1.data = __pyx_v_n1.data;
+    __pyx_t_1.memview = __pyx_v_n1.memview;
+    __PYX_INC_MEMVIEW(&amp;__pyx_t_1, 0);
+    __pyx_t_9 = -1;
+    if (unlikely(__pyx_memoryview_slice_memviewslice(
+    &amp;__pyx_t_1,
+    __pyx_v_n1.shape[0], __pyx_v_n1.strides[0], __pyx_v_n1.suboffsets[0],
+    0,
+    0,
+    &amp;__pyx_t_9,
+    __pyx_v_off,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1) &lt; 0))
+{
+    <span class='error_goto'>__PYX_ERR(0, 29, __pyx_L1_error)</span>
+}
+
+__PYX_XDEC_MEMVIEW(&amp;__pyx_v_ns1, 1);
+    __pyx_v_ns1 = __pyx_t_1;
+    __pyx_t_1.memview = NULL;
+    __pyx_t_1.data = NULL;
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">30</span>:         <span class="n">ns2</span> <span class="o">=</span> <span class="n">n1</span><span class="p">[:</span><span class="n">off</span><span class="p">]</span></pre>
+<pre class='cython code score-0 '>    __pyx_t_1.data = __pyx_v_n1.data;
+    __pyx_t_1.memview = __pyx_v_n1.memview;
+    __PYX_INC_MEMVIEW(&amp;__pyx_t_1, 0);
+    __pyx_t_9 = -1;
+    if (unlikely(__pyx_memoryview_slice_memviewslice(
+    &amp;__pyx_t_1,
+    __pyx_v_n1.shape[0], __pyx_v_n1.strides[0], __pyx_v_n1.suboffsets[0],
+    0,
+    0,
+    &amp;__pyx_t_9,
+    0,
+    __pyx_v_off,
     0,
     0,
     1,
@@ -618,101 +668,19 @@ static PyObject *__pyx_pf_22bench_cython_optimized_autocorrelation(CYTHON_UNUSED
     <span class='error_goto'>__PYX_ERR(0, 30, __pyx_L1_error)</span>
 }
 
-__PYX_XDEC_MEMVIEW(&amp;__pyx_v_s1, 1);
-    __pyx_v_s1 = __pyx_t_1;
-    __pyx_t_1.memview = NULL;
-    __pyx_t_1.data = NULL;
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">31</span>:         <span class="n">s2</span> <span class="o">=</span> <span class="n">n</span><span class="p">[</span><span class="n">x</span><span class="p">:]</span></pre>
-<pre class='cython code score-0 '>    __pyx_t_1.data = __pyx_v_n.data;
-    __pyx_t_1.memview = __pyx_v_n.memview;
-    __PYX_INC_MEMVIEW(&amp;__pyx_t_1, 0);
-    __pyx_t_9 = -1;
-    if (unlikely(__pyx_memoryview_slice_memviewslice(
-    &amp;__pyx_t_1,
-    __pyx_v_n.shape[0], __pyx_v_n.strides[0], __pyx_v_n.suboffsets[0],
-    0,
-    0,
-    &amp;__pyx_t_9,
-    __pyx_v_x,
-    0,
-    0,
-    1,
-    0,
-    0,
-    1) &lt; 0))
-{
-    <span class='error_goto'>__PYX_ERR(0, 31, __pyx_L1_error)</span>
-}
-
-__PYX_XDEC_MEMVIEW(&amp;__pyx_v_s2, 1);
-    __pyx_v_s2 = __pyx_t_1;
-    __pyx_t_1.memview = NULL;
-    __pyx_t_1.data = NULL;
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">32</span>:         <span class="n">off</span> <span class="o">=</span> <span class="n">l</span><span class="o">-</span><span class="n">x</span></pre>
-<pre class='cython code score-0 '>    __pyx_v_off = (__pyx_v_l - __pyx_v_x);
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">33</span>:         <span class="n">ns1</span> <span class="o">=</span> <span class="n">n1</span><span class="p">[</span><span class="n">off</span><span class="p">:]</span></pre>
-<pre class='cython code score-0 '>    __pyx_t_1.data = __pyx_v_n1.data;
-    __pyx_t_1.memview = __pyx_v_n1.memview;
-    __PYX_INC_MEMVIEW(&amp;__pyx_t_1, 0);
-    __pyx_t_9 = -1;
-    if (unlikely(__pyx_memoryview_slice_memviewslice(
-    &amp;__pyx_t_1,
-    __pyx_v_n1.shape[0], __pyx_v_n1.strides[0], __pyx_v_n1.suboffsets[0],
-    0,
-    0,
-    &amp;__pyx_t_9,
-    __pyx_v_off,
-    0,
-    0,
-    1,
-    0,
-    0,
-    1) &lt; 0))
-{
-    <span class='error_goto'>__PYX_ERR(0, 33, __pyx_L1_error)</span>
-}
-
-__PYX_XDEC_MEMVIEW(&amp;__pyx_v_ns1, 1);
-    __pyx_v_ns1 = __pyx_t_1;
-    __pyx_t_1.memview = NULL;
-    __pyx_t_1.data = NULL;
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">34</span>:         <span class="n">ns2</span> <span class="o">=</span> <span class="n">n1</span><span class="p">[:</span><span class="n">off</span><span class="p">]</span></pre>
-<pre class='cython code score-0 '>    __pyx_t_1.data = __pyx_v_n1.data;
-    __pyx_t_1.memview = __pyx_v_n1.memview;
-    __PYX_INC_MEMVIEW(&amp;__pyx_t_1, 0);
-    __pyx_t_9 = -1;
-    if (unlikely(__pyx_memoryview_slice_memviewslice(
-    &amp;__pyx_t_1,
-    __pyx_v_n1.shape[0], __pyx_v_n1.strides[0], __pyx_v_n1.suboffsets[0],
-    0,
-    0,
-    &amp;__pyx_t_9,
-    0,
-    __pyx_v_off,
-    0,
-    0,
-    1,
-    0,
-    1) &lt; 0))
-{
-    <span class='error_goto'>__PYX_ERR(0, 34, __pyx_L1_error)</span>
-}
-
 __PYX_XDEC_MEMVIEW(&amp;__pyx_v_ns2, 1);
     __pyx_v_ns2 = __pyx_t_1;
     __pyx_t_1.memview = NULL;
     __pyx_t_1.data = NULL;
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">35</span>:         <span class="n">d1</span> <span class="o">=</span> <span class="n">dot</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">ns1</span><span class="p">)</span></pre>
-<pre class='cython code score-0 '>    __pyx_v_d1 = __pyx_f_22bench_cython_optimized_dot(__pyx_v_s1, __pyx_v_ns1);
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">36</span>:         <span class="n">d2</span> <span class="o">=</span> <span class="n">dot</span><span class="p">(</span><span class="n">s2</span><span class="p">,</span> <span class="n">ns2</span><span class="p">)</span></pre>
-<pre class='cython code score-0 '>    __pyx_v_d2 = __pyx_f_22bench_cython_optimized_dot(__pyx_v_s2, __pyx_v_ns2);
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">37</span>:         <span class="n">returneo_view</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">d1</span> <span class="o">+</span> <span class="n">d2</span></pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">31</span>:         <span class="n">returneo</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">dot</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">ns1</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">dot</span><span class="p">(</span><span class="n">s2</span><span class="p">,</span> <span class="n">ns2</span><span class="p">,</span> <span class="n">off</span><span class="p">)</span></pre>
 <pre class='cython code score-0 '>    __pyx_t_10 = __pyx_v_x;
-    *((int *) ( /* dim=0 */ (__pyx_v_returneo_view.data + __pyx_t_10 * __pyx_v_returneo_view.strides[0]) )) = (__pyx_v_d1 + __pyx_v_d2);
+    *((double *) ( /* dim=0 */ (__pyx_v_returneo.data + __pyx_t_10 * __pyx_v_returneo.strides[0]) )) = (__pyx_f_22bench_cython_optimized_dot(__pyx_v_s1, __pyx_v_ns1, __pyx_v_x) + __pyx_f_22bench_cython_optimized_dot(__pyx_v_s2, __pyx_v_ns2, __pyx_v_off));
   }
-</pre><pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">38</span>:     <span class="k">return</span> <span class="n">returneo</span></pre>
-<pre class='cython code score-2 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
-  <span class='pyx_macro_api'>__Pyx_INCREF</span>(__pyx_v_returneo);
-  __pyx_r = __pyx_v_returneo;
+</pre><pre class="cython line score-1" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">32</span>:     <span class="k">return</span> <span class="n">returneo</span></pre>
+<pre class='cython code score-1 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
+  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_returneo, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);;<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)</span>
+  <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_2);
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
   goto __pyx_L0;
 </pre></div></body></html>
