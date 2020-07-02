@@ -29,6 +29,8 @@
 
 ### 01/07/2020
 
+##### Work done
+
 * Found GSL GNU, a C library that implements the necesary primitives for the project
   * Added a benchmark of a GSL version to the autocorrelation version
   * There is a 5.5% speedup from the CPython version
