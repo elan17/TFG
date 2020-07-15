@@ -22,6 +22,10 @@
 ### IDEs metadata
 .idea/
 
+### Development assistance
+
+Pruebas/
+
 ### Compiled files
 *.so
 *.pdf # We will only track latex files
