@@ -14,13 +14,13 @@
 
 ##### Work done
 
-* Acomplished to access the Numpy C API through CPython
+* Acomplished to access the Numpy C API through Cython
   * I had some troubles because the headers weren't found by the compiler
   * I had to add a little script to find the path to the Numpy headers and tell the compiler to use them
     * This was a bit tricky because the [documentation](https://cython.readthedocs.io/en/latest/src/userguide/source_files_and_compilation.html#configuring-the-c-build) is broken on how to do this
     * I found how to do it in a [github issue](https://github.com/cython/cython/issues/1480)
 * Found an [useful flag](https://cython.readthedocs.io/en/latest/src/userguide/source_files_and_compilation.html#cythonize-arguments) to generate a report on how much interactions our code have with Python. The ideal would be to drop the number of interactions as much as posible.
-* Numpy implements it's own version of the correlation function. For the benchmarks we are gonna our own definition but for the final version we will use it
+* Numpy implements it's own version of the correlation function. For the benchmarks we are gonna use our own definition but for the final version we will use it
 * After doing some benchmarks, numpy c bindings still have a huge overhead compared to manually implementing the slice operations.
 
 ##### Work for next day
@@ -39,5 +39,22 @@
 
 ### 12/07/2020
 
+##### Work done
+
 * After having a meeting with my project director, I am  tasked to look for a way to relate the autocorrelation function of a sequence to the autocorrelation function of a sequence build with the composition method from that sequence
-  * As the composition method uses the CRT and the current autocorrelation implementation uses Fourier transforms, the chapter 17 of Manfred's book it's worth to take a look 
+  * As the composition method uses the CRT and the current autocorrelation implementation uses Fourier transforms, the chapter 17 of Manfred's book it's worth to take a look
+
+### 15/07/2020
+
+##### Work done
+
+* After having an idea on how to approach the function from the last session, i started coding the first end project lines
+  * The autocorrelation function it's already implemented through Wiener–Khinchin's algorythm
+  * The composition function it's already implemented and free from Python's boilerplate in it's loop
+  * The optimized autocorrelation function for the composition case is implemented but must be debugged
+
+##### Work for next day
+
+* Fix the composite_autocorrelation function
+* Search for a built-in efficient autocorrelation implementation in numpy or scipy
+  * From the docs I searched, I'm not sure if it uses the naive approach, the FFT's one or both depending on the size of the problem
