@@ -36,3 +36,8 @@
   * There is a 5.5% speedup from the CPython version
 * GSL has it's own overheads that could be tackled with a bare-metal implementation(for example, using raw pointers)
   * There exist more efficient implementations but GSL is a good comparison on complexity vs performance
+
+### 12/07/2020
+
+* After having a meeting with my project director, I am  tasked to look for a way to relate the autocorrelation function of a sequence to the autocorrelation function of a sequence build with the composition method from that sequence
+  * As the composition method uses the CRT and the current autocorrelation implementation uses Fourier transforms, the chapter 17 of Manfred's book it's worth to take a look 
