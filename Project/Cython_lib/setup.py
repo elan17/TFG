@@ -18,5 +18,9 @@ for x in cyt:
     x.cython_directives["infer_types"] =  True
 
 setup(
-    ext_modules = cyt
+    ext_modules = cyt,
+    install_requires = [
+        "cython",
+        "numpy"
+    ]
 )
