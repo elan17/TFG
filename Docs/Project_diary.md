@@ -58,3 +58,17 @@
 * Fix the composite_autocorrelation function
 * Search for a built-in efficient autocorrelation implementation in numpy or scipy
   * From the docs I searched, I'm not sure if it uses the naive approach, the FFT's one or both depending on the size of the problem
+
+### 17/07/2020
+
+##### Work done
+
+* Fixed the composite_autocorrelation function.
+  * The % operator have different semantics in C, it represents the remainder operation instead of the module operation
+* Started the test suite for the project
+  * I decided to approach it with 2 paradigms
+    * Property-based testing for pure functions usign [Hypothesis](https://github.com/HypothesisWorks/hypothesis)
+    * Harcoded cases for impure functions
+* Reestructured repository
+* Added the backbone of setup.py to build the project in a modular way
+* Added .gitignore files per directory to clean the repository from generated files
