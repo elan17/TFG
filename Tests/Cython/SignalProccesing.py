@@ -16,7 +16,7 @@ import Cython_lib.SignalProccesing as SP
 
 def soft_array_compare(arr1, arr2, precision_margin=10**(-10)):
     """
-    Let's us compare arrays without carying of floating point precision
+    Let's us compare arrays without caring of floating point precision
     """
     dif = np.absolute(arr1 - arr2)
     comp = max(dif) <= precision_margin
