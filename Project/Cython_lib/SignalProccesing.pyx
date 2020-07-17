@@ -72,12 +72,13 @@ cpdef composite_autocorrelation(np.ndarray[array_t, ndim=1] signal, np.ndarray[n
   cdef np.complex [:] output_view = output
   cdef array_t [:] signal_view = signal
   cdef int [:] shifts_view = shifts
-  cdef int x, y, affected_column, current_shift, final_shift
+  cdef int x, y, affected_column, current_shift, final_shift, positive_difference
   cdef np.complex [:] autoc = autocorrelation(signal)
   for x in range(output_size):
+    positive_difference = l_signal - (x%l_signal)
     for y in range(l_shifts):
       affected_column =  shifts_view[(y+x)%l_shifts]
-      current_shift  =  (shifts_view[y] - x) % l_signal
-      final_shift = abs(current_shift-affected_column) # TODO: Bypass GIL (abs seems bugged as it detects it as a Python function, althoug it generate pure C code) 
+      current_shift  =  (positive_difference + shifts_view[y]) % l_signal
+      final_shift = abs(current_shift-affected_column) # TODO: Bypass GIL (abs seems bugged as it detects it as a Python function, althoug it generate pure C code)
       output_view[x] = output_view[x] + autoc[final_shift]
   return output
