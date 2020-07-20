@@ -18,6 +18,7 @@
 .*.lb
 *.synctex.gz
 *.fdb_latexmk
+*.xdv
 
 ### IDEs metadata
 .idea/

@@ -132,7 +132,8 @@
 
 % Portada %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\def\fuente{Nimbus Sans L} % Reemplazo para «Arial»
+\def\fuente{NimbusSans-Regular}
+%\def\fuente{Nimbus Sans L} % Reemplazo para «Arial»
 %\def\fuente{Liberation Sans}
 \font\fuentea="\fuente" at 14 pt
 \font\fuenteb="\fuente/B" at 17 pt
