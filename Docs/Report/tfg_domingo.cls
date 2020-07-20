@@ -132,7 +132,7 @@
 
 % Portada %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\def\fuente{NimbusSans-Regular}
+\def\fuente{NimbusSans-Regular} % TODO Check font
 %\def\fuente{Nimbus Sans L} % Reemplazo para «Arial»
 %\def\fuente{Liberation Sans}
 \font\fuentea="\fuente" at 14 pt
