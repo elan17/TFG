@@ -1,0 +1,45 @@
+\begin{thebibliography}{6}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Dijkstra(1968)]{1968_Dijkstra}
+E.~W. Dijkstra.
+\newblock {GO TO} statement considered harmful.
+\newblock \emph{Commun. ACM}, 11\penalty0 (3):\penalty0 147--148, 1968.
+\newblock \\ \url{http://doi.org/10.1145/362929.362947}
+
+\bibitem[Dijkstra(1987)]{1987_Dijkstra}
+E.~W. Dijkstra.
+\newblock On a somewhat disappointing correspondence, 1987.
+\newblock \\ \url{http://www.cs.utexas.edu/users/EWD/ewd10xx/EWD1009.PDF}
+
+\bibitem[Knuth(1974)]{1974_Knuth}
+D.~E. Knuth.
+\newblock Structured programming with {\bf go to} statements.
+\newblock \emph{ACM Comput. Surv.}, 6\penalty0 (4):\penalty0 261--301, 1974.
+\newblock \\ \url{http://doi.org/10.1145/356635.356640}
+
+\bibitem[Knuth y Floyd(1972)]{1972_Knuth}
+D.~E. Knuth y R.~W. Floyd.
+\newblock Notes on avoiding ‘go to’ statements.
+\newblock \emph{Information processing letters}, 1\penalty0 (4):\penalty0 177,
+  1972.
+\newblock \\ \url{http://doi.org/10.1016/0020-0190(71)90018-4}
+
+\bibitem[Moore et~al.(1987)Moore, Musciano, y Liebhaber]{1987_Moore}
+D.~Moore, C.~Musciano y M.~J. Liebhaber.
+\newblock “‘{GOTO} considered harmful’ considered harmful” considered
+  harmful?
+\newblock \emph{Commun. ACM}, 30\penalty0 (5):\penalty0 350--355, 1987.
+\newblock \\ \url{http://doi.org/10.1145/22899.315729}
+
+\bibitem[Rubin(1987)]{1987_Rubin}
+F.~Rubin.
+\newblock “{GOTO} considered harmful” considered harmful.
+\newblock \emph{Commun. ACM}, 30\penalty0 (3):\penalty0 195--196, 1987.
+\newblock \\ \url{http://doi.org/10.1145/214748.315722}
+
+\end{thebibliography}
