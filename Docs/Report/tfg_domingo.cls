@@ -222,7 +222,7 @@
                     numbers=left,label=#3,#1]{#2}}%
   \end{minipage}\vspace{4mm}
 }
-\RequirePackage[spanish,ruled]{algorithm2e}
+%\RequirePackage[spanish,ruled]{algorithm2e}
 
 % Otros %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -242,14 +242,14 @@
 }
 
 \RequirePackage{graphicx}
-\RequirePackage[spanish]{babel}
+%\RequirePackage[spanish]{babel}
 \frenchspacing
 
 % Términos en español %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\renewcommand\spanishfigurename{Ilustración}
+%\renewcommand\spanishfigurename{Ilustración}
 %\renewcommand\spanishchaptername{} % {Capítulo}
-\renewcommand\spanishcontentsname{Índice}
-\renewcommand\spanishlistfigurename{Índice de ilustraciones}
-\renewcommand\spanishbibname{Referencias}
+%\renewcommand\spanishcontentsname{Índice}
+%\renewcommand\spanishlistfigurename{Índice de ilustraciones}
+%\renewcommand\spanishbibname{Referencias}
 
 \endinput
