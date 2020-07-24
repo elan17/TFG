@@ -252,4 +252,14 @@
 %\renewcommand\spanishlistfigurename{Índice de ilustraciones}
 %\renewcommand\spanishbibname{Referencias}
 
+\usepackage{amsfonts}
+\usepackage{outlines}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}{Definition}[section]
+\setcitestyle{numbers}
+
 \endinput
