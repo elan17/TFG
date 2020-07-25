@@ -144,10 +144,10 @@ some important properties of the autocorrelation function:
   Given the autocorrelation of a sequence, $A_{0}(S)$ will always be the maximum value of the autocorrelation.
 \end{corollary}
 
-\begin{theorem}
+\begin{property}
  Components of the autocorrelation vector belong to the same group as the
   original sequence.
-\end{theorem}
+\end{property}
 
 Even though this seems a naive property, this will prove
 useful when we introduce the algorithm based in the Fourier Transform to
@@ -226,10 +226,10 @@ channel\cite{shannon_noise}, it has some practical uses:
 
 This practical applications exploit an important noise property:
 
-\begin{theorem}
+\begin{property}
   The autocorrelation of a vector of white noise equals 0 for every component
   where $\tau \neq 0$ \cite{everett}
-\end{theorem}
+\end{property}
 
 Taking a radar as an example, using this theorem we can compute the distance
 just by sending a white noise signal to a target and start correlating the
@@ -269,3 +269,5 @@ autocorrelation spike, it will behave as expected.
 Notice that this PRN code isn't perfect noise}
 \label{introduction_signals_autocorrelation}
 \end{figure}
+
+% TODO Define family of sequences
