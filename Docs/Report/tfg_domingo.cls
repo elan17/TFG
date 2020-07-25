@@ -260,6 +260,7 @@
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{definition}{Definition}[section]
+\newtheorem{property}{Property}[section]
 \setcitestyle{numbers}
 
 \endinput
