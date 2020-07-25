@@ -187,7 +187,8 @@ receiver.
 \end{figure}
 
 \begin{lemma}\label{lem:1}
-  Given a sequence S, CC the crosscorrelation function defined in Equation \ref{eq:7} and A the autocorrelation function defined in Equation \ref{eq:4}:
+  Given a sequence S, CC the crosscorrelation function defined in Equation
+  \ref{eq:7} and A the autocorrelation function defined in Equation \ref{eq:4}:
   \begin{equation}\label{eq:8}
     CC(S, S) = A(S)
   \end{equation}
@@ -208,7 +209,7 @@ receiver.
 
 Noise have a different meaning depending on the field of study in which is
 used. In our case we are going to work with random vectors of white noise,
-which is defined as vector in which all the components are statistically
+which is defined as vectors in which all the components are statistically
 independent between them.\cite{white_noise}\\
 
 Even though noise in general it is usually seen as an unwanted wave that
@@ -217,7 +218,7 @@ channel\cite{shannon_noise}, it has some practical uses:
 
 
 \begin{outline}
-  \1 PRN-based radars\cite{prn_radar_example1}
+  \1 PRN-based radars\cite{prn_radar_example1}\cite{prn_radar_example2}
   \1 As the spreading code in direct-sequence spread spectrum(DSSS) \cite{DSSS_1}\cite{DSSS}
     \2 CDMA in wireless communication\cite{DSSS}
     \2 GPS\cite{GPS}
@@ -229,3 +230,42 @@ This practical applications exploit an important noise property:
   The autocorrelation of a vector of white noise equals 0 for every component
   where $\tau \neq 0$ \cite{everett}
 \end{theorem}
+
+Taking a radar as an example, using this theorem we can compute the distance
+just by sending a white noise signal to a target and start correlating the
+received signal with the original one. As the autocorrelation of
+white noise only has a spike when the shift is 0, that spike represents in
+which time instant the signal has returned. With that time instant, we can
+get the round-trip time and then the actual distance if we know the
+propagation speed of the wave.\\
+
+In the case of GPS, the restrictions imposed to the noise sequence are
+stronger. First of all, as we will be transmiting several signals in the same
+frecuency, we need a set of codes with good crosscorrelation properties
+between them. In other words, the crosscorrelation function between two given
+codes must trend to 0 in every component except when $\tau = 0$ and
+both codes are the same.\\
+
+As noise is an statistical construct, noise measured from natural phenomena
+can generate sequences with poor correlation properties. As both technologies
+depend on this properties to work, we must find a way of creating sequences
+with properties similar to those of noise in an deterministic and eficient
+fashion.\\
+
+This kind of sequences are called Pseudorandom Noise(PRN). In practical
+applications, PRN sequences aren't perfect noise because generating it it's
+difficult and unnecesary. In reality, we don't need an actual 0 in every
+position of the autocorrelation. If we let the sequence take values in a
+threshold such as the system won't mistake intermidiate values with the
+autocorrelation spike, it will behave as expected.
+
+\begin{figure}[ht!] % [h!] fuerza que el elemento se sitúe
+                    % en la posición señalada, en vez de al
+                    % comienzo de una página.
+\begin{center}
+\includegraphics[width=0.7\linewidth]{Chapters/Introduction/signals_prn}
+\end{center}
+\caption{A pseudorandom noise sequence an it's autocorrelation function.
+Notice that this PRN code isn't perfect noise}
+\label{introduction_signals_autocorrelation}
+\end{figure}
