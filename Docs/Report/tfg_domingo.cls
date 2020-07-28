@@ -255,6 +255,7 @@
 \usepackage{amsfonts}
 \usepackage{outlines}
 \usepackage{amsthm}
+\usepackage{pythonhighlight}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}{Corollary}[theorem]
