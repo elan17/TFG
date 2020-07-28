@@ -1,0 +1,19 @@
+\section{Maximum Length Sequence(MLS)}
+
+MLS are a exponential binary PRN construction that uses linear
+feedback shift registers(LFSR) with particular properties.
+
+\begin{property}
+  A MLS will always be of length of the form $2^{n}-1$ where n is an arbitrary
+  natural number.
+\end{property}
+
+\begin{property}
+  The polynomial over GF(2) representing the LFSR must be primitive or,
+  in other words, the LFSR must have a period such that it reaches all posible
+  states except all zeros before repeating itself.
+\end{property}
+
+Even though
+
+\inputpython{Chapters/PRN_generation/example_mls.py}{0}{100}
