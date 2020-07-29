@@ -20,7 +20,7 @@ And XORs all their relative shifts generating a family of $2^{n} + 1$ sequences
   Given any two sequences, S1 and S2, from a Gold family of sequences of length
   $2^{n}-1$, $CC$ the crosscorrelation function defined in Equation \ref{eq:7}:
   \begin{equation}
-        \left\{\begin{array}{lr}
+        max |CC(S1, S2)| \leq \left\{\begin{array}{lr}
             2^{\frac{n+2}{2}}+1 & \textnormal{ if n is even } \\
             2^{\frac{n+1}{2}}+1 & \textnormal{if n is odd } \\
         \end{array}\right.
@@ -30,4 +30,7 @@ And XORs all their relative shifts generating a family of $2^{n} + 1$ sequences
 This property means that the crosscorrelation between any given pair of
 sequences from a Gold family is low enough to differentiate them. This proves
 useful when several devices are transmiting in the same frecuency and we must
-treat signals that are not the one we want to recive as noise. 
+treat signals that are not the one we want to receive as noise.\\
+
+Notice that this construction has the same problem as MLS sequences. It's
+an exponential contruction so it might be not enough for some applications.
