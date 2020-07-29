@@ -1,0 +1,39 @@
+\section{Legendre sequences}
+
+Legendre sequences, as explained in \citet{legendre_sequences}, are binary
+sequences defined through quadratic residues as follows:
+
+\begin{definition}
+  Let $p$ be an odd prime and the function "Legendre Symbol" be:
+    \begin{equation}
+      LSy(n, p) = \left\{\begin{array}{lr}
+          1  & \textnormal{if n is a quadratic residue mod p}   \\
+          -1 & \textnormal{otherwise} \\
+      \end{array}\right.
+    \end{equation}
+  We define the Legendre Sequence as:
+    \begin{equation}
+      LSs(p)_{i} = LSy(i, p) \textnormal{  where  } 0 \leq i < p
+    \end{equation}
+\end{definition}
+
+
+An example implementation could be:
+\inputpython{Chapters/PRN_generation/example_legendre.py}{0}{100}
+
+Some Legendre Sequences have interesting autocorrelation properties:
+\begin{property}\label{property:2.3.1}
+  Given an odd prime $p$ such as $p \equiv 3 \bmod 4$, we can say that
+  $LSs(p)$ has a flat autocorrelation.\cite{legendre_sequences}
+\end{property}
+
+Even though \citet{legendre_sequences} has a generalization of property
+\ref{property:2.3.1} to all Legendre Sequences, it requires the introduction of
+a third symbol making the sequence non-binary. \\
+
+As $p$ is the variable defining the size of the generated sequence, we can
+derive that the distribution of Legendre Sequences is related to the Prime
+Number Theorem. This means that Legendre Sequences have more possible lengths
+than MLS or other exponential contructions. However, Legendre Sequences have
+the drawback that there is only on per sequence length and they cannot generate
+families of good autocorrelation properties by themselfs.
