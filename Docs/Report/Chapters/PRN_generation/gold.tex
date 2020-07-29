@@ -1,0 +1,33 @@
+\section{Gold Codes}
+
+Gold codes are a family of sequences derived from MLS with so
+important properties that are used in several applications such as wireless
+communication and geolocalisation. A Gold Code generator gets two MLS sequences
+that fulfill:
+
+\begin{property}
+  Given two MLS that can generate Gold Codes, $S1$ and $S2$, of length $2^{n}-
+  1$, $CC$ the crosscorrelation function defined in Equation \ref{eq:7}:
+    \begin{equation}
+      max |CC(S1, S2)| \leq 2^{\frac{n+2}{2}}
+    \end{equation}
+\end{property}
+
+And XORs all their relative shifts generating a family of $2^{n} + 1$ sequences
+($2^{n} - 1$ XORed sequences + 2 MLS sequences).
+
+\begin{property}
+  Given any two sequences, S1 and S2, from a Gold family of sequences of length
+  $2^{n}-1$, $CC$ the crosscorrelation function defined in Equation \ref{eq:7}:
+  \begin{equation}
+        \left\{\begin{array}{lr}
+            2^{\frac{n+2}{2}}+1 & \textnormal{ if n is even } \\
+            2^{\frac{n+1}{2}}+1 & \textnormal{if n is odd } \\
+        \end{array}\right.
+  \end{equation}
+\end{property}
+
+This property means that the crosscorrelation between any given pair of
+sequences from a Gold family is low enough to differentiate them. This proves
+useful when several devices are transmiting in the same frecuency and we must
+treat signals that are not the one we want to recive as noise. 
