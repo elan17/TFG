@@ -1,0 +1,71 @@
+\section{Costas Arrays}
+
+Costas arrays, discovered independently by John P. Costas\cite{costas_costas}
+and E.N. Gilbert \cite{gilbert_costas} in 1965, are a set of sequences highly
+used in radar and sonar applications. We are going to provide the 2 definitions
+as both will be useful for different purposes:
+
+\begin{definition}[Costas array(Costas)]
+  Square matrix of size $n×n$ filled with 0s and 1s such that there
+  aren't more than multiple 1s in each row or column and that every
+  displacement vector is distinct from the rest.
+\end{definition}
+
+This definition is used in several deployments of sonar and radar to generate
+systems with a good ambiguity function, in other words, tolerant to Doppler
+effect.
+
+\begin{figure}[ht!]
+  $$
+  \begin{bmatrix}
+   1&0&0&0\\
+   0&0&0&1\\
+   0&1&0&0\\
+   0&0&1&0
+  \end{bmatrix}
+  $$
+  \caption{An example of a Costas array}
+  \label{fig:costas_1}
+\end{figure}
+
+Notice that we could compact the representation by just having a list of the
+rows in which each 1 lives:
+
+\begin{figure}[ht!]
+  $$[4, 2, 1, 3]$$
+  \caption{The compact representation of the Costas array of Figure
+  \ref{fig:costas_1}}
+  \label{fig:costas_2}
+\end{figure}
+
+This representation is equivalent to the definition of a Costas array provided
+by Gilbert:
+
+\begin{definition}[Distinct difference permutations]\label{def:costas_1}
+  Given a sequence of integers $S$ of length $n$ such that:
+    \begin{equation}\label{eq:costas_1}
+      0 \leq S_{i} < n
+    \end{equation}
+  We say that $S$ is a distinct difference permutation $r$ apart if,
+  for any given pair $(S_{i}, S_{j})$, satisfies:
+    \begin{equation}\label{eq:costas_2}
+      S_{i} - S_{i+r} \not \equiv S_{j} - S_{j+r} \bmod n
+    \end{equation}
+\end{definition}
+
+\begin{definition}[Costas array(Gilbert)]
+  Given a sequence $S$ satisfying Equation \ref{eq:costas_1}, we say it's a
+  Costas array if, for any given $r$ value, it satisfies Equation
+  \ref{eq:costas_2}.
+\end{definition}
+
+The compact representation will prove usefull when we introduce the method of
+composition to look for new PRN sequences.Several construction methods have
+been proposed. For sake of simplicity, we are going to introduce just the Welsh
+construction as defined in Gilbert \cite{gilbert_costas}:\\
+
+Given a prime number $p$ and a primitive root $g$ of $p$, we can contruct a
+Costas array $S$ as follows:
+\begin{equation}
+  S_{i} \equiv g^{i} \bmod p
+\end{equation}
