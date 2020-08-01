@@ -1,0 +1,29 @@
+\section{Verification}
+  One of the most important parts of software development is verifing the
+  software. In other words, checking that the semantics of the program built
+  are the same as the intended ones. We can waste a lot of time building a
+  program to realize that it doesn't work in the last moment and waste a lot
+  of time trying to fix it. That fix might generate side effect that break other
+  parts of the program and so on. Testing since the early stages of a project
+  is mandatory if we want a quality product and an efficient development
+  proccess.
+
+  \subsection{Unit tests}
+
+    Unit testing is the smallest piece of test in a project. There exist several
+    approaches in the literature such as white box and black box testing. In
+    our project, we will take a mixed approach depending on the situation:
+
+    \subsubsection{Property based tests}
+
+    Property-based testing is a not so well known type of black box testing that
+    it's built around the idea of defining properties of functions instead of
+    test cases. Originally implemented by the Haskell's libray
+    "QuickCheck"\cite{QuickCheck}, the paradigm excels at generating huge
+    volumes of test cases with just some extra lines of code leading
+    to improvements on the coverage over the search space.
+
+    A well implemented library(there are several of them, in our case we are
+    working with Hypothesis\cite{Hypothesis} as our project is built with
+    Python), should be capable to applying most well practices of black box
+    testing such as edge cases, all pairs of edge cases, etc. 
