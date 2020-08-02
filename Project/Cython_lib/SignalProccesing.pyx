@@ -22,6 +22,8 @@ cpdef autocorrelation(signal):
 
     returns : The correlation for each shift (np.ndarray[np.complex, ndim=1])
   """
+  if len(signal) == 0:
+    return np.array([], dtype=np.complex)
   ft = np.fft.fft(signal)
   S = np.conj(ft)*ft
   return np.fft.ifft(S)
