@@ -21,5 +21,6 @@ class TestAutocorrelation(ut.TestCase):
         auto = SP.autocorrelation(signal)
         if not len(signal):
             return
+        # We are working with floats, so we cannot test equality
         assert auto[0]-1 < max(auto) < auto[0]+1
         assert max(auto) < len(auto)+1

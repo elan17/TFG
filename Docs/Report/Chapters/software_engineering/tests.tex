@@ -19,13 +19,33 @@
     Property-based testing is a not so well known type of black box testing that
     it's built around the idea of defining properties of functions instead of
     test cases. Originally implemented by the Haskell's libray
-    "QuickCheck"\cite{QuickCheck}, the paradigm excels at generating huge
+    "QuickCheck"\cite{QuickCheck}, this paradigm excels at generating huge
     volumes of test cases with just some extra lines of code leading
-    to improvements on the coverage over the search space.
+    to improvements on the coverage over the search space. It's similar to the
+    test automation explained by \citet{Sommerville} in Chapter 23, being the
+    main difference that we don't need an oracle that predicts the value.
+    Instead, we check just a property of the output.\\
 
     A well implemented library(there are several of them, in our case we are
-    working with Hypothesis\cite{Hypothesis} as our project is built with
+    working with Hypothesis\cite{Hypothesis} as our project is built in
     Python), should be capable to applying most well practices of black box
-    testing such as edge cases, all pairs of edge cases, etc.
+    testing such as edge cases, all pairs, etc.\\
 
-    \inputpython{Chapters/software_engineering/test_example.py}{0}{100}
+    The main reason why we choosed this type of test suites is that all the
+    properties are already defined in this document and can be used
+    straightforward as test cases. In fact, as most of our functions
+    are static and pure, the generator will be very simple so we will take full
+    advantage of this paradigm. In Figure \ref{test_example}, we have an example
+    of a property used for testing the codebase.\\
+
+    \begin{figure}[ht!]
+      \inputpython{Chapters/software_engineering/test_example.py}{0}{100}
+      \caption{An example test for Property \ref{theorem:1.2.1}}
+      \label{test_example}
+    \end{figure}
+
+    The problem with this paradigm is that it becomes way too complicated when
+    we have to test methods with side effects, IO, state machines, etc. As this
+    kind of systems usually depend on complex rules to build the generator of
+    all the components involved in this systems. For this kind of tests, we
+    will rely on the old method of designing test cases by hand.\\
