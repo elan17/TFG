@@ -2,7 +2,8 @@ from setuptools import setup
 import numpy as np
 from Cython.Build import cythonize
 
-cyt = cythonize([   "SignalProccesing.pyx"
+cyt = cythonize([ "SignalProccesing.pyx"
+                , "Sequences.pyx"  
                 ]
                 , annotate = True)
 
