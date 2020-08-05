@@ -3,13 +3,18 @@ cimport cython
 
 from libcpp.set cimport set
 
+from libc.stdlib cimport malloc, free
+
 cimport numpy as np
 import numpy as np
+
+from cpython cimport array
+import array
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
 @cython.cdivision(True)
-cpdef inline int legendre_symbol(int a, int p, set[int] residues):
+cdef inline int legendre_symbol(int a, int p, set[int] * residues):
   cdef int m = a % p
   if residues.count(m):
     return 1
@@ -19,13 +24,23 @@ cpdef inline int legendre_symbol(int a, int p, set[int] residues):
 @cython.boundscheck(False)
 @cython.wraparound(False)
 @cython.cdivision(True)
-cpdef np.ndarray[np.int, ndim=1] legendre_sequence(int p):
-  arr = np.empty(shape=p, dtype=np.int32)
-  cdef int[:] r = arr
-  cdef set[int] res
+cdef int* legendre_sequence(int p):
+  cdef int* r = <int *> malloc(p*sizeof(int))
+  cdef set[int] * res = new set[int]()
   cdef int a, x
   for a in range(p // 2 + 1):
     res.insert((a*a) % p)
   for x in range(0, p):
     r[x] = legendre_symbol(x, p, res)
-  return arr
+  del res
+  return r
+
+
+def py_legendre_sequence(int p):
+  cdef array.array a = array.array('i', [])
+  cdef int* r = legendre_sequence(p)
+  l = []
+  for x in range(p):
+    l.append(r[x])
+  free(r)
+  return l
