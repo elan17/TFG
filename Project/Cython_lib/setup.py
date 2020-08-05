@@ -3,7 +3,8 @@ import numpy as np
 from Cython.Build import cythonize
 
 cyt = cythonize([ "SignalProccesing.pyx"
-                , "Sequences.pyx"  
+                , "Sequences.pyx"
+                , "branch_and_bound.pyx"
                 ]
                 , annotate = True)
 
