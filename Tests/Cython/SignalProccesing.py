@@ -90,6 +90,10 @@ class TestCompositeAutocorrelation(ut.TestCase):
 
     @given(st.data())
     def test_good_composite_autocorrelation(self, data):
+        """
+        good_composite_autocorrelation must compute the same autocorrelation to
+        composite_autocorrelation
+        """
         signal, shifts = self.generator(data)
         small_int = data.draw(st.integers(min_value=0, max_value=25))
         arr1 = SP.composite_autocorrelation(signal, shifts)
@@ -97,6 +101,25 @@ class TestCompositeAutocorrelation(ut.TestCase):
         if len(arr1) < 2:
             return
         assert truth == (max(abs(arr1[1:])) < small_int)
+
+class TestHammingAutocorrelation(ut.TestCase):
+
+    def generator(self, data):
+        signal_length = data.draw(st.integers(min_value=0, max_value=25))
+        return data.draw(hnp.arrays(np.int32, signal_length, elements=st.integers(min_value=0, max_value=10)))
+
+    @given(st.data())
+    def test_hamming_autocorrelation(self, data):
+        """
+        Bound limits of hamming autocorrelation
+        """
+        arr = self.generator(data)
+        x, count = np.unique(arr, return_counts=True)
+        count2 = [x if x != 1 else 0 for x in count]
+        upper_limit = sum(count2)
+        corr = SP.max_hamming_autocorrelation(arr)
+        assert corr <= upper_limit
+        assert corr >= 0
 
 if __name__ == "__main__":
     ut.main()
