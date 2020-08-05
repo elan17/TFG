@@ -33,7 +33,7 @@ class TestAutocorrelation(ut.TestCase):
     def generator(self, data):
         small_int = st.integers(min_value=0, max_value=25)
         signal_length = data.draw(small_int)
-        return data.draw(hnp.arrays(np.int64, signal_length, elements=st.integers(min_value=-1, max_value=1)))
+        return data.draw(hnp.arrays(np.int32, signal_length, elements=st.integers(min_value=-1, max_value=1)))
 
     @given(st.data())
     def test_maximum_value(self, data):
@@ -50,7 +50,7 @@ class TestAutocorrelation(ut.TestCase):
     @given(st.data())
     def test_minimum_value(self, data):
         """
-        Test that checks the minimum value of the autocorrelation 
+        Test that checks the minimum value of the autocorrelation
         """
         signal = self.generator(data)
         auto = SP.autocorrelation(signal)
@@ -72,7 +72,7 @@ class TestCompositeAutocorrelation(ut.TestCase):
         # We make an assumtion on how the lengths relate
         assume(gcd(signal_length, shifts_length) == 1) # Check if they are coprimes
         # We generate the signal and the sequence of shifts
-        signal = data.draw(hnp.arrays(np.int64, signal_length, elements=st.integers(min_value=-1, max_value=1)))
+        signal = data.draw(hnp.arrays(np.int32, signal_length, elements=st.integers(min_value=-1, max_value=1)))
         shifts = data.draw(hnp.arrays(np.int32, shifts_length, elements=st.integers(min_value=0, max_value=max(signal_length-1, 0))))
         return (signal, shifts)
 
@@ -87,6 +87,16 @@ class TestCompositeAutocorrelation(ut.TestCase):
         arr2 = SP.composite_autocorrelation(signal, shifts)
         # We assert equality
         assert soft_array_compare(arr1, arr2)
+
+    @given(st.data())
+    def test_good_composite_autocorrelation(self, data):
+        signal, shifts = self.generator(data)
+        small_int = data.draw(st.integers(min_value=0, max_value=25))
+        arr1 = SP.composite_autocorrelation(signal, shifts)
+        truth = SP.good_composite_autocorrelation(SP.autocorrelation(signal), shifts, small_int)
+        if len(arr1) < 2:
+            return
+        assert truth == (max(abs(arr1[1:])) < small_int)
 
 if __name__ == "__main__":
     ut.main()
