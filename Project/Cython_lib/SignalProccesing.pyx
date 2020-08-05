@@ -1,4 +1,4 @@
-
+import warnings
 
 cimport cython
 import numpy as np
@@ -23,6 +23,7 @@ cpdef autocorrelation(signal):
     return np.array([], dtype=np.int32)
   ft = np.fft.fft(signal)
   S = np.conj(ft)*ft
+  warnings.filterwarnings(action="ignore", category=np.ComplexWarning)
   return np.round(np.fft.ifft(S)).astype(np.int32)
 
 
@@ -121,9 +122,9 @@ cdef int c_max_hamming_autocorrelation(int* sequence, int length_seq):
   for displacement in range(1, length_seq-1):
     current_auto = 0
     for x in range(0, displacement):
-      current_auto += <int> (sequence[x] == sequence[x+displacement])
+      current_auto += (sequence[x] == sequence[x+displacement])
     for x in range(displacement, length_seq):
-      current_auto += <int> (sequence[x] == sequence[x-displacement])
+      current_auto += (sequence[x] == sequence[x-displacement])
     if current_auto > max_auto:
       max_auto = current_auto
   return max_auto
