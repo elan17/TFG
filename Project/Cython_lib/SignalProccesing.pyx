@@ -77,7 +77,7 @@ cdef bint c_good_composite_autocorrelation( int* autocorrelation
       current_shift  =  (positive_difference + shifts[y]) % l_signal
       final_shift = abs(current_shift-affected_column)
       output = output + autocorrelation[final_shift]
-    if abs(output) >= threshold:
+    if output > threshold:
       return False
   return True
 
