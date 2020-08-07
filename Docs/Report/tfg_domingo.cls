@@ -257,6 +257,7 @@
 \usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{pythonhighlight}
+\usepackage{hyperref}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}{Corollary}[theorem]

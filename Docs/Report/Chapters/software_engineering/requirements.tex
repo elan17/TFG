@@ -1,0 +1,102 @@
+\section{Software requeriments}
+
+
+\subsection{Functional requirements}
+
+\begin{figure}
+
+  \begin{center}
+    \begin{tabular}{||c | p{10cm}||}
+      \hline
+      Identifier & Description \\
+      \hline
+      \hline
+      FR01 \label{FR01} & The researcher must be capable to set the base
+      sequence to use for the search \\
+      \hline
+      FR02 \label{FR02} & The researcher must be capable to set the size
+      of the shift sequence to use for the search\\
+      \hline
+      FR03 \label{FR03} & The researcher must be capable of setting the maximum
+      autocorrelation he is interested in \\
+      \hline
+      FR04 \label{FR04} & The researcher must be capable to extract the
+      results while the computation is still running(this doesn't mean that
+      the data must be avalaible with a low latency)\\
+      \hline
+      FR05 \label{FR05} & The system administrator must be capable of changing
+      the resources assigned to the program\\
+      \hline
+      FR06 \label{FR06} & The system must provide an interface that shows
+      the progress of the computation(again, there's no need for low latency
+      as it would conflict with \hyperref[NFR01]{NFR01})\\
+      \hline
+    \end{tabular}
+  \end{center}
+
+  \caption{Functional requierements}
+  \label{functional:fig}
+\end{figure}
+
+\subsection{Non-functional requirements}
+
+The functional requirements of the project are shown in Figure
+\ref{non_functional:fig}.
+
+\begin{figure}
+
+  \begin{center}
+
+    \begin{tabular}{||c | c | p{7cm} | c||}
+
+    \hline
+    Identifier & Type  & Description & Relevance\\
+    \hline
+    \hline
+    NFR01 \label{NFR01} & Performance & As we are searching for sequences in a
+    huge space, speed is a top priority to continue with the research &
+    Very high\\
+    \hline
+    NFR02 \label{NFR02} & Compability & As we are deploying our project in a
+    research enviroment with different arquitectures, we must try to make it as
+    compatible as posible in the case it must be changed from node &
+    Medium \\
+    \hline
+    NFR03 \label{NFR03} & Usability & This software is expected to be used by
+    specialized researchers and it isn't an interactive application so the time
+    spent dealing with the application by users is low. Interface shouldn't be
+    a priority. & Very low \\
+    \hline
+    NFR04 \label{NFR04} & Arquitecture & The program must take full advantage
+    of the capabilities of a supercomputer, in particular the high
+    degree of parallelization of the system & High\\
+    \hline
+    NFR05 \label{NFR05} & Robustness & The program must not produce errors.
+    Corruption of data, miscalculations or precision errors must not be
+    tolerated as it would screw up the whole result & Very high \\
+    \hline
+    NFR06 \label{NFR06} & Robustness & The program cannot have memory leaks.
+    It's expected to run for a long time and a memory leak can cause a crash.
+    Can be fixed by restarting memory leaked threads without affecting the end
+    result & Medium \\
+    \hline
+    NFR07 \label{NFR07} & Extensibility & As the program is used as part of a
+    research, we need the parts of the software to be reusable in case the
+    research shows a new posible use of the project as part of a new
+    development & Medium \\
+    \hline
+    NFR08 \label{NFR08} & Data availability & The availability of the data
+    isn't a main concern as the project doesn't aim to be an interactive
+    platform & Low \\
+    \hline
+    NFR09 \label{NFR09} & Robustness & The persistence layer must be robust
+    enough to avoid data loses as it is costly to produce & High \\
+    \hline
+
+    \end{tabular}
+
+  \end{center}
+
+  \caption{Non-functional requirements}
+  \label{non_functional:fig}
+\end{figure}
