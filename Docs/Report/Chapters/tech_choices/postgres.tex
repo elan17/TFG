@@ -1,0 +1,12 @@
+\section{PostgreSQL}
+
+PostgreSQL\cite{postgres} is an open-source relational database supported in
+a highly varied range of enviroments. As such we don't depend on a particular
+Linux distribution to deploy(For example, Oracle only supports RedHat).\\
+
+Even if the database isn't as fast as Oracle or other databases, our
+application isn't constraint by IO(as the generation of values to store in the
+database depends directly in a costly computation). In our case, we would
+want a persistence system that supports well our stack of technologies. As
+PostgreSQL is designed to run python code on it's SQL code, it gives us a lot
+flexibility in how we want to design our application.
