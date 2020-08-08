@@ -1,12 +1,16 @@
-\section{Software requeriments}
+\section{Software requirements}
 
 
 \subsection{Functional requirements}
 
-\begin{figure}
+The functional requirements of the project are shown in Figure
+\ref{functional:fig}.
+
+
+\begin{figure}[ht!]
 
   \begin{center}
-    \begin{tabular}{||c | p{10cm}||}
+    \begin{tabular}{||c | p{12cm}||}
       \hline
       Identifier & Description \\
       \hline
@@ -31,6 +35,18 @@
       the progress of the computation(again, there's no need for low latency
       as it would conflict with \hyperref[NFR01]{NFR01})\\
       \hline
+      FR07 \label{FR07} & Once established the parameters, the software must
+      run without needing supervision of any user \\
+      \hline
+      FR08 \label{FR08} & The parameters of the load balancer must be editable
+      by the system admin(as different machines might need different values) \\
+      \hline
+      FR09 \label{FR09} & An administrator must be capable of managing
+      privileges for accesing the database and running computations\\
+      \hline
+      FR10 \label{FR10} & The system must provide a way to queue different
+      searchs to compute in succesion\\
+      \hline
     \end{tabular}
   \end{center}
 
@@ -40,10 +56,10 @@
 
 \subsection{Non-functional requirements}
 
-The functional requirements of the project are shown in Figure
+The non-functional requirements of the project are shown in Figure
 \ref{non_functional:fig}.
 
-\begin{figure}
+\begin{figure}[ht!]
 
   \begin{center}
 
@@ -100,3 +116,32 @@ The functional requirements of the project are shown in Figure
   \caption{Non-functional requirements}
   \label{non_functional:fig}
 \end{figure}
+
+\subsection{User interface requirements}
+
+UI desing is an important topic of software engineering as the success of a
+project is related directly to the user experience and how they relate to the
+software.\\
+
+First of all, note that the users are supposed to be experienced in the use of
+computers so a complex UI shouln't be a problem. Even though the easier the
+better, our development has a huge constraint on UI design that should be
+taken into account: the special type of OS we are working with.\\
+
+As we are working with supercomputers, we can encounter a minimalist enviroment
+with no graphical desktop. For this reason, we should focus on a command line
+based application with 2 different main sections:\\
+\begin{itemize}
+  \item Application launcher(resource allocation, parallelism model, etc.)
+  \item Runtime interaction with the system(tasks management, database
+  queries, etc.)
+\end{itemize}
+
+As most supercomputers run UNIX-based systems, our application should follow
+the POSIX\cite{POSIX_arguments} standard on the way it treats arguments.
+It should follow conventions such as the use of flags such as --help or
+--verbose and providing a man page.\\
+
+It will also provide a way to store the configuration of the system in case
+the application must be restarted quickly(mainly platform specific
+configuration such as parameters of the load balancer) \\
