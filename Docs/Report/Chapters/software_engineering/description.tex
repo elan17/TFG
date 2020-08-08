@@ -1,4 +1,64 @@
 \section{Overall description}
-  \subsection{Product perspective}
+
+  In this chapter we will provide a general idea behind the software project.
+  \subsection{Project description}
+
+  This project is developed to assist in the research of binary sequences with
+  good autocorrelation functions. This sequences are used in application such
+  as radar, wifi or GPS.\\
+
+  The primary focus will be understanding the problem domain to create a
+  software as useful as possible. Then, create an extensible program that
+  implements an exhaustive search to look for new sequences to add to the
+  existing scientific literature.\\
+
   \subsection{Product functions}
+
+  We will summarize in a general way the functionalities we expect from
+  this software.
+
+  \begin{itemize}
+    \item Perform computations in search for sequences.\\
+            \begin{itemize}
+              \item Obtain real-time information of the computation proccess
+              \item Change dedicated resources to computation
+            \end{itemize}
+    \item Manage the set of found sequences
+            \begin{itemize}
+              \item Query by different parameters of the sequences
+              \item Handle found sequences manually
+              \item Plot sequence properties
+            \end{itemize}
+    \item Manage permissions
+  \end{itemize}
+
   \subsection{User classes and characteristics}
+
+  Users of this project can be divided in 2 main groups:\\
+
+  Researchers that will control the search for new sequences, being capable of
+  starting computations and modifying the database. This researchers are highly
+  specialized personal and are expected to understand common abbreviations in
+  the field as well as knowing which parameters are more promising to get a
+  successful computation.\\
+
+  System administrators that will optimize the application according to the
+  specificiations of the system in which it is deployed. System administrators
+  are specialized professional which know how to run benchmarks, maximize
+  performance and understand advanced concepts of parallel computing. They are
+  expected to be capable of optimizing the software with a manual explaining
+  the inner workings of the program in a technical jargon.\\
+
+  In the real world, both roles might overlapp in the same person.\\
+
+  \subsection{Operating Enviroment}
+
+  The computation module is expected to run in highly parallelized systems such
+  as super-computers. This is the enviroment in which researchers work so it
+  would be a shame if we didn't design the software to take full advantage of
+  the capabilities of these systems.\\
+
+  Taking his into account, we should target the software installed in those
+  enviroments. This leads us to assume a Linux enviroment(as most supercomputers
+  run it) and a Python interpreter(as it's a popular language in the scientific
+  community).\\
