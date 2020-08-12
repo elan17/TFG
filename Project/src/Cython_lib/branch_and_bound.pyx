@@ -10,20 +10,22 @@ import SignalProccesing as SP
 cimport SignalProccesing as SP
 
 def py_get_list_of_good_shifts( np.ndarray[int, ndim=1] sequence
-                              , shift_length
                               , hamming_upper_limit
-                              , correlation_upper_limit):
+                              , correlation_upper_limit
+                              , shifts_seq
+                              , int task_size):
   cdef np.ndarray[int, ndim=1] autocorrelation = SP.autocorrelation(sequence)
   cdef list[int*]* l = new list[int*]()
   cdef int* autoc = <int*> autocorrelation.data
-  cdef np.ndarray[int, ndim=1] shifts = np.empty(shift_length, dtype=np.int32)
-  for y in range(len(shifts)):
+  cdef int shift_length = len(shifts_seq)
+  cdef np.ndarray[int, ndim=1] shifts = shifts_seq
+  for y in range(shift_length - task_size, shift_length):
     shifts[y] = -y
   get_list_of_good_shifts( autoc
                          , len(autocorrelation)
                          , <int*> shifts.data
                          , shift_length
-                         , 1
+                         , shift_length - task_size
                          , hamming_upper_limit
                          , correlation_upper_limit
                          , l)
