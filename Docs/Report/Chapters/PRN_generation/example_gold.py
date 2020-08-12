@@ -12,5 +12,5 @@ def decimation(sequence, k):
 
 def gold_with_decimation(n):
     s1 = maximal_sequence(n)
-    s2 = decimation(s1, 3) # 5 = (2^k) + 1 when k is 1(1 is coprime with every number)
+    s2 = decimation(s1, 3) # 3 = (2^k) + 1 when k is 1(1 is coprime with every number)
     return gold_code(s1, s2)
