@@ -8,7 +8,7 @@ that fulfill:
 \begin{property}
   Given two MLS that can generate Gold Codes, $S1$ and $S2$, of length $2^{n}-
   1$, $CC$ the crosscorrelation function defined in Equation \ref{eq:7}:
-    \begin{equation}
+    \begin{equation}\label{gold:eq:1}
       max |CC(S1, S2)| \leq 2^{\frac{n+2}{2}}
     \end{equation}
 \end{property}
@@ -22,7 +22,7 @@ And XORs all their relative shifts generating a family of $2^{n} + 1$ sequences
   \begin{equation}
         max |CC(S1, S2)| \leq \left\{\begin{array}{lr}
             2^{\frac{n+2}{2}}+1 & \textnormal{ if n is even } \\
-            2^{\frac{n+1}{2}}+1 & \textnormal{if n is odd } \\
+            2^{\frac{n+1}{2}}+1 & \textnormal{ if n is odd } \\
         \end{array}\right.
   \end{equation}
 \end{property}
@@ -33,6 +33,22 @@ This property means that the crosscorrelation between any given pair of
 sequences from a Gold family is low enough to differentiate them. This proves
 useful when several devices are transmiting in the same frecuency and we must
 treat signals that are not the one we want to receive as noise.\\
+
+Gold also showed  a way to generate this pair of sequences for it's method
+using a decimation of one MLS sequence.
+
+\begin{definition}[Decimation]
+  Given a sequence $S$ of length $n$, a decimation by $q$ of $S$ is defined as:
+  \begin{equation}
+    S[q]_{i} = S_{((q·i) \bmod n)}
+  \end{equation}
+\end{definition}
+
+\begin{property}
+  Given a MLS sequence $S$ of length $2^n - 1$ where n is odd and and a
+  coprime of $n$ named $k$, the sequence pair $(S, S[2^{k} + 1])$ number
+  fulfills equation \ref{gold:eq:1}
+\end{property}
 
 Notice that this construction has the same problem as MLS sequences. It's
 an exponential contruction so it might be not enough for some applications.
