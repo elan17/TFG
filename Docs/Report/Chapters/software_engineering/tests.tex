@@ -28,7 +28,7 @@
 
     A well implemented library(there are several of them, in our case we are
     working with Hypothesis\cite{Hypothesis} as our project is built in
-    Python), should be capable to applying most well practices of black box
+    Python), should be capable of applying most well practices of black box
     testing such as edge cases, all pairs, etc.\\
 
     The main reason why we choosed this type of test suites is that all the
@@ -49,3 +49,23 @@
     kind of systems usually depend on complex rules to build the generator of
     all the components involved in this systems. For this kind of tests, we
     will rely on the old method of designing test cases by hand.\\
+
+\section{Validation}
+
+The validation proccess in this project depends highly in the iteration in which
+we are:
+
+\begin{itemize}
+  \item In early iterations, the validation proccess might not be as important
+  as the verification proccess. This is because the core functionality of the
+  program is an algorythm expressed in a technical manner with little margin
+  to missinterpretations.
+  \item In later iterations, the validation proccess gains weight in respect of
+  the verification proccess as we dive into the UI design. In this case there
+  is more room for missunderstandings between client and developer so we must
+  take this proccess into account.
+\end{itemize}
+
+Fortunatly, we are working with an agile mindset so we can run a validation
+session in which we introduce the new features to our client. Then, he can
+try out the features and point out missunderstandings, desired changes, etc.\\
