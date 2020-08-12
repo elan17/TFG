@@ -30,9 +30,11 @@ Which, as shown in \citet{golomb_ref}, is equivalent to:
   components will be -1 except when $\tau = 0$
 \end{property}
 
-An example implementation for generating MLS could be:
-
-\inputpython{Chapters/PRN_generation/example_mls.py}{0}{100}
+\begin{figure}[ht!]
+  \inputpython{Chapters/PRN_generation/example_mls.py}{0}{100}
+  \caption{An example of a posible implementation of MLS sequences}
+  \label{mls:fig:1}
+\end{figure}
 
 Notice that, even though the construction is exponential, the complexity of
 the algorithm is $O(n)$ when $n$ is the size of the sequence. The problem is
