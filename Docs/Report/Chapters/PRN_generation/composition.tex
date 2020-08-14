@@ -64,6 +64,68 @@ create a matrix of sequence components as follows:
   \label{}
 \end{figure}
 
+We can define the correlation function for composite matrixes:
+
+\begin{definition}
+  Given 2 composite matrixes $M0$ and $M1$ with $n$ rows and $m$ columns,
+  we define it's correlation as:
+  \begin{equation}
+    C(M0, M1) = \sum_{i=0}^{m-1}\sum_{j=0}^{n-1}M0_{j, i}M1_{j,i}
+  \end{equation}
+\end{definition}
+
+We can also define the shift function for composite matrixes:
+
+\begin{definition}
+  Given a composite matrix $M$ of $n$ rows and $m$ columns, we define the
+  shift function as:
+  \begin{equation}
+    shift(M, \tau)_{i, j} = M_{(i-\tau \bmod m), (j-\tau \bmod n)}
+  \end{equation}
+\end{definition}
+This let's us establish the following relation:
+  \begin{corollary}
+    \begin{equation}
+      shift(CS(S, T), \tau)_{i} = shift(CM(S, T), \tau)_{(i \bmod m), (i \bmod n)}
+    \end{equation}
+  In other words, getting a shift of the composite sequence is equivalent to
+  applying a shift to the matrix and then extracting the corresponding
+  sequence.
+  \end{corollary}
+
+
+When we define the autocorrelation function for a composite matrix, an
+interesting property arises:
+
+\begin{definition}
+  Given a composite matrix $M$ of $n$ rows and $m$ columns, we define it's
+  autocorrelation function as:
+  \begin{equation}
+    \begin{split}
+      A(M)_{\tau} = C(M, shift(M, \tau)) = \sum_{i=0}^{m-1}\sum_{j=0}^{n-1}M_{j, i}M_{(j-\tau \bmod m),(i - \tau \bmod n)} = \\
+      \sum_{i=0}^{m-1}\sum_{j=0}^{n-1}shift(S, T_{i})_{j}shift(S, T_{(i - \tau \bmod n)})_{(j-\tau \bmod m)}
+    \end{split}
+  \end{equation}
+\end{definition}
+
+Notice that if we keep $i$ constant, we get a particular component of the
+autocorrelation function of $S$.
+
+\begin{property} We can define the autocorrelation function of the composite
+sequence in terms of the autocorrelation function as follows:
+
+\begin{equation}
+  \sum_{j=0}^{n-1}shift(S, T_{i})_{j}shift(S, T_{(i - \tau \bmod n)})_{(j-\tau \bmod m)} = A(S)_{|((T_{j} - \tau) \bmod m) - T_{(j + \tau) \bmod n}|}
+\end{equation}
+\begin{equation}
+  A(M)_{\tau} = \sum_{i=0}^{m-1} A(S)_{|((T_{j} - \tau) \bmod m) - T_{(j + \tau) \bmod n}|}
+\end{equation}
+
+\end{property}
+
+This property will prove useful in our software project as it's a fast method
+of computing the autocorrelation function.
+
 \subsection{Costas arrays}
 
 Costas arrays, discovered independently by John P. Costas\cite{costas_costas}
