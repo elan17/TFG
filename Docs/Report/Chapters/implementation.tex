@@ -1,0 +1,54 @@
+\chapter{Implementation}
+  In this chapter, we will introduce some specifications of the implementation
+  of our solution.\\
+
+
+  \section{General autocorrelation function}
+    The autocorrelation function introduced in Equation \ref{eq:4} can be
+    implemented in several ways:
+
+      \subsection{Naive approach}
+        The naive approach for the autocorrelation function consists in
+        computing all the displacements of the sequence and then
+        their correlation with the base sequence as shown in Figure
+        \ref{naive_auto:fig:1}. Even though this algorythm is simple and follows
+        the mathematical definition, is too slow. We have to compute the
+        correlation function for each component leading us to a complexity of
+        $O(n^{2})$ where n it the size of the sequence with a huge constant
+        as we have to build the shifted sequence for each component.\\
+
+        This constant can be improved if we avoid building the shifts(just
+        using slices of the array) but the complexity would stay the same.
+
+      \subsection{Wiener–Khinchin theorem}
+        [Citation needed]
+        The other option is to step in the world of mathematical properties.
+        Fortunatly, there exists the convolution theorem that lets us express
+        the autocorrelation function in terms of fourier transforms as:
+        \begin{theorem}
+          Given a sequence $S$, the Discrete Fourier Transform($DFT$):
+          \begin{equation}
+            A(S) = DFT^{-1}[DFT\{S\} · DFT\{S*\}]
+          \end{equation}
+          where $S*$ represents the complex conjjugate of $S$. As we are
+          focusing on binary sequences, $S = S*$ so we can simplify the
+          algorythm as:
+          \begin{equation}
+            A(S) = DFT^{-1}[DFT\{S\} · DFT\{S\}]
+          \end{equation}
+        \end{theorem}
+
+
+
+          \begin{figure}
+            \inputpython{Chapters/Implementation/naive.py}{0}{100}
+            \caption{An example implementation of the naive autocorrelation}
+            \label{naive_auto:fig:1}
+          \end{figure}
+      \subsection{Specific solution for the composition method}
+
+
+
+
+  \section{Search space}
+  \section{Parallelism model}
