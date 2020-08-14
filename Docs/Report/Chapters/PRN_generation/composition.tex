@@ -1,4 +1,70 @@
-\section{Costas Arrays}
+\section{Composition method}
+
+\subsection{Algorythm}
+
+The composition method uses a base sequence and a sequence of shifts to
+create a matrix of sequence components as follows:
+
+\begin{definition}[Composite matrix]
+  Given a base sequence $S$ of length $n$ and a sequence of integers $T$ of
+  length $m$ such that:
+  \begin{equation}\label{composition:eq:1}
+    0 \leq T_{i} < n
+  \end{equation}
+  \begin{equation}\label{composition:eq:2}
+    gcd(n, m) = 1
+  \end{equation}
+
+  Given the $shift$ function defined in Equation \ref{eq:3},
+  we define the composite matrix as:
+
+  \begin{equation}\label{composition:eq:3}
+    CM(S, T) = \begin{bmatrix}
+      shift(S, T_{0})_{0} & shift(S, T_{1})_{0} & \dots & shift(S, T_{m-1})_{0} \\
+      shift(S, T_{0})_{1} & shift(S, T_{1})_{1} \\
+      \vdots & & \ddots \\
+      shift(S, T_{0})_{n-1} & & & shift(S, T_{m-1})_{n-1}
+    \end{bmatrix}
+  \end{equation}
+
+  In other words, each column represents a shift of the base sequence defined
+  by the sequence of shifts.
+\end{definition}
+
+\begin{definition}[Composite sequence]
+  Given a base sequence $S$ of length $n$ and a sequence of integers $T$ of
+  length $m$ that fulfill Equations \ref{composition:eq:1} and
+  \ref{composition:eq:2} and the composite matrix defined at Equation
+  \ref{composition:eq:3}, we define the composite sequence as:
+  \begin{equation}
+    CS(S, T)_{i} = CM(S, T)_{(i \bmod m), (i \bmod n)}
+  \end{equation}
+\end{definition}
+
+\begin{figure}
+  $$S = \begin{bmatrix}
+    0 & 1 & 2 & 3 & 4\\
+  \end{bmatrix}$$
+  $$T = \begin{bmatrix}
+    0 & 2 & 1 & 4 & 3 \\
+  \end{bmatrix}
+  $$
+  $$CM(S, T) = \begin{bmatrix}
+  0 & 3 & 4 & 1 & 2 & 4\\
+  1 & 4 & 0 & 2 & 3 & 0\\
+  2 & 0 & 1 & 3 & 4 & 1\\
+  3 & 1 & 2 & 4 & 0 & 2\\
+  4 & 2 & 3 & 0 & 1 & 3\\
+  \end{bmatrix}
+  $$
+  $$CS(S, T) = \text{[0 4 1 4 1 4 1 0 2 0 2 0 2 1 3 1 3 1 3 2 4 2 4 2 4 3 0 3 0 3]}\\
+  $$
+  \caption{Example of a computation of the composition method(note that we are
+  using non-binary sequence to illustrate better the method)}
+  \label{}
+\end{figure}
+
+\subsection{Costas arrays}
 
 Costas arrays, discovered independently by John P. Costas\cite{costas_costas}
 and E.N. Gilbert \cite{gilbert_costas} in 1965, are a set of sequences highly
@@ -59,8 +125,10 @@ by Gilbert:
   \ref{eq:costas_2}.
 \end{definition}
 
-The compact representation will prove usefull when we introduce the method of
-composition to look for new PRN sequences.Several construction methods have
+This compact representation can be feeded into the composition method as
+a sequence of shifts generating interesting new sequences. [citation needed]\\
+
+Several construction methods have
 been proposed. For sake of simplicity, we are going to introduce just the Welsh
 construction as defined in Gilbert \cite{gilbert_costas}:\\
 
