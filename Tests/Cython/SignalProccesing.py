@@ -14,7 +14,7 @@ import unittest as ut
 
 sys.path.append("../../Project")
 
-import Cython_lib.SignalProccesing as SP
+import src.Cython_lib.SignalProccesing as SP
 
 def soft_array_compare(arr1, arr2, precision_margin=10**(-10)):
     """
@@ -100,7 +100,7 @@ class TestCompositeAutocorrelation(ut.TestCase):
         truth = SP.good_composite_autocorrelation(SP.autocorrelation(signal), shifts, small_int)
         if len(arr1) < 2:
             return
-        assert truth == (max(abs(arr1[1:])) < small_int)
+        assert truth == (max(abs(arr1[1:])) <= small_int)
 
 class TestHammingAutocorrelation(ut.TestCase):
 
