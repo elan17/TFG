@@ -14,3 +14,5 @@ cdef bint c_good_composite_autocorrelation( int* autocorrelation
 cpdef composition(np.ndarray[int, ndim=1] signal, np.ndarray[int, ndim=1]shifts)
 
 cpdef autocorrelation(signal)
+
+cpdef correlation(signal)

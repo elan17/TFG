@@ -11,6 +11,9 @@ cdef extern from "math.h":
 
 np.import_array()
 
+cpdef correlation(s1, s2):
+  return s1 * s2
+
 cpdef autocorrelation(signal):
   """
     Computes the autocorrelation of a signal through Wiener–Khinchin's algorithm
@@ -69,13 +72,17 @@ cdef bint c_good_composite_autocorrelation( int* autocorrelation
   cdef int output_size = l_signal * l_shifts
   cdef int output
   cdef int x, y, affected_column, current_shift, final_shift, positive_difference
+  cdef bint is_constant_column
+  cdef int constant_offset = l_signal + 1
   for x in range(1, output_size):
     output = 0
     positive_difference = l_signal - (x%l_signal)
     for y in range(l_shifts):
       affected_column =  shifts[(y+x)%l_shifts]
+      is_constant_column = affected_column == constant_offset
       current_shift  =  (positive_difference + shifts[y]) % l_signal
-      final_shift = abs(current_shift-affected_column)
+      final_shift = (not is_constant_column)*abs(current_shift-affected_column)\
+                 + is_constant_column*l_signal
       output = output + autocorrelation[final_shift]
     if output > threshold:
       return False
