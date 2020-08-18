@@ -15,4 +15,4 @@ cpdef composition(np.ndarray[int, ndim=1] signal, np.ndarray[int, ndim=1]shifts)
 
 cpdef autocorrelation(signal)
 
-cpdef correlation(signal)
+cpdef correlation(s1, s2)
