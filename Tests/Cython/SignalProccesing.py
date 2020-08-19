@@ -1,6 +1,6 @@
 import sys
 
-from hypothesis import given, assume, seed
+from hypothesis import given, assume, seed, note
 import hypothesis.strategies as st
 import hypothesis.extra.numpy as hnp
 
@@ -73,7 +73,7 @@ class TestCompositeAutocorrelation(ut.TestCase):
         assume(gcd(signal_length, shifts_length) == 1) # Check if they are coprimes
         # We generate the signal and the sequence of shifts
         signal = data.draw(hnp.arrays(np.int32, signal_length, elements=st.integers(min_value=-1, max_value=1)))
-        shifts = data.draw(hnp.arrays(np.int32, shifts_length, elements=st.integers(min_value=0, max_value=max(signal_length-1, 0))))
+        shifts = data.draw(hnp.arrays(np.int32, shifts_length, elements=st.integers(min_value=0, max_value=max(signal_length, 0))))
         return (signal, shifts)
 
     @given(st.data())
@@ -86,6 +86,10 @@ class TestCompositeAutocorrelation(ut.TestCase):
         arr1 = SP.autocorrelation(SP.composition(signal, shifts))
         arr2 = SP.composite_autocorrelation(signal, shifts)
         # We assert equality
+        if not soft_array_compare(arr1, arr2):
+            print(arr1)
+            print(arr2)
+            pass
         assert soft_array_compare(arr1, arr2)
 
     @given(st.data())
@@ -97,10 +101,10 @@ class TestCompositeAutocorrelation(ut.TestCase):
         signal, shifts = self.generator(data)
         small_int = data.draw(st.integers(min_value=0, max_value=25))
         arr1 = SP.composite_autocorrelation(signal, shifts)
-        truth = SP.good_composite_autocorrelation(SP.autocorrelation(signal), shifts, small_int)
+        truth = SP.good_composite_autocorrelation(SP.autocorrelation_with_constant(signal), shifts, small_int)
         if len(arr1) < 2:
             return
-        assert truth == (max(abs(arr1[1:])) <= small_int)
+        assert truth == (max(arr1[1:]) <= small_int)
 
 class TestHammingAutocorrelation(ut.TestCase):
 

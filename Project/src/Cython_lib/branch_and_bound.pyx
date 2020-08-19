@@ -15,6 +15,7 @@ def py_get_list_of_good_shifts( np.ndarray[int, ndim=1] sequence
                               , shifts_seq
                               , int task_size):
   cdef np.ndarray[int, ndim=1] autocorrelation = SP.autocorrelation(sequence)
+  autocorrelation = np.append(autocorrelation, SP.autocorrelation_with_constant(sequence))
   cdef list[int*]* l = new list[int*]()
   cdef int* autoc = <int*> autocorrelation.data
   cdef int shift_length = len(shifts_seq)
@@ -22,7 +23,7 @@ def py_get_list_of_good_shifts( np.ndarray[int, ndim=1] sequence
   for y in range(shift_length - task_size, shift_length):
     shifts[y] = -y
   get_list_of_good_shifts( autoc
-                         , len(autocorrelation)
+                         , len(sequence)
                          , <int*> shifts.data
                          , shift_length
                          , shift_length - task_size
@@ -53,7 +54,7 @@ cdef void get_list_of_good_shifts( int* autocorrelation
   cdef bint result
   cdef int* stored_sequence
   if fixed_shift_offset < shift_length:
-    for x in range(0, sequence_length):
+    for x in range(0, sequence_length+1):
       initial_shift[fixed_shift_offset] = x
       new_shift_offset = fixed_shift_offset +1
       hamming = SP.c_max_hamming_autocorrelation(initial_shift, shift_length)

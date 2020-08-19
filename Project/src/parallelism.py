@@ -15,31 +15,36 @@ comm = MPI.COMM_WORLD
 rank = comm.Get_rank()
 num_proccess = comm.Get_size()
 
-def master(polling_delay, max_counter):
+def master( polling_delay # Time between polls
+          , max_counter): # Number of tasks
     counter = 0
     requests = []
     counter_deallocation = num_proccess - 1
-    for x in range(1, num_proccess):
+    for x in range(1, num_proccess): # Initialize first task
         requests.append(comm.issend(counter, dest=x, tag=11))
         counter += 1
-    while counter_deallocation > 0:
+    while counter_deallocation > 0: # While there is an slave alive
         sleep(polling_delay)
         i, b, msg = MPI.Request.testany(requests)
         if b and i >= 0:
             if not counter < max_counter:
-                comm.isend(-1, dest=i+1, tag=11)
+                comm.isend(-1, dest=i+1, tag=11) # Terminate thread
                 counter_deallocation -= 1
             else:
+                # Send next task
                 requests[i] = comm.issend(counter, dest=i+1, tag=11)
                 counter += 1
 
-def slave( base_sequence, sequence_length, task_size
-         , hamming_upper_limit, correlation_upper_limit):
+def slave( base_sequence
+         , sequence_length # Length of shifts sequences
+         , task_size
+         , hamming_upper_limit
+         , correlation_upper_limit):
     exit_var = False
     while not exit_var:
         data = comm.recv(source=0, tag=11)
         if data != -1:
-            seq = int_to_shift_sequence(data, sequence_length, len(base_sequence), task_size)
+            seq = int_to_shift_sequence(data, sequence_length, len(base_sequence)+1, task_size)
             print(seq)
             r = bb.py_get_list_of_good_shifts( base_sequence, hamming_upper_limit
                                              , correlation_upper_limit, seq, task_size)
@@ -63,6 +68,6 @@ hamming = int(sys.argv[5])
 correlation_upper_limit = int(sys.argv[6])
 
 if rank == 0:
-    master(polling_delay, len(seq)**(shift_length-task_size-1))
+    master(polling_delay, (len(seq)+1)**(shift_length-task_size-1))
 else:
     slave(seq, shift_length, task_size, hamming, correlation_upper_limit)
