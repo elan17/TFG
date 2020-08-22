@@ -24,12 +24,13 @@ Options and arguments: \n\
 -h : maximum hamming autocorrelation allowed(this option must be a positive integer \n\
      other values have undefined behaviour) Defaults to -l\n\
 -c : maximum autocorrelation we are interested in(this option must be a positive integer \n\
-     other values have undefined behaviour) Defaults to the square root of (-l*-s)"
+     other values have undefined behaviour) Defaults to the square root of (-l*-s)\n\
+-v : verbose mode"
 
 
 opts = ([], [])
 try:
-    opts = getopt.getopt(argv[1:], "n:p:s:l:t:h:c:", ["help"])
+    opts = getopt.getopt(argv[1:], "n:p:s:l:t:h:c:v", ["help"])
 except:
     pass
     # TODO
@@ -135,5 +136,10 @@ if "-c" in opts:
 else:
     format_values.append(ceil(sqrt(int(opts["-l"]) * int(opts["-s"]))))
 
-command = "mpirun {0} --oversubscribe --use-hwthread-cpus python src/parallelism.py {1} {2} {3} {4} {5} {6}".format(*format_values)
+if "-v" in opts:
+    format_values.append("true")
+else:
+    format_values.append("0")
+
+command = "mpirun {0} --oversubscribe --use-hwthread-cpus python src/parallelism.py {1} {2} {3} {4} {5} {6} {7}".format(*format_values)
 os.system(command)
