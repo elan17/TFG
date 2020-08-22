@@ -258,6 +258,7 @@
 \usepackage{amsmath}
 \usepackage{pythonhighlight}
 \usepackage{hyperref}
+\usepackage{placeins}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}{Corollary}[theorem]
@@ -265,5 +266,11 @@
 \newtheorem{definition}{Definition}[section]
 \newtheorem{property}{Property}[section]
 \setcitestyle{numbers}
+
+\let\oldsection\section
+\renewcommand\section{%
+  \FloatBarrier
+  \oldsection
+}
 
 \endinput
