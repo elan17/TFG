@@ -11,20 +11,20 @@ import os
 help = "usage: python main.py [option...] \n\
 Options and arguments: \n\
 -n : number of threads to use(must be compatible with your MPI enviroment)\n\
-     Defaults to the MPI configuration default\n\
+     Defaults to the MPI configuration default\n\n\
 -p : delay between polls in the master thread(higher values will make the \n\
      slaves to wait more until the next task, lower values will increase CPU \n\
-     usage of master)\
+     usage of master)\n\n\
 -s : length of the base sequence(in this version must be a prime number to generate \n\
-     Legendre sequences. Other values have undefined behaviour)\n\
--l : length of shift sequences(this option must be coprime with value of -s, other \n\
-     values have undefined behaviour)\n\
+     Legendre sequences. Other values have undefined behaviour)\n\n\
+-l : length of shift sequences(this option must be coprime with value of -s, other\n\
+     values have undefined behaviour)\n\n\
 -t : size of the task for each thread(this option must be lower than the value \n\
-     provided by -l, other values have undefined behaviour)\n\
--h : maximum hamming autocorrelation allowed(this option must be a positive integer \n\
-     other values have undefined behaviour) Defaults to -l\n\
--c : maximum autocorrelation we are interested in(this option must be a positive integer \n\
-     other values have undefined behaviour) Defaults to the square root of (-l*-s)\n\
+     provided by -l, other values have undefined behaviour)\n\n\
+-h : maximum hamming autocorrelation allowed(this option must be a positive integer\n\
+     other values have undefined behaviour) Defaults to -l\n\n\
+-c : maximum autocorrelation we are interested in(this option must be a positive integer\n\
+     other values have undefined behaviour) Defaults to the square root of (-l*-s)\n\n\
 -v : verbose mode"
 
 
@@ -33,7 +33,6 @@ try:
     opts = getopt.getopt(argv[1:], "n:p:s:l:t:h:c:v", ["help"])
 except:
     pass
-    # TODO
 opts = dict(opts[0])
 
 if "--help" in opts:
