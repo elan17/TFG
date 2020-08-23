@@ -259,6 +259,7 @@
 \usepackage{pythonhighlight}
 \usepackage{hyperref}
 \usepackage{placeins}
+\usepackage{listings}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}{Corollary}[theorem]
@@ -271,6 +272,12 @@
 \renewcommand\section{%
   \FloatBarrier
   \oldsection
+}
+
+\let\oldsubsection\subsection
+\renewcommand\subsection{%
+  \FloatBarrier
+  \oldsubsection
 }
 
 \endinput
