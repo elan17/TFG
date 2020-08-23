@@ -67,7 +67,7 @@ if "-p" in opts:
         error("Invalid value of option -p")
     format_values.append(v)
 else:
-    format_values.append("0.01")
+    format_values.append("0")
 
 if "-s" in opts:
     v = opts["-s"]
