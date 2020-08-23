@@ -21,7 +21,7 @@
         using slices of the array) but the complexity would stay the same.
 
       \subsection{Circular convolution theorem}
-        [Citation needed]
+        [Citar Golomb]
         The other option is to step in the world of mathematical properties.
         Fortunatly, there exists the convolution theorem that lets us express
         the autocorrelation function in terms of fourier transforms as:
@@ -59,8 +59,8 @@
       might find a non general way of computing this autocorrelation with better
       computational characteristics.\\
 
-      If we take advantage of property \ref{composition:prop:1}, we can design
-      an algortytm with interesting properties. First of all, the complexity
+      If we take advantage of Property \ref{composition:prop:1}, we can design
+      an algorythm with interesting properties. First of all, the complexity
       function depends on the size of the shift sequence. Being $m$ the
       length of the shift sequence and $n$ the length of the composite
       sequence, the resulting algortyhm has a complexity of $O(nm)$. This means
@@ -82,8 +82,8 @@
 
       \begin{figure}[ht!]
         \inputpython{Chapters/Implementation/composite.py}{0}{100}
-        \caption{A pure python implementation to illustrate the algorythm. In
-        the software project it's implemented in Cython}
+        \caption{The Cython implementation of the composite autocorrelation.
+        Notice that we used branchless programming to improve performance}
         \label{composite_auto:fig:1}
       \end{figure}
 
@@ -114,7 +114,7 @@
     Given a sequence $S$ of length $n$ and the function $shift$ defined at
     Equation \ref{eq:3}, we define the Hamming autocorrealtion as:
       \begin{equation}
-        HA(S)_{\ŧau} = \sum_{i=0}^{n} HAComponent(S_{\tau}, shift(S, \tau)_{\tau})
+        HA(S)_{\tau} = \sum_{i=0}^{n} HAComponent(S_{\tau}, shift(S, \tau)_{\tau})
       \end{equation}
     where $HAComponent$ is defined as:
       \begin{equation}
@@ -130,18 +130,173 @@
   autocorrelation won't get lower. This means that if we do a depth-in first
   bounding the nodes that have a hamming autocorrelation higher than the
   threshold(we mean, the maximum non trivial component) we are sure that all
-  that branch have a higher hamming autocorrelation than the threshold.\\
+  nodes in that branch have a higher hamming autocorrelation than the
+  threshold.\\
 
   \begin{figure}[ht!]
-    \includegraphics[scale=0.4]{Chapters/Implementation/Example_branch_bound.png}
-    \caption{An example of the branch and bound algorythm with a threshold for hamming autocorrelation of 1 and a base sequence of length 3. Red nodes represent boundings and green ones final nodes in which the autocorrelation is computed and checked. Negative values represent values that haven't been initialized yet.}
+    \begin{center}
+      \includegraphics[scale=0.4]{Chapters/Implementation/Example_branch_bound.png}
+    \end{center}
+    \caption{An example of the branch and bound algorythm with a threshold for
+    hamming autocorrelation of 1 and a base sequence of length 3. Red nodes
+    represent prunes and green ones final nodes in which the
+    autocorrelation is computed and checked. Negative values represent values
+    that haven't been initialized yet.}
     \label{bb:fig:1}
   \end{figure}
 
   We can deduce several thing from Figure \ref{bb:fig:1}:
   \begin{itemize}
-    \item we reduce the number of autocorrelations computed by a significant amount
-    \item The computation on each branch isn't balanced. This must be taken into account when we desing the parallelism model
+    \item We reduce the number of autocorrelations computed by a significant amount
+    \item The computation on each branch isn't balanced. This must be taken into
+    account when we desing the parallelism model
   \end{itemize}
 
+  \begin{figure}[ht!]
+    \inputpython{Chapters/Implementation/branch_and_bound.py}{0}{100}
+    \caption{A Cython implementation of the branch and bound algorythm. Notice
+    the amount of extra code to achive C performance}
+    \label{composite_auto:fig:1}
+  \end{figure}
+
+
   \section{Parallelism model}
+
+  For the parallelism of the project, we decided to work with MPI. This model
+  was implemented in pure python as it wasn't needed a high performance in
+  this part of the software(as the time spent in this code is already
+  minimal).\\
+
+  However, we need a low latency assignation of tasks. If we did use shared
+  memory, every node would need to access memory through the "slow"
+  interconnection network. Instead with MPI we can make the proccesses to
+  talk between them.\\
+
+  For the purpose of this project, we are going to work with OpenMPI
+  as the bindings of MPI4PY support it and it's compatible with Infiniband.
+  Supercomputers at Universidad de Cantabria use Infiniband so supporting it
+  is a top priority.\\
+
+  In our particular problem, we decided to define a set of tasks to
+  distribute between the different nodes. This tasks are subtrees from the
+  search space with a given heigth that defines the size of the task. An
+  example is show in Figure \ref{tasks:fig:1}. Notice that the tasks are
+  completly unbalanced so an static scheduler wouldn't be efficient at all.\\
+
+
+  \begin{figure}[ht!]
+    \begin{center}
+      \includegraphics[scale=0.4]{Chapters/Implementation/Example_tasks.png}
+    \end{center}
+    \caption{An example distribution of tasks for the example at Figure
+    \ref{bb:fig:1}}
+    \label{tasks:fig:1}
+  \end{figure}
+
+  This model is a good first version. However if we don't prune when assigning
+  the tasks we will still have an exponential number of tasks (specifically,
+  $n^{l-t}$ where $n$ is the length of the base sequence, $l$ the length of
+  the shift sequence and $t$ the task size). This shouldn't be a problem if
+  $t$ is close to $l$ but this will raise an issue with the task balancer as
+  there wouldn't be enough tasks to balance the load.\\
+
+  A second version of the algorithm applies the branch and bound algorythm in
+  the master proccess to generate only tasks with good hamming properties.
+  This rules out all tasks that would instantly result in a bad
+  autocorrelation and wouldn't generate any useful sequences. The code
+  implementation is shown in Figures \ref{parallelism_example:fig:1} and
+  \ref{parallelism_example:fig:2}\\
+
+  \begin{figure}[ht!]
+    \inputpython{Chapters/Implementation/Example_parallelism_master.py}{0}{100}
+    \caption{A Python implementation of the master proccess}
+    \label{parallelism_example:fig:1}
+  \end{figure}
+
+  \begin{figure}[ht!]
+    \inputpython{Chapters/Implementation/Example_parallelism_slave.py}{0}{100}
+    \caption{A Python implementation of an slave proccess}
+    \label{parallelism_example:fig:2}
+  \end{figure}
+
+  A third version(which we didn't implement because the second version was
+  enough for our objective) could be done by using the hamming as an
+  heuristic to determine the size of the task. Instead of using a fixed size
+  for the subtrees, we can give the tasks based on the hamming
+  autocorrelation of the root of the task.\\
+
+  \section{UI implementation}
+
+  Last but not least, we will briefly discuss the design of the User Interface.
+  As expressed in the chapter of Sofware Engineering, our primary focus is
+  it's compatibility with command lines. For that, we used a POSIX compatible
+  interface.\\
+
+  First, we provided a --help option to list all the flags:
+  \begin{lstlisting}
+    $ python main.py --help
+    usage: python main.py [option...]
+
+    Options and arguments:
+    -n : number of threads to use(must be compatible with your MPI enviroment)
+         Defaults to the MPI configuration default
+
+    -p : delay between polls in the master thread(higher values will make the
+         slaves to wait more until the next task, lower values will increase
+         CPU usage of master)
+
+    -s : length of the base sequence(in this version must be a prime number to
+         generate Legendre sequences. Other values have undefined behaviour)
+
+    -l : length of shift sequences(this option must be coprime with value
+         of s, other values have undefined behaviour)
+
+    -t : size of the task for each thread(this option must be lower than the
+         value provided by -l, other values have undefined behaviour)
+
+    -h : maximum hamming autocorrelation allowed(this option must be a
+         positive integer other values have undefined behaviour) Defaults to -l
+
+    -c : maximum autocorrelation we are interested in(this option must be a
+         positive integer other values have undefined behaviour) Defaults to
+         the square root of (-l*-s)
+
+    -v : verbose mode
+  \end{lstlisting}
+
+  Verbose mode logs which tasks have been assigned and at which time stamp, as
+  well as logging the end of slave proccesses and the idle time of slaves:
+
+  \begin{lstlisting}
+    $ python main.py -s 5 -l 23 -t 20 -c 7 -h 3 -v
+    2020-08-23 19:27:49 [1] : TASK_ASSIGNED [0, 0, 1] 9ms
+    2020-08-23 19:27:49 [3] : TASK_ASSIGNED [0, 0, 3] 10ms
+    2020-08-23 19:27:49 [5] : TASK_ASSIGNED [0, 0, 5] 6ms
+    2020-08-23 19:27:49 [7] : TASK_ASSIGNED [0, 1, 1] 17ms
+    2020-08-23 19:27:49 [6] : TASK_ASSIGNED [0, 1, 0] 3ms
+    2020-08-23 19:27:49 [2] : TASK_ASSIGNED [0, 0, 2] 0ms
+                            .
+                            .
+                            .
+    2020-08-23 19:28:41 [1] : TASK_ASSIGNED [0, 5, 0] 0ms
+    2020-08-23 19:28:42 [7] : TASK_ASSIGNED [0, 5, 3] 0ms
+    2020-08-23 19:28:45 [1] : EXITED
+    2020-08-23 19:28:45 [5] : TASK_ASSIGNED [0, 5, 2] 0ms
+    2020-08-23 19:28:47 [2] : EXITED
+    2020-08-23 19:28:48 [4] : TASK_ASSIGNED [0, 5, 4] 0ms
+    2020-08-23 19:28:49 [6] : EXITED
+    2020-08-23 19:28:52 [3] : EXITED
+    2020-08-23 19:28:55 [5] : EXITED
+    2020-08-23 19:28:56 [7] : EXITED
+    2020-08-23 19:28:57 [4] : EXITED
+
+  \end{lstlisting}
+
+  Notice that, as we are using stdout, we can pipe the log to a file. The
+  output format is designed in a way that eases the use of utilities such as
+  awk to proccess the data of the program(One word message, well defined
+  columns, etc.).\\
+
+  Verbosity is completly optional and doesn't impact performance when inactive.
+  It's particularly useful when tweaking the parameters to get the best
+  configuration.\\
