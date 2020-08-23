@@ -67,7 +67,7 @@
       next parts of the program, we decided to drop support for fused types as
       we only expected to work with integers of 32 bits.\\
 
-      \subsubsection{Iteration 2}
+      \subsubsection{Iteration 2: Branch and bound algorythm}
 
       In this iteration we focused on a single threaded C implementation of the
       branch and bound algorythm. This function receives a threshold of the
@@ -85,5 +85,40 @@
       hamming's autocorrelation, we defined a test based on lower and upper
       bounds.\\
 
-      In the case of the branch and bound method, we willl check that all the
+      In the case of the branch and bound method, we will check that all the
       sequences returned satisfies the specified maximum autocorrelation.\\
+
+      \subsubsection{Iteration 3: Parallelism}
+
+      In this iteration we focused on adapting the branch and bound algorythm
+      to a parallel enviroment. To do that, we incrementally improved the
+      algorythm. First we only applied branch and bound from a given depth and
+      we then decided to apply it also at the master's process level.\\
+
+      In this case, we moved completly to pure python as it isn't critical
+      code. Most runtime of slave processes will be spent in Cython functions
+      and, for simplicity and reliability, we decided to stick to Python.\\
+
+      Tests in this iteration were made in a more manual fashion. Running the
+      code and checking that all results were coherent. This was done like
+      this because the code being tested was completly impure and property
+      based tests wouldn't have a worthy coverage to effort relationship to
+      consider writing them.\\
+
+      \subsubsection{Iteration 4: User Interface}
+
+      In this iteration we focused on designing a suitable UI. To do so, we
+      developed 2 functionalities:
+      \begin{itemize}
+        \item Support for command line arguments to initialize tasks
+        \item A verbose mode to get statistics of the program
+      \end{itemize}
+
+      Command line parameters complies to POSIX's standard and informs the
+      user of possible errors in the input while the verbose mode logs events
+      with it's corresponding times to debug the performance of the
+      computation.\\
+
+      Again, the testing of this module was purely manual because of all
+      the IO involved. The user interface passed an exhaustive process of
+      validation to check that the user was satisfied.\\
