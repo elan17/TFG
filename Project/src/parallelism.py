@@ -16,9 +16,12 @@ comm = MPI.COMM_WORLD
 rank = comm.Get_rank()
 num_proccess = comm.Get_size()
 
+
+f_log = '{:0' + str(len(str(num_proccess)))+ 'd}'
 def log(message):
     t = datetime.now()
-    print(t.isoformat(sep=" ", timespec='seconds'), [rank], ":",message)
+    r = f_log.format(rank)
+    print(t.isoformat(sep=" ", timespec='seconds'), "["+r+"]", ":",message)
 
 def kill_slaves():
     """
