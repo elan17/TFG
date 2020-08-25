@@ -140,5 +140,5 @@ if "-v" in opts:
 else:
     format_values.append("0")
 
-command = "mpirun {0} --oversubscribe --use-hwthread-cpus python src/parallelism.py {1} {2} {3} {4} {5} {6} {7}".format(*format_values)
+command = "mpiexec {0} --oversubscribe python src/parallelism.py {1} {2} {3} {4} {5} {6} {7}".format(*format_values)
 os.system(command)
