@@ -4,7 +4,7 @@
 
 According to \citet{golomb_ref}, the correlation function measures how similar
 two phenomena are. If properly normalized, the function ranges from
-+1(identical) to -1(oposite), 0 meaning completly unrelated phenomena.
++1(identical) to -1(opposite); 0 meaning completly unrelated phenomena.
 If we represent those phenomena as vectors, the correlation can be concived
 as the normalized dot product between those 2 vectors.
 In the discrete case where both sequences have the same length (the one we are
@@ -32,12 +32,11 @@ representation:
 
 Even though the normalized version is the best way to represent the degree
 of similarity between 2 phenomena and a good way to grasp the concept of
-what we are defining, in the rest of the document we are going to use the
+what we are defining, for the rest of the document we are going to use the
 unnormalized version if not specified. This version of the correlation function
 have several advantages for our research as it is simpler and carries the same
 amount of information, saving us some computation resources and complexity on
 our theoretical analysis. Keep in mind that it's always posible to move from
-one another so every optimization we do in the unnormalized version, will be
 applied to the normalized one if we need it. The unnormalized correlation is
 defined as:
 
@@ -48,10 +47,12 @@ defined as:
     C(\alpha , \beta) = (\alpha \cdot  \beta) = \sum_{i=1}^n(\alpha \odot \beta)_{i}= \sum_{i=1}^{n} \alpha_{i}\beta_{i}
   \end{equation}
 
+  Where "$\odot$" represents the pointwise product of vectors.
+
 \end{definition}
 
-Where "$\odot$" represents the pointwise product of vectors. Adapting this function from vectors to finite digital signals it's straight
-forward as they can be defined in terms of a vector that lives in a vector
+Adapting this function from vectors to finite digital signals is straight
+forward, as they can be defined in terms of a vector that lives in a vector
 space of dimension equal to the length of the signal.
 
 
@@ -61,7 +62,7 @@ space of dimension equal to the length of the signal.
 \begin{center}
 \includegraphics[width=0.7\linewidth]{Chapters/Introduction/signals_correlation}
 \end{center}
-\caption{Representation of 2 signals an it's pointwise product with an unnormalized correlation between them of -2(-1 -1 -1 +1 -1 +1)}
+\caption{Representation of 2 signals an their pointwise product with an unnormalized correlation between them of -2(-1 -1 -1 +1 -1 +1)}
 \label{introduction_signals_hadamard}
 \end{figure}
 
@@ -84,7 +85,7 @@ signal proccesing and then calculating the square root.
 \section{Autocorrelation function}
 
 Going on with the lecture of \citet{golomb_ref}, the autocorrelation function
-is a measure of how does the correlation behave if, for a given sequence, a
+is a measure of how the correlation behaves if, for a given sequence, a
 circular shift is applied and correlated with the original sequence for every
 possible shift. It is defined for periodic sequences as follows:
 
@@ -137,7 +138,7 @@ some important properties of the autocorrelation function:
 
     $$A'(S)_{\tau} = C'(S, shift(S, \tau)) = \frac{C(S, shift(S, \tau))}{(\sum_{i=1}^{n} S_{i}^{2})^{\frac{1}{2}}(\sum_{i=1}^{n} S_{i+\tau}^{2})^\frac{1}{2}} = \frac{A(S)_{\tau}}{\sum_{i=1}^{n} S_{i}^{2}} = \frac{A(S)_{\tau}}{A(S)_{0}}$$
 
-  Keep in mind that, even though $S_{i}^2$ and $S_{i+\tau}^2$ aren't the same element, the elements of the shifted version are the same as the original sequence so the total sum is the same
+  Keep in mind that, even though $S_{i}^2$ and $S_{i+\tau}^2$ aren't the same element, the elements of the shifted version are the same as the original sequence so the total sum is the same.
 \end{proof}
 
 \begin{corollary}\label{autocorrelation:coro:1}
@@ -163,9 +164,9 @@ compute the autocorrelation function.
 
 \section{Crosscorrelation function}
 
-The crosscorrelation function measures how does a sequence correlates with all
+The crosscorrelation function measures how a sequence correlates with all
 the posible shifts of another sequence. This function is useful in signal
-proccesing to analyze if two signals can be mistaken one for the other by a
+proccesing to analyze if two signals can be mistaken one for another by a
 receiver.
 
 
@@ -212,7 +213,7 @@ used. In our case we are going to work with random vectors of white noise,
 which is defined as vectors in which all the components are statistically
 independent between them.\cite{white_noise}\\
 
-Even though noise in general it is usually seen as an unwanted wave that
+Even though noise in general is usually seen as an unwanted wave that
 limits the amount of information that can be transmited through a
 channel\cite{shannon_noise}, it has some practical uses:
 
@@ -231,7 +232,7 @@ This practical applications exploit an important noise property:
   where $\tau \neq 0$ \cite{everett}
 \end{property}
 
-Taking a radar as an example, using this theorem we can compute the distance
+Taking a radar as an example, using this theorem can compute the distance
 just by sending a white noise signal to a target and start correlating the
 received signal with the original one. As the autocorrelation of
 white noise only has a spike when the shift is 0, that spike represents in
@@ -243,20 +244,20 @@ In the case of GPS, the restrictions imposed to the noise sequence are
 stronger. First of all, as we will be transmiting several signals in the same
 frecuency, we need a set of codes with good crosscorrelation properties
 between them. In other words, the crosscorrelation function between two given
-codes must trend to 0 in every component except when $\tau = 0$ and
+codes must trend to 0 in every component, except when $\tau = 0$ and
 both codes are the same.\\
 
 As noise is an statistical construct, noise measured from natural phenomena
 can generate sequences with poor correlation properties. As both technologies
 depend on this properties to work, we must find a way of creating sequences
-with properties similar to those of noise in an deterministic and eficient
+with properties similar to those of noise in an deterministic and efficient
 fashion.\\
 
 This kind of sequences are called Pseudorandom Noise(PRN). In practical
-applications, PRN sequences aren't perfect noise because generating it it's
+applications, PRN sequences aren't perfect noise because generating it is
 difficult and unnecesary. In reality, we don't need an actual 0 in every
 position of the autocorrelation. If we let the sequence take values in a
-threshold such as the system won't mistake intermidiate values with the
+threshold so that the system won't mistake intermidiate values with the
 autocorrelation spike, it will behave as expected.
 
 \begin{figure}[ht!] % [h!] fuerza que el elemento se sitúe
@@ -266,7 +267,7 @@ autocorrelation spike, it will behave as expected.
 \includegraphics[width=0.7\linewidth]{Chapters/Introduction/signals_prn}
 \end{center}
 \caption{A pseudorandom noise sequence an it's autocorrelation function.
-Notice that this PRN code isn't perfect noise}
+Notice that this PRN code isn't perfect noise.}
 \label{introduction_signals_autocorrelation}
 \end{figure}
 

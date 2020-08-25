@@ -1,7 +1,7 @@
 \section{Gold Codes}
 
-Gold codes\cite{gold_codes} are a family of sequences derived from MLS with so
-important properties that are used in several applications such as wireless
+Gold codes\cite{gold_codes} are a family of sequences, derived from MLS, with
+very important properties that are used in several applications such as wireless
 communication and geolocalisation. A Gold Code generator gets two MLS sequences
 that fulfill:
 
@@ -34,7 +34,7 @@ sequences from a Gold family is low enough to differentiate them. This proves
 useful when several devices are transmiting in the same frecuency and we must
 treat signals that are not the one we want to receive as noise.\\
 
-Gold also showed  a way to generate this pair of sequences for it's method
+Gold also showed  a way to generate this pair of sequences,
 using a decimation of one MLS sequence.
 
 \begin{definition}[Decimation]
@@ -47,15 +47,15 @@ using a decimation of one MLS sequence.
 \begin{property}
   Given a MLS sequence $S$ of length $2^n - 1$ where n is odd and and a
   coprime of $n$ named $k$, the sequence pair $(S, S[2^{k} + 1])$ number
-  fulfills equation \ref{gold:eq:1}
+  fulfills equation \ref{gold:eq:1}.
 \end{property}
 
 \begin{figure}[ht!]
   \inputpython{Chapters/PRN_generation/example_gold.py}{0}{100}
   \caption{An example implementation of a generation of a family of gold
-  sequences relying in the example at Figure \ref{mls:fig:1}}
+  sequences relying in the example at Figure \ref{mls:fig:1}.}
   \label{}
 \end{figure}
 
 Notice that this construction has the same problem as MLS sequences. It's
-an exponential contruction so it might be not enough for some applications.
+an exponential contruction so it might not be enough for some applications.

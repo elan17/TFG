@@ -9,14 +9,14 @@ Fortunatly, there are alternative implementations such as Jython, IronPython,
 etc. In our case, we are going to use Cython\cite{Cython} as it provides a
 compiler to build C code with pseudo-Python. We can even call python code from
 C functions an viceversa, proving useful when we need a system with C level
-performance to operate with high-level python libraries.\\
+performance to operate with high-level Python libraries.\\
 
 To support the decision of using Cython for the critical parts of the code,
 we designed some benchmarks to test the actual performance improvements. As
 shown in figures \ref{Cython:fig:1} and \ref{Cython:fig:2}, Cython benefits
-a lot from tasks that requires iterations but when using vector arithmetics
+a lot from tasks that requires iterations, but when using vector arithmetics
 with Numpy the performance impact drops. This is because behind the scenes
-numpy functions are just Python wrappers for C functions so the heavy
+Numpy functions are just Python wrappers for C functions so the heavy
 computation is done in C.\\
 
 \begin{figure}[ht!]
@@ -40,19 +40,19 @@ computation is done in C.\\
       Cython GSL:         & 8.24 seg & 095.1 \%
     \end{tabular}
   \end{center}
-  \caption{Results of a benchmark of vector operations using NumPy or GSL.}
+  \caption{Results of a benchmark of vector operations using Numpy or GSL.}
   \label{Cython:fig:2}
 \end{figure}
 
 One might think that, if vector operations are so efficient in CPython, we could
-just use NumPy methods to implement our algorythms(which we did indeed in
+just use Numpy methods to implement our algorythms (which we indeed did in
 the general autocorrelation function with Wiener–Khinchin's algorythm). The
 problem raises when we need to access the Numpy array in an undefined way and
-we have to code a loop to compute a function(like the composite autocorrelation
+we have to code a loop to compute a function (the composite autocorrelation
 for example).\\
 
-Cython provides native support for numpy arrays, letting us access them with a
-C level performance. In fact, as it support fused types(the equivalent to
+Cython provides native support for Numpy arrays, letting us access them with a
+C level performance. In fact, as it supports fused types (the equivalent to
 templates in C++), we can define functions that can work with diverse types
 depending on the input arguments. Even though in our case we will skip it
 as it comes with extra headaches and we are working with just integers,
@@ -60,8 +60,8 @@ it's a nice feature if we would like to extend Sage to fully support our
 research field.\\
 
 One important thing to take into account when developing with Cython is that
-C types allocated in the heap(Cython supports raw C vectors and data structures
+C types allocated in the heap (Cython supports raw C vectors and data structures
 from C++ std) doesn't have automatic memory management. This will make the
 debugging tougher as we will need to look for memory leaks. In contrast,
-numpy arrays do support automatic memory management at the cost of the overhead
+Numpy arrays do support automatic memory management at the cost of the overhead
 of type checking and reference counting.\\
