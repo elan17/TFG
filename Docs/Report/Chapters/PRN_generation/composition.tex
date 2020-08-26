@@ -85,13 +85,12 @@ We can also define the shift function for composite matrixes:
   \end{equation}
 \end{definition}
 This let's us establish the following relation:
-  \begin{corollary}
+  \begin{corollary} Getting a shift of the composite sequence is equivalent to
+  applying a shift to the matrix and then extracting the corresponding
+  sequence.
     \begin{equation}
       shift(CS(S, T), \tau)_{i} = shift(CM(S, T), \tau)_{(i \bmod m), (i \bmod n)}
     \end{equation}
-  In other words, getting a shift of the composite sequence is equivalent to
-  applying a shift to the matrix and then extracting the corresponding
-  sequence.
   \end{corollary}
 
 
