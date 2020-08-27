@@ -1,0 +1,30 @@
+Me gustaría agradecer este proyecto principalmente a mi director de TFG que me
+ha brindado la oportunidad de hacer un TFG con un gran componente de
+investigación. Ha tenido, junto con Andrew, la paciencia necesaria para
+explicarme los entresijos de su investigación para poder desarrollar
+satisfactoriamente este proyecto.\\
+
+Sin embargo, no podemos olvidar a todas aquellas personas que me han facilitado
+en mayor o en menor medida el desarrollo de este TFG. Muchas gracias a Raúl
+Nozal por haberme dado una idea general del modelo de paralelismo que debía
+usar para desplegar mi software en un supercomputador. Sinceros agradecimientos
+a Jose Ángel Herrero por darme acceso al nodo de supercomputación Calderón
+en pleno Agosto estando de vacaciones. Le agradezo a David Herreros haberme
+proporcionado apuntes sobre MPI y el haberme respondido a algunas dudas sobre su
+funcionamiento. Por otro lado, me gustaría agradecer a mi amigo William Britton
+Ott por ayudarme a revisar el inglés de algunas partes del TFG. Por último, los
+consejos y experiencias de Judith González sobre como llevar a cabo el TFG
+me han facilitado mucho la labor.\\
+
+Entrando ahora en el terreno personal, me gustaría agradecer de nuevo a
+David Herreros y a David Gragera por acompañarme desde el instituto hasta
+acabar mi carrera universitaria y por el apoyo que me han brindado.
+A mi familia por proporcionarme la posibilidad de poder desarrollar
+mis ambiciones académicas.\\
+
+También me gustaría agradecer a aquellas personas que me han apoyado
+en mi necesidad de dejar a un lado temporalmente otras responsabilidades para
+centrarme en este proyecto, en especial a mis compañeros de la sectorial.\\
+
+Por último, y de una manera muy general, agradecimientos a los gigantes sobre
+cuyos hombros se han cimentado todos los conocimientos aquí expuestos.\\
