@@ -22,10 +22,10 @@
         using slices of the array), but the complexity would stay the same.
 
       \subsection{Circular convolution theorem}
-        [Citar Golomb]
         The other option is to step in the world of mathematical properties.
-        Fortunatly, there exists the convolution theorem that lets us express
-        the autocorrelation function in terms of Fourier Transforms as:
+        Fortunatly, there exists the convolution theorem\cite{golomb_ref} that
+        lets us express the autocorrelation function in terms of Fourier
+        Transforms as:
         \begin{theorem}
           Given a sequence $S$ and the Discrete Fourier Transform($DFT$):
           \begin{equation}
@@ -93,7 +93,7 @@
 
   The theoretical approach for the Branch and Bound algorithm has already
   explained. In this section, we introduce the actual implementation we used
-  in the project in Figure \ref{composite_auto:fig:1}. 
+  in the project in Figure \ref{composite_auto:fig:1}.
 
   \begin{figure}[ht!]
     \inputpython{Chapters/Implementation/branch_and_bound.py}{0}{100}
