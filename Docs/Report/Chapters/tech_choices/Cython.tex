@@ -6,10 +6,10 @@ are developing a software with performance constraints, using just the reference
 implementation is not an option.\\
 
 Fortunatly, there are alternative implementations such as Jython, IronPython,
-etc. In our case, we are going to use Cython\cite{Cython} as it provides a
-compiler to build C code with pseudo-Python. We can even call python code from
-C functions an viceversa, proving useful when we need a system with C level
-performance to operate with high-level Python libraries.\\
+etc. In our case, we are going to use Cython\cite{Cython}\cite{Cython_book} as
+it provides a compiler to build C code with pseudo-Python. We can even call
+python code from C functions an viceversa, proving useful when we need a system
+with C level performance to operate with high-level Python libraries.\\
 
 To support the decision of using Cython for the critical parts of the code,
 we designed some benchmarks to test the actual performance improvements. As
