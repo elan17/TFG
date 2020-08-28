@@ -118,9 +118,9 @@ An example of this function is shown in Figure
 some important properties of the autocorrelation function:
 
 \begin{theorem}\label{theorem:1.2.1}
-  Given a sequence S, the autocorrelation value for $\tau = 0$ is:
+  Given a sequence S, the autocorrelation value for $\tau = 1$ is:
     \begin{equation}
-      A(S)_{0}=C(S, S)=\sum_{i=1}^{n}S_{i}^2
+      A(S)_{1}=C(S, S)=\sum_{i=1}^{n}S_{i}^2
     \end{equation}
 \end{theorem}
 
@@ -128,7 +128,7 @@ some important properties of the autocorrelation function:
   Given the unnormalized autocorrelation of a sequence, we can
   normalize it by dividing it as follows:
   \begin{equation}
-    A'(S)_{\tau} = \frac{A(S)_{\tau}}{A(S)_{0}}
+    A'(S)_{\tau} = \frac{A(S)_{\tau}}{A(S)_{1}}
   \end{equation}
 \end{corollary}
 
@@ -136,13 +136,13 @@ some important properties of the autocorrelation function:
   Using Equations \ref{eq:1} and \ref{eq:4}, we can normalize \ref{eq:4} as
   follows:
 
-    $$A'(S)_{\tau} = C'(S, shift(S, \tau)) = \frac{C(S, shift(S, \tau))}{(\sum_{i=1}^{n} S_{i}^{2})^{\frac{1}{2}}(\sum_{i=1}^{n} S_{i+\tau}^{2})^\frac{1}{2}} = \frac{A(S)_{\tau}}{\sum_{i=1}^{n} S_{i}^{2}} = \frac{A(S)_{\tau}}{A(S)_{0}}$$
+    $$A'(S)_{\tau} = C'(S, shift(S, \tau)) = \frac{C(S, shift(S, \tau))}{(\sum_{i=1}^{n} S_{i}^{2})^{\frac{1}{2}}(\sum_{i=1}^{n} S_{i+\tau}^{2})^\frac{1}{2}} = \frac{A(S)_{\tau}}{\sum_{i=1}^{n} S_{i}^{2}} = \frac{A(S)_{\tau}}{A(S)_{1}}$$
 
   Keep in mind that, even though $S_{i}^2$ and $S_{i+\tau}^2$ aren't the same element, the elements of the shifted version are the same as the original sequence so the total sum is the same.
 \end{proof}
 
 \begin{corollary}\label{autocorrelation:coro:1}
-  Given the autocorrelation of a sequence, $A_{0}(S)$ will always be the maximum value of the autocorrelation.
+  Given the autocorrelation of a sequence, $A_{1}(S)$ will always be the maximum value of the autocorrelation.
 \end{corollary}
 
 \begin{property}
@@ -229,7 +229,7 @@ This practical applications exploit an important noise property:
 
 \begin{property}
   The autocorrelation of a vector of white noise equals 0 for every component
-  where $\tau \neq 0$ \cite{everett}
+  where $\tau \neq 1$ \cite{everett}
 \end{property}
 
 Taking a radar as an example, using this theorem can compute the distance
@@ -244,7 +244,7 @@ In the case of GPS, the restrictions imposed to the noise sequence are
 stronger. First of all, as we will be transmiting several signals in the same
 frecuency, we need a set of codes with good crosscorrelation properties
 between them. In other words, the crosscorrelation function between two given
-codes must trend to 0 in every component, except when $\tau = 0$ and
+codes must trend to 0 in every component, except when $\tau = 1$ and
 both codes are the same.\\
 
 As noise is an statistical construct, noise measured from natural phenomena

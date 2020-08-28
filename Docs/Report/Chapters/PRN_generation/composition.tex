@@ -21,10 +21,10 @@ sequence components as follows:
 
   \begin{equation}\label{composition:eq:3}
     CM(S, T) = \begin{bmatrix}
-      shift(S, T_{0})_{0} & shift(S, T_{1})_{0} & \dots & shift(S, T_{m-1})_{0} \\
-      shift(S, T_{0})_{1} & shift(S, T_{1})_{1} \\
+      shift(S, T_{1})_{1} & shift(S, T_{2})_{1} & \dots & shift(S, T_{m})_{1} \\
+      shift(S, T_{1})_{2} & shift(S, T_{2})_{2} \\
       \vdots & & \ddots \\
-      shift(S, T_{0})_{n-1} & & & shift(S, T_{m-1})_{n-1}
+      shift(S, T_{1})_{n} & & & shift(S, T_{m})_{n}
     \end{bmatrix}
   \end{equation}
 
@@ -71,7 +71,7 @@ We can define the correlation function for composite matrixes:
   Given 2 composite matrixes $M0$ and $M1$ with $n$ rows and $m$ columns,
   we define it's correlation as:
   \begin{equation}
-    C(M0, M1) = \sum_{i=0}^{m-1}\sum_{j=0}^{n-1}M0_{j, i}M1_{j,i}
+    C(M0, M1) = \sum_{i=1}^{m}\sum_{j=1}^{n}M0_{j, i}M1_{j,i}
   \end{equation}
 \end{definition}
 
@@ -102,8 +102,8 @@ interesting property arises:
   autocorrelation function as:
   \begin{equation}
     \begin{split}
-      A(M)_{\tau} = C(M, shift(M, \tau)) = \sum_{i=0}^{m-1}\sum_{j=0}^{n-1}M_{j, i}M_{(j-\tau \bmod m),(i - \tau \bmod n)} = \\
-      \sum_{i=0}^{m-1}\sum_{j=0}^{n-1}shift(S, T_{i})_{j}shift(S, T_{(i - \tau \bmod n)})_{(j-\tau \bmod m)}
+      A(M)_{\tau} = C(M, shift(M, \tau)) = \sum_{i=1}^{m}\sum_{j=1}^{n}M_{j, i}M_{(j-\tau \bmod m),(i - \tau \bmod n)} = \\
+      \sum_{i=1}^{m}\sum_{j=1}^{n}shift(S, T_{i})_{j}shift(S, T_{(i - \tau \bmod n)})_{(j-\tau \bmod m)}
     \end{split}
   \end{equation}
 \end{definition}
@@ -116,10 +116,10 @@ We can define the autocorrelation function of the composite
 sequence in terms of the autocorrelation function as follows:
 
 \begin{equation}
-  \sum_{j=0}^{n-1}shift(S, T_{i})_{j}shift(S, T_{(i - \tau \bmod n)})_{(j-\tau \bmod m)} = A(S)_{|((T_{j} - \tau) \bmod m) - T_{(j + \tau) \bmod n}|}
+  \sum_{j=1}^{n}shift(S, T_{i})_{j}shift(S, T_{(i - \tau \bmod n)})_{(j-\tau \bmod m)} = A(S)_{|((T_{j} - \tau) \bmod m) - T_{(j + \tau) \bmod n}|}
 \end{equation}
 \begin{equation}
-  A(M)_{\tau} = \sum_{i=0}^{m-1} A(S)_{|((T_{j} - \tau) \bmod m) - T_{(j + \tau) \bmod n}|}
+  A(M)_{\tau} = \sum_{i=1}^{m} A(S)_{|((T_{j} - \tau) \bmod m) - T_{(j + \tau) \bmod n}|}
 \end{equation}
 
 \end{property}
