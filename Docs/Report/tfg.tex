@@ -47,13 +47,94 @@
 
 \input{Chapters/tech_choices.tex}
 
-\input{Chapters/basic_algorithm.tex}
+\input{Chapters/implementation.tex}
 
-\input{Chapters/parallelism.tex}
+\chapter{Future work}
+
+  Some work that must be still done is sumarized in this chapter:
+  \begin{itemize}
+    \item The persistency module must be written with PostgreSQL as we are
+    currently dumping the results in plain-text files.
+    \item MPI usage can be farther improved if needed, nowadays we don't
+    buffer new tasks in the nodes so the delay of the interconnection
+    network haven't been mitigated.
+    \item Because of a lack of time, I couldn't use Calderon to get some
+    benchmarks for the parallelism model. This is a shame as some statistics
+    on the complexity of our approach are a must to publish our results.
+    \item Even if Domingo decided to stick with Legendre sequences to keep the
+    program simple, it would probably be interesting to explore other kinds of
+    base sequences.
+    \item I should try to refactor the code to be more compatible with
+    different versions of MPI as MPI4PY support all but I had to tweak my code
+    to work in Calderon as I had used OpenMPI in my development process.
+    \item My code isn't portable as Python's command conventions aren't
+    standard. In Archlinux (my own system), the commands are python and python2
+    while Debian (Calderon's system) uses python3 and python. As my main
+    code wraps mpiexec, this is a pain to deal with.
+    \item It would probably be useful to support config files as some
+    parameters.
+    for the command are common to all computations.
+    \item I will have to consider if I really have to create a way to interact
+    with the tasks and handle some kind of permissions as supercomputers seem
+    to handle that for me.
+    \item I will have to tidy up the code if Domingo wants to publish it as
+    part of his investigation. Even though it's commented and it's readable,
+    there are some parts that should be rewritten and optimized.
+    \item We haven't expanded the literature yet so, at this stage, there's
+    still some computations to be made.
+  \end{itemize}
+
+  This seems like a really long lists of TODOs. Keep in mind that this
+  Bachelor thesis is a part of a research project that isn't yet finished. I
+  think I've accomplish the goals that my director had for this thesis.
 
 \chapter{Conclusions}
 
-\chapter{Future work}
+  The final results of the project can be sumarized as:
+  \begin{itemize}
+    \item I have acquired enough knowledge of the problem domain
+    to be capable of helping to the researchers in their software needs.
+    \item I have extended my knowledge in parallel computing by learning a
+    new paradigm (Message Passing Parallelism).
+    \item I have learned new tools (Cython and MPI) to fulfill the
+    project needs.
+    \item I have adapted my knowledge in functional programming and its
+    robustness to develop the tests for this software.
+    \item I have applied my knowledge in algorithmic complexity to make
+    rational decisions on which is the best approach to a problem.
+    \item I have overcome the limitations imposed by the current health crisis
+    by changing my project management methodology to an agile development.
+    \item I have learned how to manage a huge volume of scientific literature
+    to carry out a research.
+    \item I have started to work with a supercomputer to be capable of
+    deploying this software and get actual results.
+  \end{itemize}
+
+  To conclude this report, I would like to provide some final thougts:
+  \begin{itemize}
+
+    \item After dealing with Cython, I have to say that I encountered many
+    problems with the compiler. The GIL checker detected GIL usages in pure C
+    code. The fused types are very cryptic. If I had to do another project
+    with similar characteristics, I would probably write the core modules in
+    C++ (To be able to use templates) and use Cython to create the
+    bindings for Python.
+
+    \item I recognize that I should have done some test in the supercomputer
+    before starting the software engineering to check the availability
+    of tools and the services that the supercomputer provides by itself.
+
+    \item Even though I said I would try to develop a portable solution, as
+    far I can tell from what I've worked so far with Calderon, i think that
+    wasn't a realistic objective as the programs and tools available in each
+    supercomputer seem to vary a lot.
+
+    \item I have to be more methodic in my usage of GIT. Luckly I didn't need
+    to do a rollback because my commits were huge and some of them in unstable
+    states.
+
+  \end{itemize}
+
 
 
 
