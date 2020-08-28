@@ -7,7 +7,33 @@
   through the possible permutations have been conducted in the past. This
   exhaustive searchs have, if not properly optimized, a search space of
   $O(2^n)$, where $n$ is the length of the binary sequence, which make their
-  results very limited in size compared to the arithmetic methods.\\
+  results very limited by computational complexity.\\
+
+  Some developments have been conducted in the past for aperiodic
+  autocorrelation optimization. Even though we are searching for periodic
+  autocorrelation rather than aperiodic ones, these works are worth looking
+  at them:\\
+
+  First of all, we are going to take a look at the definition of the
+  aperiodic autocorrelation:\\
+  \begin{definition}[Aperiodic autocorrelation]
+      Given a binary sequence $S$, we define its aperiodic autocorrelation as:
+      \begin{equation}
+        A'_{\tau}(S) = \sum_{i=1}^{N-\tau}s_{i}s_{i+\tau}
+      \end{equation}
+  \end{definition}
+
+  All these works focus on finding a sequence $S$ that minimizes:
+
+  \begin{definition} Given a binary sequence $S$, we define the energy of $S$
+    as:
+    \begin{equation}
+      E(S) = \sum_{i=1}^{N-1} A'^{2}_{k}(S)
+    \end{equation}
+    \begin{equation}
+      E_{min} = \operatorname*{min}_{subset} \sum_{i=1}^{N-1} A'^{2}_{k}
+    \end{equation}
+  \end{definition}
 
   One of the first optimizations for this method was
   proposed by \citet{Mertens_1996} in which he provided an algorythm
@@ -16,10 +42,47 @@
   to the autocorrelation based on how complementing a single symbol of the
   sequence affects the autocorrelation.\\
 
-  \begin{itemize}
-    \item Records y como se consiguieron
-    \item Complejidad de los métodos
-  \end{itemize}
+  First of all, the recursion is done by picking a sequence and recursivily
+  fixing elements at the extremes of the sequence as shown in Figure
+  \ref{prn_search:fig:1}.\\
+
+  \begin{figure}[ht!]
+    \includegraphics[scale=0.6]{Chapters/prn_search/branching_example.png}
+    \caption{An example of the branching used in \citet{Mertens_1996} with
+    $N = 6$ and where x represent unfixed values.}
+    \label{prn_search:fig:1}
+  \end{figure}
+
+  It's trivial that, when we complement a sequence, the components of the
+  autocorrelation can be lowered by, at most, -2. Based on that, we can get a
+  relaxation of $E_{min}$:\\
+  \begin{equation}
+    E_b = \sum_{k=1}^{N-1}max\{b_k, (|A'_k| - 2f_k)^2\} \leq E_{min}
+  \end{equation}
+  where $A'_k$ is the autocorrelation of an arbitrary sequence, $b_k = (N -
+  k) \bmod 2$ the minimum possible value for $|A'_k|$ and $f_k$ the number of
+  unfixed elements in $A'_k$ given by:
+  \begin{equation}
+    f_k = \left\{\begin{array}{ll}
+        0 & k \geq N - m \\
+        2(N - m - k) & N/2 \leq k < N - m\\
+        N - 2m & k < N/2 \\
+    \end{array}\right.
+  \end{equation}
+
+  where $N$ is the size of the sequence to search and $m$ the number of fixed
+  elements at the extremes of the sequence.\\
+
+  If $E_b$ is greater than the best candidate for $E_{min}$ so far, we can
+  prune that branch reducing the amount of computation. With this algorythm,
+  Mertens optimized sucessfully up to $N = 48$.\\
+
+  This work was further improved in \citet{Packebusch_2016}. In this paper,
+  they review 2 bounds provided by different authors(Prestwich and
+  Wiggenbrock) and combine them to create a new bound that lowers the
+  complexity to $O(1.729^N)$, solving the LABS problem up to $N = 66$. This
+  record was broken by \citet{anatoli} by computing it up to $N = 85$.\\
+
   \section{Our approach}
 
   To tackle the huge complexity encountered in the previous methods, we took
@@ -67,7 +130,7 @@
     Given a sequence $S$ of length $n$ and the function $shift$ defined at
     Equation \ref{eq:3}, we define the Hamming autocorrelation as:
       \begin{equation}
-        HA(S)_{\tau} = \sum_{i=0}^{n} HAComponent(S_{\tau}, shift(S, \tau)_{\tau})
+        HA(S)_{\tau} = \sum_{i=1}^{n} HAComponent(S_{\tau}, shift(S, \tau)_{\tau})
       \end{equation}
     where $HAComponent$ is defined as:
       \begin{equation}
@@ -105,11 +168,3 @@
     \item The computation on each branch isn't balanced. This must be taken
     into account when we design the parallelism model.
   \end{itemize}
-
-  Como hemos reducido el espacio de búsqueda
-
-  Las limitaciones en longitud(producto de 2 primos diferentes)
-
-  Tabla de resultados
-
-  Valor máximo esperado de la autocorrelación de una secuencia aleatoria
