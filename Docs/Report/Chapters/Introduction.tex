@@ -1,13 +1,44 @@
-There is no doubt that signals have changed drastically the way we live.
-Physical maps have lost relevance long ago in favor of real-time position
-tracking systems. Who needs a physical meter when you can send a signal to
-measure distances accuratly?  Thanks to the hard work of engineers that squeeze
-the capabilities of the carrier wave to transport information throughout ç
-Internet, we can even publish this document.\\
+Advances in wireless comunication and signal proccesing have drastically
+changed the capabilities of transmitting information. Several wireless
+networks can operate in the same channel thanks to technologies like
+CDMA. Similarly, GPS\cite{GPS} satellites using direct-sequence spread
+spectrum(DSSS) can broadcast their information to provide it's service. We can
+even measure long distances with the help of radar technologies which depend on
+analyzing the eco of a sent signal to calculate the distance to a target.\\
 
-In this chapter, we will introduce the correlation, autocorrelation and
-crosscorrelation functions for periodic binary sequences and it's mathematical
-properties. We will also take a look at pseudorandom noise, it's properties and
-practical applications.
+For several developments on signal proccesing, sequences with good properties
+of crosscorrelation and autocorrelation function are needed to work. To keep
+things simple and just for ilustration purposes, we are going to focus in just
+two technologies: spread-spectrum and radar.\\
+
+The direct-sequence spread spectrum technology\cite{DSSS_1}\cite{DSSS} is
+designed to fraction a given frecuency band between multiple transmissions. To
+do so, DSSS designs a set of spreading sequences designed to appear noise to
+other receptors. In other words, a set of pseudonoise sequences with low peak
+crosscorrelations between them. A spreading sequence from this set is pre-
+shared between emisor and receptor. Then, the receiver correlates the received
+sequence with a synchronized version of the preshared sequence. If it founds a
+peak in this correlation, the received sequence is processed. Otherwise, it's
+detected as noise and discarded. This method limits greatly the bandwith of
+each individual transmission but avoids time division and improves security to
+jamming. This system is suitable to be used in applications with low volume
+of information transmision but with several emitter such as GPS. In GPS,
+satellites broadcast their current position and timestamp and from that
+we can compute the distance to the sattelite. Having the signal of some more,
+we can triangulate our position.\\
+
+
+A radar (radio detection and ranging) uses a radio-frequency electromagnetic
+signal reflected from a target to determine properties such as position, speed,
+etc. There are several versions of it but the ones we are interested in are
+PRN-based radars\cite{prn_radar_example1}\cite{prn_radar_example2}. These
+radars exploit the characteristics of pseudonoise sequences to compute the
+round trip time of the sent signal using the autocorrelation function. When
+the signal returns to the receiver, the correlation between the original
+signal and the received one will have a correlation spike.\\
+
+In this chapter, we will introduce the  auto and crosscorrelation function for
+periodic binary sequences and its mathematical properties. We will also take a
+look at pseudorandom sequences, its properties and practical applications.
 
  \input{Chapters/Introduction/functions.tex}
