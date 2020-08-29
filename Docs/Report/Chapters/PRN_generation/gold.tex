@@ -1,20 +1,20 @@
 \section{Gold Codes}
 
-Gold codes\cite{gold_codes} are a family of sequences, derived from MLS, with
-very important properties that are used in several applications such as wireless
-communication and geolocalisation. A Gold Code generator gets two MLS sequences
-that fulfill:
+Gold codes\cite{gold_codes} are a family of sequences, derived from
+m-sequences, with very important properties that are used in several
+applications such as wireless communication and geolocalisation. A Gold Code
+generator gets two m-sequences sequences that fulfill:
 
 \begin{property}
-  Given two MLS that can generate Gold Codes, $S1$ and $S2$, of length $2^{n}-
-  1$, $CC$ the crosscorrelation function defined in Equation \ref{eq:7}:
+  Given two m-sequences that can generate Gold Codes, $S1$ and $S2$, of length
+  $2^{n}-1$, $CC$ the crosscorrelation function defined in Equation \ref{eq:7}:
     \begin{equation}\label{gold:eq:1}
       max |CC(S1, S2)| \leq 2^{\frac{n+2}{2}}
     \end{equation}
 \end{property}
 
 And XORs all their relative shifts generating a family of $2^{n} + 1$ sequences
-($2^{n} - 1$ XORed sequences + 2 MLS sequences).
+($2^{n} - 1$ XORed sequences + 2 m-sequences).
 
 \begin{property}
   Given any two sequences, S1 and S2, from a Gold family of sequences of length
@@ -35,7 +35,7 @@ useful when several devices are transmiting in the same frecuency and we must
 treat signals that are not the one we want to receive as noise.\\
 
 Gold also showed  a way to generate this pair of sequences,
-using a decimation of one MLS sequence.
+using a decimation of one m-sequence.
 
 \begin{definition}[Decimation]
   Given a sequence $S$ of length $n$, a decimation by $q$ of $S$ is defined as:
@@ -45,7 +45,7 @@ using a decimation of one MLS sequence.
 \end{definition}
 
 \begin{property}
-  Given a MLS sequence $S$ of length $2^n - 1$ where n is odd and and a
+  Given a m-sequence $S$ of length $2^n - 1$ where n is odd and and a
   coprime of $n$ named $k$, the sequence pair $(S, S[2^{k} + 1])$ number
   fulfills equation \ref{gold:eq:1}.
 \end{property}
@@ -57,5 +57,5 @@ using a decimation of one MLS sequence.
   \label{}
 \end{figure}
 
-Notice that this construction has the same problem as MLS sequences. It's
+Notice that this construction has the same problem as m-sequences. It's
 an exponential contruction so it might not be enough for some applications.
