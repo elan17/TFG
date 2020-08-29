@@ -206,7 +206,7 @@ receiver.
 
 
 
-\section{Pseudorandom noise(PRN)}
+\section{Pseudonoise}
 
 Noise have a different meaning depending on the field of study in which is
 used. In our case we are going to work with random vectors of white noise,
@@ -253,9 +253,10 @@ depend on this properties to work, we must find a way of creating sequences
 with properties similar to those of noise in an deterministic and efficient
 fashion.\\
 
-This kind of sequences are called Pseudorandom Noise(PRN). In practical
-applications, PRN sequences aren't perfect noise because generating it is
-difficult and unnecesary. In reality, we don't need an actual 0 in every
+This kind of sequences are called pseudonoise sequences or
+pseudorandom noise(PRN) in some parts of the literature. In practical
+applications, pseudonoise sequences aren't perfect noise because generating it
+is difficult and unnecesary. In reality, we don't need an actual 0 in every
 position of the autocorrelation. If we let the sequence take values in a
 threshold so that the system won't mistake intermidiate values with the
 autocorrelation spike, it will behave as expected.
@@ -267,7 +268,7 @@ autocorrelation spike, it will behave as expected.
 \includegraphics[width=0.7\linewidth]{Chapters/Introduction/signals_prn}
 \end{center}
 \caption{A pseudorandom noise sequence an it's autocorrelation function.
-Notice that this PRN code isn't perfect noise.}
+Notice that this pseudonoise sequence isn't perfect noise.}
 \label{introduction_signals_autocorrelation}
 \end{figure}
 
