@@ -51,38 +51,43 @@
 
 \chapter{Future work}
 
-  Some work that must be still done is summarized in this chapter:
-  \begin{itemize}
-    \item The persistency module must be written with PostgreSQL as we are
-    currently dumping the results in plain-text files.
-    \item MPI usage can be farther improved if needed, nowadays we don't
-    buffer new tasks in the nodes so the delay of the interconnection
-    network haven't been mitigated.
-    \item Because of a lack of time, I couldn't use Calderon to get some
-    benchmarks for the parallelism model. This is a shame as some statistics
-    on the complexity of our approach are a must to publish our results.
-    \item Even if Domingo decided to stick with Legendre sequences to keep the
-    program simple, it would probably be interesting to explore other kinds of
-    base sequences.
-    \item I should try to refactor the code to be more compatible with
-    different versions of MPI as MPI4PY support all but I had to tweak my code
-    to work in Calderon as I had used OpenMPI in my development process.
-    \item My code isn't portable as Python's command conventions aren't
-    standard. In Archlinux (my own system), the commands are python and python2
-    while Debian (Calderon's system) uses python3 and python. As my main
-    code wraps mpiexec, this is a pain to deal with.
-    \item It would probably be useful to support config files as some
-    parameters.
-    for the command are common to all computations.
-    \item I will have to consider if I really have to create a way to interact
-    with the tasks and handle some kind of permissions as supercomputers seem
-    to handle that for me.
-    \item I will have to tidy up the code if Domingo wants to publish it as
-    part of his investigation. Even though it's commented and it's readable,
-    there are some parts that should be rewritten and optimized.
-    \item We haven't expanded the literature yet so, at this stage, there's
-    still some computations to be made.
-  \end{itemize}
+  Even though we have a working prototype that can perform the algorythm,
+  there's still a lot of work to be done:\\
+
+  First of all, the persistency part of the program needs a complete rewrite.
+  Nowadays, the search results are dumped in plain text files and have no
+  kind of advanced queries or a way to store sequence properties.\\
+
+  The program has a design limitation on the diversity of base sequences
+  that can be used for the computation. It would be interesting to be capable
+  of using different kinds from Legendre sequences. This leads us to the topic
+  of a whole refactor of the code if Domingo wants to publish it as part as
+  the research project he is doing. Some parts can be written more clearly
+  and the MPI usage isn't the most efficient one. For example, all the tasks
+  are assigned unbuffered which means that the interconnection network delay
+  hasn't been mitigated at all.\\
+
+  Apart from that, the program haven't been tested in a production enviroment.
+  Some incompatibility problems must be fixed between the development
+  enviroment in which, among other things, OpenMPI was used rather than
+  MPICH and I wasn't able to compile MPI4PY in the supercomputer(I have to
+  say that I hadn't much time to do so because of limitations out of
+  my control). Needless to say that this means we haven't extended the
+  existing literature on the topic yet.\\
+
+  To finish my contribution to Domingo's research, I need to develop a
+  complexity analysis of the algorythm in a similar fashion to the previous
+  works of exhaustive research. To do so, we need to run the code for a long
+  time to gather enough data to estimate the said complexity.\\
+
+  Last but not least, the UI needs some tweaking too. We should provide the
+  possibility of storing the parameters in a configuration file as some of
+  them will be shared between most of the tasks (for example, the number of
+  processes used). I should also review if the program really needs a
+  permissions system for the database. As its running in an isolated
+  enviroment to perform the computation, no external user has access to the
+  data unless it's uploaded to an external server through the VPN(which would
+  be a terrible practice and it would be another different app).\\
 
   This seems like a really long lists of TODOs. Keep in mind that this
   Bachelor thesis is a part of a research project that isn't yet finished. I
