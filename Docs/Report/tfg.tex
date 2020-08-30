@@ -95,50 +95,54 @@
 
 \chapter{Conclusions}
 
-  The final results of the project can be sumarized as:
-  \begin{itemize}
-    \item I have acquired enough knowledge of the problem domain
-    to be capable of helping to the researchers in their software needs.
-    \item I have extended my knowledge in parallel computing by learning a
-    new paradigm (Message Passing Parallelism).
-    \item I have learned new tools (Cython and MPI) to fulfill the
-    project needs.
-    \item I have adapted my knowledge in functional programming and its
-    robustness to develop the tests for this software.
-    \item I have applied my knowledge in algorithmic complexity to make
-    rational decisions on which is the best approach to a problem.
-    \item I have overcome the limitations imposed by the current health crisis
-    by changing my project management methodology to an agile development.
-    \item I have learned how to manage a huge volume of scientific literature
-    to carry out a research.
-    \item I have started to work with a supercomputer to be capable of
-    deploying this software and get actual results.
-  \end{itemize}
+  In general, I think I can say I've accomplished my personal objectives for
+  this project. My main objective was to learn how a project of scientific
+  computation must be developed: its needs, requirements and peculiarities.\\
 
-  To conclude this report, I would like to provide some final thougts:
-  \begin{itemize}
+  First, and probably the most difficult task for a developer is to understand
+  the problem domain. This kind of sofware, in contrast with other consulting
+  projects, requires a high level of knowledge in a scientific research to be
+  able to grasp the semantics of the program. This adds a huge challenge to
+  the software engineer, as they must have a close relation with the client to
+  ensure the correctness of the program. I can affirm with confidence that
+  two thirds of the time was spent in learning all the concepts that where
+  going to be used later to gather all the software requisites and semantics.\\
 
-    \item After dealing with Cython, I have to say that I encountered many
-    problems with the compiler. The GIL checker detected GIL usages in pure C
-    code. The fused types are very cryptic. If I had to do another project
-    with similar characteristics, I would probably write the core modules in
-    C++ (To be able to use templates) and use Cython to create the
-    bindings for Python.
+  Apart from that, new coding challenges arised. The deployment on a
+  supercomputer needs a paradigm shift in program design. Shared-memory
+  parallelism is no longer an option as we are working with several computers
+  connected by a "slow" interconnection network. Instead, a message-passing
+  based approach is preferred with its added complexities and new ways of
+  structuring the program.\\
 
-    \item I recognize that I should have done some test in the supercomputer
-    before starting the software engineering to check the availability
-    of tools and the services that the supercomputer provides by itself.
+  As the program was supposed to be extendable by the researchers, I had to
+  find a way to create a code as familiar for them as possible. This lead me to
+  develop a Python program (for its extensibility and readability) with
+  critical code written Cython to get a competent performance. Looking
+  backwards, I think that using Cython instead of C++ was an error as the
+  compiler gave me some troubles. If I have to participate in a similar project,
+  I will probably write all critical code directly on C++ and use Cython as
+  an easy way to create the bndings for my Python code.\\
 
-    \item Even though I said I would try to develop a portable solution, as
-    far I can tell from what I've worked so far with Calderon, i think that
-    wasn't a realistic objective as the programs and tools available in each
-    supercomputer seem to vary a lot.
+  One of the things I enjoyed the most of this project is how well a
+  functional programming mindset adapts to this particular problem. Being
+  used to the pureness and robustness of FP languages such as Haskell, exporting
+  its pros into production code lets me write code more efficiently.\\
 
-    \item I have to be more methodic in my usage of GIT. Luckly I didn't need
-    to do a rollback because my commits were huge and some of them in unstable
-    states.
+  COVID-19 has shown me one of the big problems of waterfall-based project
+  management: its low fault tolerance. If I hadn't used an agile development
+  method with more flexibility, I would probably have not been capable reaching
+  this progress to this date. Instead, I would have been waiting for the
+  situation to change to allocate the projects resources.\\
 
-  \end{itemize}
+  Last but not least, I've briefly worked with a supercomputer and got a grasp
+  on how tasks are deployed. There is still a lot of work to be done and I
+  should have started to work with it earlier to develop a program more
+  compatible with its arquitecture as I didn't expect to be so different from
+  my development enviroment but... we learn from mistakes. \\
+
+  To sum up, we can say that this project has been a good first approach to
+  scientific computing and high performance development.\\
 
 
 
