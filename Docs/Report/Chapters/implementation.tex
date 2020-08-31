@@ -38,9 +38,11 @@
         Notice that, using the Fast Fourier
         Transform\cite{fast_fourier_transform}, the complexity of this
         method lowers to $O(N log N)$. However, its constant is
-        still high as applying 2 FFT to the sequence and apply the
+        still high as applying 2 FFT to the sequence and the
         complex conjugate is needed. In fact, keep in mind that Fourier
-        Transforms works with complex components while the naive approach keeps
+        Transforms works with complex components (however, according to
+        Property \ref{autocorrelation:prop:1}, it will always return
+        the same type as the original sequence) while the naive approach keeps
         using the same type as the components which makes its constant even higher
         than the optimized naive approach.
 
@@ -63,7 +65,7 @@
       computational characteristics exploting the pecularities of this
       construction might exist.\\
 
-      Taking advantage of Property \ref{composition:prop:1},an algorythm with
+      Taking advantage of Property \ref{composition:prop:1}, an algorythm with
       interesting properties can be designed. First of all, the complexity
       function depends on the size of the shift sequence. Being $m$ the
       length of the shift sequence and $n$ the length of the composite
@@ -245,4 +247,3 @@
   Verbosity is completly optional and doesn't impact performance when inactive.
   It's particularly useful when tweaking the parameters to get the best
   configuration.\\
-  
