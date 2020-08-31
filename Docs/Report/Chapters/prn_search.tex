@@ -85,8 +85,8 @@
 
   \section{Our approach}
 
-  To tackle the huge complexity encountered in the previous methods, we took
-  a different approach. Instead of dealing with the combinatorial explosion
+  To tackle the huge complexity encountered in the previous methods, a different
+  approach was taken. Instead of dealing with the combinatorial explosion
   of all the possible binary sequences of length $N$, we decided to work with
   a smaller set consisting on all the possible sequences which can be
   constructed through the composition method with Legendre base sequences.\\
@@ -149,7 +149,8 @@
   bounding the nodes that have a hamming autocorrelation higher than the
   threshold (we mean, the maximum non trivial component), we are sure that all
   nodes in that branch have a higher hamming autocorrelation than the
-  threshold.\\
+  threshold. This means that when the threshold is supassed, the branch can
+  be safely prune and save a lot of computation time.\\
 
   \begin{figure}[ht!]
     \begin{center}
