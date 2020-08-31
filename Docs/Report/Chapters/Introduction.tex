@@ -18,7 +18,7 @@ do so, DSSS designs a set of spreading sequences designed to appear noise to
 other receptors. In other words, a set of pseudonoise sequences with low peak
 crosscorrelations between them. A spreading sequence from this set is pre-shared
 between emisor and receptor. Then, the receiver correlates the received
-sequence with a synchronized version of the preshared sequence. If it founds a
+sequence with a synchronized version of the pre-shared sequence. If it founds a
 peak in this correlation, the received sequence is processed. Otherwise, it's
 detected as noise and discarded. This method limits greatly the bandwith of
 each individual transmission but avoids time division and improves security to
@@ -35,7 +35,8 @@ project are PRN-based radars\cite{prn_radar_example1}\cite{prn_radar_example2}.
 These radars exploit the characteristics of pseudonoise sequences to compute the
 round trip time of the sent signal using the autocorrelation function. When
 the signal returns to the receiver, the correlation between the original
-signal and the received one will have a correlation spike.\\
+signal and the received one will have a correlation spikes which indicates
+the exact time instant to consider as the arrival time.\\
 
 In this chapter, the auto and crosscorrelation function for
 periodic binary sequences and its mathematical properties will be introduced
