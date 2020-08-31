@@ -5,10 +5,10 @@
 According to \citet{golomb_ref}, the correlation function measures how similar
 two phenomena are. If properly normalized, the function ranges from
 +1 (identical) to -1 (opposite); 0 meaning completly unrelated phenomena.
-If we represent those phenomena as vectors, the correlation can be conceived
+If those phenomena are represented as vectors, the correlation can be conceived
 as the normalized dot product between those 2 vectors.
-In the discrete case where both sequences have the same length, the one we are
-going to focus on, the normalized version is defined as follows:
+In the discrete case where both sequences have the same length, the one in which
+this project focus on, the normalized version is defined as follows:
 
 \begin{definition}[Normalized correlation]\label{def:1}
 
@@ -32,7 +32,7 @@ representation:
 
 Even though the normalized version is a good way to grasp the
 concept of the degree of similarity between two phenomen, for the rest of the
-document we are going to use the unnormalized version unless it is stated.
+document the unnormalized version is going to be used unless it is stated.
 This definition of the correlation function have several advantages for our
 research as it is simpler and carries the same amount of information while
 saving us some computation resources and complexity on our theoretical
@@ -110,8 +110,8 @@ sequence S
 \end{figure}
 
 An example  is shown in Figure
-\ref{introduction_signals_autocorrelation} in which we can observe
-some important properties of the autocorrelation of sequences:
+\ref{introduction_signals_autocorrelation} in which some important properties of
+the autocorrelation of sequences can be observed:
 
 \begin{theorem}\label{theorem:1.2.1}
   Given a sequence S, the autocorrelation value for $\tau = 1$ is:
@@ -121,16 +121,16 @@ some important properties of the autocorrelation of sequences:
 \end{theorem}
 
 \begin{corollary}
-  Given the unnormalized autocorrelation of a sequence, we can
-  normalize it by dividing it as follows:
+  Given the unnormalized autocorrelation of a sequence, it can be normalized
+  normalize by dividing it as follows:
   \begin{equation}
     A'(S)_{\tau} = \frac{A(S)_{\tau}}{A(S)_{1}}
   \end{equation}
 \end{corollary}
 
 \begin{proof}
-  Using Equations \eqref{eq:1} and \eqref{eq:4}, we can normalize \eqref{eq:4} as
-  follows:
+  Using Equations \eqref{eq:1} and \eqref{eq:4}, Equation \eqref{eq:4} can be
+  normalized as follows:
 
     $$A'(S)_{\tau} = C'(S, shift(S, \tau)) = \frac{C(S, shift(S, \tau))}{(\sum_{i=1}^{n} S_{i}^{2})^{\frac{1}{2}}(\sum_{i=1}^{n} S_{i+\tau}^{2})^\frac{1}{2}} = \frac{A(S)_{\tau}}{\sum_{i=1}^{n} S_{i}^{2}} = \frac{A(S)_{\tau}}{A(S)_{1}}$$
 
@@ -166,8 +166,8 @@ compute the autocorrelation function.
 \subsection{Crosscorrelation function}
 
 The crosscorrelation function measures how a sequence correlates with all
-the posible shifts of another sequence. This function is useful to analyze if two signals can be mistaken one for another by a
-receiver when delays in time occur.
+the posible shifts of another sequence. This function is useful to analyze if two
+signals can be mistaken one for another by a receiver when delays in time occur.
 
 
 \begin{definition}[Crosscorrelation]\label{def:4}
@@ -230,15 +230,15 @@ just by sending a random sequence in the direction of a target and start
 correlating the received signal with the original one. As the autocorrelation
 of random vector is different from zero only when the shift is zero, the peak
 in the autocorrelation gives in which time instant the signal has returned to
-the receiver. With that time instant, we can get the round-trip time and then
+the receiver. With that time instant, the round-trip time can be computed and then
 the actual distance using the propagation speed of the wave.\\
 
 In the case of GPS, the restrictions imposed to the random sequence are
-stronger. First of all, as we will be transmitting several signals in the same
-frequency, we need a set of sequences with good auto and crosscorrelation
-properties between them. In other words, the maximum crosscorrelation function
-between two given sequences must trend to zero in every component, except when
-$\tau = 0$ and both sequences are the same.\\
+stronger. First of all, as several signals will be transmitted in the same
+frequency, a set of sequences with good auto and crosscorrelation
+properties between them is needed. In other words, the maximum crosscorrelation
+function between two given sequences must trend to zero in every component, except
+when $\tau = 0$ and both sequences are the same.\\
 
 Random sequences do not guarantee good properties of correlation, even noise
 measured from natural phenomena can generate sequences with poor correlation
