@@ -17,7 +17,7 @@ sequence components as follows:
   \end{equation}
 
   Given the $shift$ function defined in Equation \eqref{eq:3},
-  we define the composite matrix as:
+   the composite matrix is defined as:
 
   \begin{equation}\label{composition:eq:3}
     CM(S, T) = \begin{bmatrix}
@@ -36,7 +36,7 @@ sequence components as follows:
   Given a base sequence $S$ of length $n$ and a sequence of integers $T$ of
   length $m$ that fulfill Equations \eqref{composition:eq:1} and
   \eqref{composition:eq:2} and the composite matrix defined at Equation
-  \eqref{composition:eq:3}, we define the composite sequence as:
+  \eqref{composition:eq:3}, the composite sequence is defined as:
   \begin{equation}
     CS(S, T)_{i} = CM(S, T)_{(i \bmod m), (i \bmod n)}
   \end{equation}
@@ -60,31 +60,27 @@ sequence components as follows:
   $$
   $$CS(S, T) = \text{[0 4 1 4 1 4 1 0 2 0 2 0 2 1 3 1 3 1 3 2 4 2 4 2 4 3 0 3 0 3]}\\
   $$
-  \caption{Example of a computation of the composition method(note that we are
-  using a non-binary sequence to illustrate better the method).}
+  \caption{Example of a computation of the composition method(note that
+  a non-binary sequence is used to illustrate better the method).}
   \label{}
 \end{figure}
 
-We can define the correlation function for composite matrixes:
-
-\begin{definition}
+\begin{definition}[Composite matrix correlation]
   Given 2 composite matrixes $M0$ and $M1$ with $n$ rows and $m$ columns,
-  we define it's correlation as:
+  it's correlation is defined as:
   \begin{equation}
     C(M0, M1) = \sum_{i=1}^{m}\sum_{j=1}^{n}M0_{j, i}M1_{j,i}
   \end{equation}
 \end{definition}
 
-We can also define the shift function for composite matrixes:
-
-\begin{definition}
-  Given a composite matrix $M$ of $n$ rows and $m$ columns, we define the
-  shift function as:
+\begin{definition}[Composite matrix shift]
+  Given a composite matrix $M$ of $n$ rows and $m$ columns, the shift function
+  is defined as:
   \begin{equation}
     shift(M, \tau)_{i, j} = M_{(i-\tau \bmod m), (j-\tau \bmod n)}
   \end{equation}
 \end{definition}
-This let's us establish the following relation:
+This means that the following relation can be stablished:
   \begin{corollary} Getting a shift of the composite sequence is equivalent to
   applying a shift to the matrix and then extracting the corresponding
   sequence.
@@ -94,12 +90,12 @@ This let's us establish the following relation:
   \end{corollary}
 
 
-When we define the autocorrelation function for a composite matrix, an
+When the autocorrelation function is defined for a composite matrix, an
 interesting property arises:
 
 \begin{definition}
-  Given a composite matrix $M$ of $n$ rows and $m$ columns, we define it's
-  autocorrelation function as:
+  Given a composite matrix $M$ of $n$ rows and $m$ columns, it's
+  autocorrelation function is defined as:
   \begin{equation}
     \begin{split}
       A(M)_{\tau} = C(M, shift(M, \tau)) = \sum_{i=1}^{m}\sum_{j=1}^{n}M_{j, i}M_{(j-\tau \bmod m),(i - \tau \bmod n)} = \\
@@ -108,12 +104,12 @@ interesting property arises:
   \end{equation}
 \end{definition}
 
-Notice that if we keep $i$ constant, we get a particular component of the
-autocorrelation function of $S$.
+Notice that if $i$ is kept constant, a particular component of the
+autocorrelation function of $S$ is obtained.
 
 \begin{property} \label{composition:prop:1}
-We can define the autocorrelation function of the composite
-sequence in terms of the autocorrelation function as follows:
+The autocorrelation function of the composite
+sequence can be defined in terms of the autocorrelation function as follows:
 
 \begin{equation}
   \sum_{j=1}^{n}shift(S, T_{i})_{j}shift(S, T_{(i - \tau \bmod n)})_{(j-\tau \bmod m)} = A(S)_{|((T_{j} - \tau) \bmod m) - T_{(j + \tau) \bmod n}|}
@@ -131,7 +127,7 @@ of computing the autocorrelation function.
 
 Costas arrays, discovered independently by John P. Costas\cite{costas_costas}
 and E.N. Gilbert \cite{gilbert_costas} in 1965, are a set of sequences highly
-used in radar and sonar applications. We are going to provide the 2 definitions
+used in radar and sonar applications. Both definitions will be provided
 as both will be useful for different purposes:
 
 \begin{definition}[Costas array(Costas)]
@@ -157,7 +153,7 @@ effect.
   \label{fig:costas_1}
 \end{figure}
 
-Notice that we could compact the representation by just having a list of the
+Notice that the representation can be compacted by just having a list of the
 rows in which each 1 lives:
 
 \begin{figure}[ht!]
@@ -175,7 +171,7 @@ by Gilbert:
     \begin{equation}\label{eq:costas_1}
       0 \leq S_{i} < n
     \end{equation}
-  We say that $S$ is a distinct difference permutation $r$ apart if,
+  It is said that $S$ is a distinct difference permutation $r$ apart if,
   for any given pair $(S_{i}, S_{j})$, satisfies:
     \begin{equation}\label{eq:costas_2}
       S_{i} - S_{i+r} \not \equiv S_{j} - S_{j+r} \bmod n
@@ -183,7 +179,7 @@ by Gilbert:
 \end{definition}
 
 \begin{definition}[Costas array(Gilbert)]
-  Given a sequence $S$ satisfying Equation \eqref{eq:costas_1}, we say it's a
+  Given a sequence $S$ satisfying Equation \eqref{eq:costas_1}, it's called a
   Costas array if, for any given $r$ value, it satisfies Equation
   \eqref{eq:costas_2}.
 \end{definition}
@@ -193,11 +189,12 @@ a sequence of shifts generating interesting new
 sequences\cite{moreno_costas}.\\
 
 Several construction methods have
-been proposed. For sake of simplicity, we are going to introduce just the Welsh
-construction as defined in Gilbert \cite{gilbert_costas}:\\
+been proposed. For sake of simplicity, just the Welsh
+construction will be introduced which is defined in Gilbert\cite{gilbert_costas}
+as:\\
 
-Given a prime number $p$ and a primitive root $g$ of $p$, we can contruct a
-Costas array $S$ as follows:
+Given a prime number $p$ and a primitive root $g$ of $p$, a Costas array $S$
+can be constructed as follows:
 \begin{equation}
   S_{i} \equiv g^{i} \bmod p
 \end{equation}
