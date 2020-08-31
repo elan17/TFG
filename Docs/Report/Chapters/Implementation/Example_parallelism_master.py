@@ -38,7 +38,7 @@ def task_iterator(arr, current_offset, task_size, max_value, hamming):
         if current_offset == it: # base case
             yield arr
         else: # recursive case
-            for x in range(max_value+1): # For all possible shifts
+            for x in range(max_value): # For all possible shifts
                 arr[current_offset] = x
                 # Go one step deeper
                 yield from task_iterator(arr, current_offset+1, task_size, max_value, hamming)

@@ -11,7 +11,7 @@ def slave( base_sequence
         data = comm.recv(source=0, tag=11)
         if data != -1: # If it's an actual task
             # Compute the task
-            seq = int_to_shift_sequence(data, sequence_length, len(base_sequence)+1, task_size)
+            seq = int_to_shift_sequence(data, sequence_length, len(base_sequence), task_size)
             if verbose:
                 elapsed = int((clock_gettime_ns(CLOCK_PROCESS_CPUTIME_ID) - t)/1000000)
                 log("TASK_ASSIGNED " + str(list(seq[:len(seq)-task_size])) + " " + str(elapsed) + "ms")
