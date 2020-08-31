@@ -19,7 +19,7 @@
   \begin{definition}[Aperiodic autocorrelation]
       Given a binary sequence $S$, its aperiodic autocorrelation is defined as:
       \begin{equation}
-        A'_{\tau}(S) = \sum_{i=1}^{N-\tau}s_{i}s_{i+\tau}
+        A'_{\tau}(S) = \sum_{i=0}^{N-\tau-1}s_{i}s_{i+\tau}
       \end{equation}
   \end{definition}
 
@@ -28,10 +28,10 @@
   \begin{definition} Given a binary sequence $S$, the energy of $S$ is defined
     as:
     \begin{equation}
-      E(S) = \sum_{i=1}^{N-1} A'^{2}_{k}(S)
+      E(S) = \sum_{k=1}^{N-1} A'_{k}(S)^{2}
     \end{equation}
     \begin{equation}
-      E_{min} = \operatorname*{min}_{subset} \sum_{i=1}^{N-1} A'^{2}_{k}
+      E_{min} = \operatorname*{min}_{subset} \sum_{k=1}^{N-1} A'^{2}_{k}
     \end{equation}
   \end{definition}
 
