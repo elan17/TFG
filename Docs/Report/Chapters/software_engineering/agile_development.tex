@@ -1,16 +1,16 @@
 \section{Agile development}
 
     One of the most important tasks to do before starting a project is deciding
-    which project management model we are going to follow.\\
+    which project management model the project will follow.\\
 
-    In our case, we are going to distance ourselves from a waterfall model
+    In our case, this model are going to distance ourselves from a waterfall model
     (even though it is the taught model for branches of our degree not focused
     in software engineering) favoring agile development techniques adapted to
     our problem for several reasons:
     \begin{itemize}
-      \item The client is an active part of the project. This means we can get
+      \item The client is an active part of the project. This means that
       a lot of feedback during development and fix issues earlier.
-      \item As we are developing this project in the middle of a health crisis,
+      \item As this project is being developed in the middle of a health crisis,
       the availability of project resources cannot be predicted. This means
       that having a rigid schedule planned too ahead of time wouldn't be
       useful.
@@ -18,7 +18,7 @@
 
     \subsection{Role definition}
 
-    In the development of this project we will define 2 different roles
+    In the development of this project, 2 different roles will defined
     assigned to 2 distinct people:
     \begin{itemize}
       \item Developer which will design, program, verify and manage the
@@ -53,51 +53,52 @@
       \end{itemize}
 
       The 2 first functions aren't part of the actual exhaustive search
-      algorithm, but will be useful if we want to double check it's properties
-      when retrieving the results from the database. \\
+      algorithm, but will be useful if it's properties
+      must be checked when retrieving them results from the database. \\
 
       The test proccess consisted in checking that the python wrapper provided
       the same results as a naive implementation of the Wiener–Khinchin's
       algorythm. From that, the third function was tested against the first
       one.\\
 
-      At first, we tried to develop C functions with fused types. Although it
+      At first, C functions with fused types were developed. Although it
       favors extensibility, the compiler started to throw errors related with
-      fused types. As the problem would have gotten worse when we developed the
-      next parts of the program, we decided to drop support for fused types as
-      we only expected to work with integers of 32 bits.\\
+      fused types. As the problem would have gotten worse when the next parts of
+      the program were developed, it was decided to drop support for fused types
+      as it was only expected to work with integers of 32 bits.\\
 
       \subsubsection{Iteration 2: Branch and bound algorythm}
 
       In this iteration we focused on a single threaded C implementation of the
       branch and bound algorythm. This function receives a threshold of the
-      maximum autocorrelation we are interested in, the maximum Hamming
+      maximum autocorrelation the user is interested in, the maximum Hamming
       autocorrelation for the prune part of the algorythm and the base sequence
       to use.\\
 
-      For this purpose, we developed a C implementation of the maximum Hamming
-      autocorrelation and an implementation of Legendre sequences to be used
-      as base sequences (more types of base sequences might be added in the
-      future, but this one was explicitly asked by the client).\\
+      For this purpose, a C implementation of the maximum Hamming
+      autocorrelation was developed and an implementation of Legendre sequences
+      to be used as base sequences (more types of base sequences might be added
+      in the future, but this one was explicitly asked by the client).\\
 
       The test designed for Legendre sequences exploits its flat
       autocorrelation to check the functions consistency. In the case of
-      Hamming's autocorrelation, we defined a test based on lower and upper
-      bounds.\\
+      Hamming's autocorrelation, a test based on lower and upper
+      bounds was designed.\\
 
-      In the case of the branch and bound method, we will check that all the
+      In the case of the branch and bound method, it will be checked that all the
       sequences returned satisfies the specified maximum autocorrelation.\\
 
       \subsubsection{Iteration 3: Parallelism}
 
-      In this iteration we focused on adapting the branch and bound algorythm
-      to a parallel enviroment. To do that, we incrementally improved the
-      algorythm. First, we only applied branch and bound from a given depth and
-      we then decided to also apply it at the master's process level.\\
+      In this iteration, the main focus was to adapt the branch and bound algorythm
+      to a parallel enviroment. To do that, the algorythm was incrementally
+      improved. First, branch and bound was only applied from a given depth and
+      then it was decided to also apply it at the master's process level.\\
 
-      In this case, we moved completly to pure python as it isn't critical
-      code. Most runtime of slave processes will be spent in Cython functions
-      and, for simplicity and reliability, we decided to stick to Python.\\
+      In this case, this iteration was implemented in pure python as it isn't
+      critical code. Most runtime of slave processes will be spent in Cython
+      functions and, for simplicity and reliability, it was decided to stick to
+      Python.\\
 
       Tests in this iteration were made in a more manual fashion, running the
       code and checking that all results were coherent. This was done like
@@ -107,8 +108,8 @@
 
       \subsubsection{Iteration 4: User Interface}
 
-      In this iteration we focused on designing a suitable UI. To do so, we
-      developed 2 functionalities:
+      In this iteration a suitable UI for the program was designed. To do so,
+      two functionalities were implemented:
       \begin{itemize}
         \item Support for command line arguments to initialize tasks.
         \item A verbose mode to get statistics of the program.

@@ -1,6 +1,6 @@
 \section{Software requirements}
 
-In this section we will introduce the software requirements of our project.
+In this section the software requirements of our project will be introduced.
 
 \subsection{Functional requirements}
 
@@ -71,12 +71,12 @@ The non-functional requirements of the project are shown in Figure
     Identifier & Type  & Description & Relevance\\
     \hline
     \hline
-    NFR01 \label{NFR01} & Performance & As we are searching for sequences in a
+    NFR01 \label{NFR01} & Performance & As sequences are being searched in a
     huge space, speed is a top priority to continue with the research &
     Very high\\
     \hline
-    NFR02 \label{NFR02} & Compability & As we are deploying our project in a
-    research enviroment with different arquitectures, we must try to make it as
+    NFR02 \label{NFR02} & Compability & As our project is being deployed in a
+    research enviroment with different arquitectures, it should be made as
     compatible as posible in the case it must be changed to another node &
     Medium \\
     \hline
@@ -99,7 +99,7 @@ The non-functional requirements of the project are shown in Figure
     end result & Medium \\
     \hline
     NFR07 \label{NFR07} & Extensibility & Since the program is used as part of
-    a research, we need the parts of the software to be reusable in case the
+    a research, the parts of the software should be reusable in case the
     research shows a new posible use for the project as part of a new
     development & Medium \\
     \hline
@@ -128,11 +128,12 @@ software.\\
 First of all, note that the users are supposed to be experienced in the use of
 computers, so a complex UI shouldn't be a problem. In this casse, even though
 the easier the better, our development has a huge constraint on UI design that
-should be taken into account: the special type of OS we are working with.\\
+should be taken into account: the special type of OS this project
+will be deployed in.\\
 
-As we are working with supercomputers, we can encounter a minimalist enviroment
-with no graphical desktop. For this reason, we should focus on a command line
-based application with 2 different main sections:\\
+As the main focues are supercomputers, a minimalist enviroment
+with no graphical desktop is to be expected. For this reason, a
+command line based application is preferred with 2 different main sections:\\
 \begin{itemize}
   \item Application launcher (resource allocation, parallelism model, etc.)
   \item Runtime interaction with the system (tasks management, database
