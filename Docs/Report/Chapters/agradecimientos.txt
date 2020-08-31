@@ -1,6 +1,6 @@
 Me gustaría agradecer este proyecto principalmente a mi director de TFG que me
 ha brindado la oportunidad de hacer un TFG con un gran componente de
-investigación. Ha tenido, junto con Andrew, la paciencia necesaria para
+investigación. Ha tenido, junto con Andrew Tirkel, la paciencia necesaria para
 explicarme los entresijos de su investigación para poder desarrollar
 satisfactoriamente este proyecto.\\
 
