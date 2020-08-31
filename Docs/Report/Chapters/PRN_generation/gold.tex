@@ -7,7 +7,7 @@ generator gets two m-sequences sequences that fulfill:
 
 \begin{property}
   Given two m-sequences that can generate Gold Codes, $S1$ and $S2$, of length
-  $2^{n}-1$, $CC$ the crosscorrelation function defined in Equation \ref{eq:7}:
+  $2^{n}-1$, $CC$ the crosscorrelation function defined in Equation \eqref{eq:7}:
     \begin{equation}\label{gold:eq:1}
       max |CC(S1, S2)| \leq 2^{\frac{n+2}{2}}
     \end{equation}
@@ -18,7 +18,7 @@ And XORs all their relative shifts generating a family of $2^{n} + 1$ sequences
 
 \begin{property}
   Given any two sequences, S1 and S2, from a Gold family of sequences of length
-  $2^{n}-1$, $CC$ the crosscorrelation function defined in Equation \ref{eq:7}:
+  $2^{n}-1$, $CC$ the crosscorrelation function defined in Equation \eqref{eq:7}:
   \begin{equation}
         max |CC(S1, S2)| \leq \left\{\begin{array}{lr}
             2^{\frac{n+2}{2}}+1 & \textnormal{ if n is even } \\
@@ -47,7 +47,7 @@ using a decimation of one m-sequence.
 \begin{property}
   Given a m-sequence $S$ of length $2^n - 1$ where n is odd and and a
   coprime of $n$ named $k$, the sequence pair $(S, S[2^{k} + 1])$ number
-  fulfills equation \ref{gold:eq:1}.
+  fulfills Equation \eqref{gold:eq:1}.
 \end{property}
 
 \begin{figure}[ht!]
