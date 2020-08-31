@@ -1,5 +1,5 @@
 \chapter{Implementation}
-  In this chapter, we will introduce some specifications of the implementation
+  This chapter introduces some specifications of the implementation
   of our solution.\\
 
 
@@ -12,14 +12,15 @@
         computing all the displacements of the sequence and then
         their correlation with the base sequence as shown in Figure
         \ref{naive_auto:fig:1}. Even though this algorythm it's simple and
-        follows the mathematical definition, is too slow. We have to compute
-        the correlation function for each component, leading us to a
-        complexity of $O(n^{2})$ where n it the size of the sequence with a
-        huge constant as we have to build the shifted sequence for each
-        component.\\
+        follows the mathematical definition, is too slow. The correlation function
+        for each component have to be computed, leading to a
+        complexity of $O(n^{2})$ (where $n$ is the size of the sequence) with a
+        huge constant as building the shifted sequence for each
+        component is needed.\\
 
-        This constant can be improved if we avoid building the shifts (just
-        using slices of the array), but the complexity would stay the same.
+        This constant can be improved if building the shifts (just
+        using slices of the array) is avoided, but the complexity would stay the
+        same.
 
       \subsection{Circular convolution theorem}
         The other option is to step in the world of mathematical properties.
@@ -37,11 +38,11 @@
         Notice that, using the Fast Fourier
         Transform\cite{fast_fourier_transform}, the complexity of this
         method lowers to $O(N log N)$. However, its constant is
-        still high as we need to apply 2 FFT to the sequence and apply the
-        complex conjugate. In fact, we need to keep in mind that Fourier
+        still high as applying 2 FFT to the sequence and apply the
+        complex conjugate is needed. In fact, keep in mind that Fourier
         Transforms works with complex components while the naive approach keeps
-        using the same type of components which makes its constant even higher
-        than the naive approach.
+        using the same type as the components which makes its constant even higher
+        than the optimized naive approach.
 
           \begin{figure}
             \inputpython{Chapters/Implementation/naive.py}{0}{100}
@@ -51,25 +52,26 @@
 
       \subsection{Specific solution for the composition method}
 
-      If we were to use a general method for this computation, we would
-      probably use the one based on Fourier Transforms because we will be
-      dealing with long sequences that will compensate the big constant of
-      this method.\\
+      If a general method for this computation were used, the one based on the
+      convolution theorem would be preferred because the program is
+      expected to deal with long sequences that will compensate the big constant
+      of this method.\\
 
-      However, we are dealing with sequences with the special property of
-      having been built through the composition method. This means that we
-      might find a non general way of computing this autocorrelation with better
-      computational characteristics.\\
+      However, the sequences this program is dealing with has the special property
+      of having been built through the composition method. This means that a non
+      general way of computing this autocorrelation with better
+      computational characteristics exploting the pecularities of this
+      construction might exist.\\
 
-      If we take advantage of Property \ref{composition:prop:1}, we can design
-      an algorythm with interesting properties. First of all, the complexity
+      Taking advantage of Property \ref{composition:prop:1},an algorythm with
+      interesting properties can be designed. First of all, the complexity
       function depends on the size of the shift sequence. Being $m$ the
       length of the shift sequence and $n$ the length of the composite
       sequence, the resulting algortyhm has a complexity of $O(nm)$. This means
       that when $m < log(n)$ this algorythm has a better complexity than the
       Fourier Transform's approach.\\
 
-      In addition, this algorythm has a better constant. We just need to
+      In addition, this algorythm has a better constant. It only needs to
       iterate once through the autocorrelation sequence. This method is more
       cache friendly too as the data source of the function is smaller and it
       doesn't need to use complex operations in binary sequences.\\
@@ -77,23 +79,25 @@
       But the biggest improvement in respect of the Fourier Transform is that
       the complexity of a partial result of size $p$ is $O(mp)$ while the
       convolution theorem requires $O(nlog(n))$ for a partial result. In
-      practice this means that if we just want to check a certain component
-      of the autocorrelation we have no need to compute the whole function.\\
+      practice this means that, if just checking a certain component
+      of the autocorrelation is needed, there is no need to compute the whole
+      function.\\
 
-      An example implementation of this algorythm is shown in Figure \ref{composite_auto:fig:1}.
+      An example implementation of this algorythm is shown in Figure
+      \ref{composite_auto:fig:1}.
 
       \begin{figure}[ht!]
         \inputpython{Chapters/Implementation/composite.py}{0}{100}
         \caption{The Cython implementation of the composite autocorrelation.
-        Notice that we used branchless programming to improve performance.}
+        Notice that branchless programming is used to improve performance.}
         \label{composite_auto:fig:1}
       \end{figure}
 
   \section{Single-threaded Branch and Bound}
 
-  The theoretical approach for the Branch and Bound algorithm has already
-  explained. In this section, we introduce the actual implementation we used
-  in the project in Figure \ref{composite_auto:fig:2}.
+  The theoretical approach for the Branch and Bound algorithm has been already
+  explained. In this section, just the actual implementation that was used
+  in the project is shown in Figure \ref{composite_auto:fig:2}.
 
   \begin{figure}[ht!]
     \inputpython{Chapters/Implementation/branch_and_bound.py}{0}{100}
@@ -105,21 +109,20 @@
 
   \section{Parallelism model}
 
-  For the parallelism of the project, we decided to work with MPI. This model
+  For the parallelism of the project, it was decided to work with MPI. This model
   was implemented in pure Python as there was no need for a high performance in
   this part of the software (as the time spent in this code is already
   minimal).\\
 
-  However, we need a low latency assignation of tasks. If we did use shared
-  memory, every node would need to access memory through the "slow"
-  interconnection network. Instead, with MPI, we can make the proccesses to
-  talk between them.\\
+  However, a low latency assignation of tasks is needed. If shared
+  memory was used, every node would need to access memory through the "slow"
+  interconnection network. Instead, with MPI, proccesses to talk between them.\\
 
-  For the purpose of this project, we are going to work with
-  MPICH\cite{mpich} as the bindings of MPI4PY support it and it's
-  the implementation of the cluster we are working with\cite{calderon}.\\
+  For the purpose of this project, MPICH\cite{mpich} is used as the bindings of
+  MPI4PY support it and it's the implementation of the cluster we are working
+  with\cite{calderon}.\\
 
-  In our particular problem, we decided to define a set of tasks to
+  In our particular problem, a set of tasks was defined to
   distribute between the different nodes. This tasks are subtrees from the
   search space with a given height that defines the size of the task. An
   example is show in Figure \ref{tasks:fig:1}. Notice that the tasks are
@@ -135,11 +138,11 @@
     \label{tasks:fig:1}
   \end{figure}
 
-  This model is a good first version. However if we don't prune when assigning
-  the tasks we will still have an exponential number of tasks (specifically,
-  $n^{l-t}$ where $n$ is the length of the base sequence, $l$ the length of
-  the shift sequence and $t$ the task size). This shouldn't be a problem if
-  $t$ is close to $l$, but this will raise an issue with the task balancer as
+  This model is a good first version. However, if a prune isn't performed when
+  assigning the tasks, there will still be an exponential number of tasks
+  (specifically, $n^{l-t}$ where $n$ is the length of the base sequence, $l$ the
+  length of the shift sequence and $t$ the task size). This shouldn't be a problem
+  if $t$ is close to $l$, but this will raise an issue with the task balancer as
   there wouldn't be enough tasks to balance the load.\\
 
   A second version of the algorithm applies the branch and bound algorythm in
@@ -161,20 +164,20 @@
     \label{parallelism_example:fig:2}
   \end{figure}
 
-  A third version (which we didn't implement because the second version was
-  enough for our objective) could be done by using the Hamming as an
+  A third version (which wasn't implemented because the second version was
+  enough for our objectives) could be done by using the Hamming as an
   heuristic to determine the size of the task. Instead of using a fixed size
-  for the subtrees, we can give the tasks to the process at hand based on the
+  for the subtrees, the tasks to can be given to the process at hand based on the
   Hamming autocorrelation of the root of the task.\\
 
   \section{UI implementation}
 
-  Last but not least, we will briefly discuss the design of the User Interface.
+  Last but not least, the design of the User Interface will be briefly discussed.
   As expressed in the chapter of Sofware Engineering, our primary focus is
-  its compatibility with command lines. For that, we used a POSIX compatible
-  interface.\\
+  its compatibility with command lines. For that, a POSIX compatible
+  interface was created.\\
 
-  First, we provided a --help option to list all the flags:
+  First, a --help option was developed to list all the flags:
   \begin{lstlisting}
     $ python main.py --help
     usage: python main.py [option...]
@@ -234,7 +237,7 @@
 
   \end{lstlisting}
 
-  Notice that, as we are using stdout, we can pipe the log to a file. The
+  Notice that, as stdout is used, the log can be piped to a file. The
   output format is designed in a way that eases the use of utilities such as
   awk to proccess the data of the program (one word message, well defined
   columns, etc.).\\
@@ -242,3 +245,4 @@
   Verbosity is completly optional and doesn't impact performance when inactive.
   It's particularly useful when tweaking the parameters to get the best
   configuration.\\
+  
