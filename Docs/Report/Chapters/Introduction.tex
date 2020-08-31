@@ -2,14 +2,15 @@ Advances in wireless comunication and signal proccesing have drastically
 changed the capabilities of transmitting information. Several wireless
 networks can operate in the same channel thanks to technologies like
 CDMA. Similarly, GPS\cite{GPS} satellites using direct-sequence spread
-spectrum(DSSS) can broadcast their information to provide it's service. We can
-even measure long distances with the help of radar technologies which depend on
-analyzing the eco of a sent signal to calculate the distance to a target.\\
+spectrum(DSSS) can broadcast their information to provide it's service. Long
+distances can be measured with the help of radar technologies. This
+technology depends on analyzing the eco of a sent signal to calculate the
+distance to a target.\\
 
 For several developments on signal proccesing, sequences with good properties
 of crosscorrelation and autocorrelation function are needed to work. To keep
 things simple and just for ilustration purposes, we are going to focus in just
-two technologies: spread-spectrum and radar.\\
+two technologies through this document: spread-spectrum and radar.\\
 
 The direct-sequence spread spectrum technology\cite{DSSS_1}\cite{DSSS} is
 designed to fraction a given frecuency band between multiple transmissions. To
@@ -24,9 +25,8 @@ each individual transmission but avoids time division and improves security to
 jamming. This system is suitable to be used in applications with low volume
 of information transmision but with several emitter such as GPS. In GPS,
 satellites broadcast their current position and timestamp and from that
-we can compute the distance to the sattelite. Having the signal of some more,
-we can triangulate our position.\\
-
+the distance to the sattelite can be computed. Having the signal of some more,
+the position of the receiver can be triangulated.\\
 
 A radar (radio detection and ranging) uses a radio-frequency electromagnetic
 signal reflected from a target to determine properties such as position, speed,
@@ -37,8 +37,8 @@ round trip time of the sent signal using the autocorrelation function. When
 the signal returns to the receiver, the correlation between the original
 signal and the received one will have a correlation spike.\\
 
-In this chapter, we will introduce the  auto and crosscorrelation function for
-periodic binary sequences and its mathematical properties. We will also take a
-look at pseudorandom sequences, its properties and practical applications.
+In this chapter, the auto and crosscorrelation function for
+periodic binary sequences and its mathematical properties will be introduced
+as well as pseudorandom sequences, its properties and practical applications.
 
  \input{Chapters/Introduction/functions.tex}
