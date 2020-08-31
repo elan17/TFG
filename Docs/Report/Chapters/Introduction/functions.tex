@@ -36,7 +36,7 @@ Given $\alpha$ and $\beta$ two vectors of the same length n and $\alpha_{i}$
 and $\beta_{i}$ the components of the vectors:
 
 \begin{equation}\label{eq:1}
-C(\alpha , \beta)=\frac{(\alpha \cdot  \beta)}{|\alpha||\beta|}=\frac{\sum_{i=1}^{n} \alpha_{i}\beta_{i}}{(\sum_{i=1}^{n} \alpha_{i}^{2})^{\frac{1}{2}}(\sum_{i=1}^{n} \beta_{i}^{2})^\frac{1}{2}}.
+C(\alpha , \beta)=\frac{(\alpha \cdot  \beta)}{|\alpha||\beta|}=\frac{\sum_{i=0}^{n-1} \alpha_{i}\beta_{i}}{(\sum_{i=0}^{n-1} \alpha_{i}^{2})^{\frac{1}{2}}(\sum_{i=0}^{n-1} \beta_{i}^{2})^\frac{1}{2}}.
 \end{equation}
 \end{definition}
 
@@ -62,7 +62,7 @@ analysis. The unnormalized correlation is defined as:
   Given $\alpha$ and $\beta$ two vectors of the same length n and $\alpha_{i}$
   and $\beta_{i}$ the components of the vectors:
   \begin{equation}\label{eq:2}
-    C(\alpha , \beta) = (\alpha \cdot  \beta) = \sum_{i=1}^n(\alpha \odot \beta)_{i}= \sum_{i=1}^{n} \alpha_{i}\beta_{i}
+    C(\alpha , \beta) = (\alpha \cdot  \beta) = \sum_{i=0}^{n-1}(\alpha \odot \beta)_{i}= \sum_{i=0}^{n-1} \alpha_{i}\beta_{i}
   \end{equation}
 
   where "$\odot$" represents the pointwise product of vectors.
@@ -114,7 +114,7 @@ sequence S
   shift(S, \tau)_i = S_{(i+\tau) \bmod n}
 \end{equation}
 \begin{equation}\label{eq:4}
-  A(S)_{\tau} = C(S, shift(S, \tau)) = \sum_{i=1}^{n}S_{i}S_{(i+\tau) \bmod n}
+  A(S)_{\tau} = C(S, shift(S, \tau)) = \sum_{i=0}^{n-1}S_{i}S_{(i+\tau) \bmod n}
 \end{equation}
 
 \end{definition}
@@ -134,9 +134,9 @@ An example  is shown in Figure
 the autocorrelation of sequences can be observed:
 
 \begin{theorem}\label{theorem:1.2.1}
-  Given a sequence S, the autocorrelation value for $\tau = 1$ is:
+  Given a sequence S, the autocorrelation value for $\tau = 0$ is:
     \begin{equation}
-      A(S)_{1}=C(S, S)=\sum_{i=1}^{n}S_{i}^2
+      A(S)_{0}=C(S, S)=\sum_{i=0}^{n-1}S_{i}^2
     \end{equation}
 \end{theorem}
 
@@ -144,7 +144,7 @@ the autocorrelation of sequences can be observed:
   Given the unnormalized autocorrelation of a sequence, it can be normalized
   by dividing it as follows:
   \begin{equation}
-    A'(S)_{\tau} = \frac{A(S)_{\tau}}{A(S)_{1}}
+    A'(S)_{\tau} = \frac{A(S)_{\tau}}{A(S)_{0}}
   \end{equation}
 \end{corollary}
 
@@ -152,7 +152,7 @@ the autocorrelation of sequences can be observed:
   Using Equations \eqref{eq:1} and \eqref{eq:4}, Equation \eqref{eq:4} can be
   normalized as follows:
 
-    $$A'(S)_{\tau} = C'(S, shift(S, \tau)) = \frac{C(S, shift(S, \tau))}{(\sum_{i=1}^{n} S_{i}^{2})^{\frac{1}{2}}(\sum_{i=1}^{n} S_{i+\tau}^{2})^\frac{1}{2}} = \frac{A(S)_{\tau}}{\sum_{i=1}^{n} S_{i}^{2}} = \frac{A(S)_{\tau}}{A(S)_{1}}$$
+    $$A'(S)_{\tau} = C'(S, shift(S, \tau)) = \frac{C(S, shift(S, \tau))}{(\sum_{i=0}^{n-1} S_{i}^{2})^{\frac{1}{2}}(\sum_{i=0}^{n-1} S_{i+\tau}^{2})^\frac{1}{2}} = \frac{A(S)_{\tau}}{\sum_{i=0}^{n-1} S_{i}^{2}} = \frac{A(S)_{\tau}}{A(S)_{0}}$$
 
   Keep in mind that, even though $S_{i}^2$ and $S_{i+\tau}^2$ aren't the same
   element, the elements of the shifted version are the same as the original
@@ -160,7 +160,7 @@ the autocorrelation of sequences can be observed:
 \end{proof}
 
 \begin{corollary}\label{autocorrelation:coro:1}
-  Given the autocorrelation of a sequence, $A(S)_{1}$ will always be the
+  Given the autocorrelation of a sequence, $A(S)_{0}$ will always be the
   maximum value of the autocorrelation.
 \end{corollary}
 
@@ -193,7 +193,7 @@ signals can be mistaken one for another by a receiver when delays in time occur.
 \begin{definition}[Crosscorrelation]\label{def:4}
   Given C the correlation function defined in Equation \eqref{eq:2}, shift as the function defined in Equation \eqref{eq:3} and n the length of both sequences:
   \begin{equation}\label{eq:7}
-    CC(S1, S2)_{\tau} = C(S1, shift(S2, \tau)) = \sum_{i=1}^{n}S1_{i}S2_{(i+\tau) \bmod n}
+    CC(S1, S2)_{\tau} = C(S1, shift(S2, \tau)) = \sum_{i=0}^{n-1}S1_{i}S2_{(i+\tau) \bmod n}
   \end{equation}
 \end{definition}
 
