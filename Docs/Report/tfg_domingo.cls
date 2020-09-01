@@ -268,16 +268,16 @@
 \newtheorem{property}{Property}[section]
 \setcitestyle{numbers}
 
-%\let\oldsection\section
-%\renewcommand\section{%
-%  \FloatBarrier
-%  \oldsection
-%}
+\let\oldsection\section
+\renewcommand\section{%
+  \FloatBarrier
+  \oldsection
+}
 
-%\let\oldsubsection\subsection
-%\renewcommand\subsection{%
-%  \FloatBarrier
-%  \oldsubsection
-%}
+\let\oldsubsection\subsection
+\renewcommand\subsection{%
+  \FloatBarrier
+  \oldsubsection
+}
 
 \endinput

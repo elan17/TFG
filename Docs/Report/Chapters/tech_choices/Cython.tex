@@ -1,7 +1,7 @@
 \section{Cython}
 
 Python as a language comes in several implementations. CPython as the reference
-implementation has it's flaws, mainly because of it's performance issues. As the
+implementation has it's flaws, mainly it's performance issues. As the
 software being developed has performance constraints, using just the reference
 implementation is not an option.\\
 
@@ -45,11 +45,11 @@ computation is done in C.\\
 \end{figure}
 
 One might think that, if vector operations are so efficient in CPython, it would
-be simpler to just use Numpy methods to implement our algorythms (which was done
-indeed did in the general autocorrelation function with Wiener–Khinchin's
-algorythm). The problem raises when it is needed to access the Numpy array in an
-undefined way by the library and to code a loop to compute a function
-(the composite autocorrelation for example).\\
+be simpler to just use Numpy methods to implement our algorythms (which was
+indeed done in the general autocorrelation function with the algortyhm
+based on the convolution theorem). The problem raises when it is needed to
+access the Numpy array in an undefined way by the library and to code a loop to
+compute a function (the composite autocorrelation for example).\\
 
 Cython provides native support for Numpy arrays, letting us access them with a
 C level performance. In fact, as it supports fused types (the equivalent to

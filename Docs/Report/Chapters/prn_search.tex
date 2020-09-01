@@ -42,7 +42,7 @@
   to the autocorrelation based on how complementing a single symbol of the
   sequence affects the autocorrelation.\\
 
-  First of all, the recursion is done by picking a sequence and recursivily
+  First of all, the recursion is done by picking a sequence and recursively
   fixing elements at the extremes of the sequence as shown in Figure
   \ref{prn_search:fig:1}.\\
 
@@ -78,7 +78,7 @@
   Mertens optimized sucessfully up to $N = 48$.\\
 
   This work was further improved in \citet{Packebusch_2016}. In this paper,
-  they review 2 bounds provided by different authors(Prestwich and
+  they review 2 bounds provided by different authors (Prestwich and
   Wiggenbrock) and combine them to create a new bound that lowers the
   complexity to $O(1.729^N)$, solving the LABS problem up to $N = 66$. This
   record was broken by \citet{anatoli} by computing it up to $N = 85$.\\
@@ -163,10 +163,7 @@
     \label{bb:fig:1}
   \end{figure}
 
-  Several things can be deduced from Figure \ref{bb:fig:1}:
-  \begin{itemize}
-    \item The number of autocorrelations computed can be reduced by a significant
-    amount.
-    \item The computation on each branch isn't balanced. This must be taken
-    into account when we design the parallelism model.
-  \end{itemize}
+  Some properties of the algorythm can be deduced from Figure \ref{bb:fig:1}.
+  First of all, the number of autocorrelations computed can be reduced by a
+  significant amount. However, the computation on each branch isn't balanced. This
+  must be taken into account when the parallelism model is designed.

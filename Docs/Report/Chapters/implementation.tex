@@ -18,8 +18,8 @@
         huge constant as building the shifted sequence for each
         component is needed.\\
 
-        This constant can be improved if building the shifts (just
-        using slices of the array) is avoided, but the complexity would stay the
+        This constant could be improved by avoiding building the shifts (just
+        using slices of the array), but the complexity would stay the
         same.
 
       \subsection{Circular convolution theorem}
@@ -40,7 +40,7 @@
         method lowers to $O(N log N)$. However, its constant is
         still high as applying 2 FFT to the sequence and the
         complex conjugate is needed. In fact, keep in mind that Fourier
-        Transforms works with complex components (however, according to
+        Transforms work with complex components (however, according to
         Property \ref{autocorrelation:prop:1}, it will always return
         the same type as the original sequence) while the naive approach keeps
         using the same type as the components which makes its constant even higher
