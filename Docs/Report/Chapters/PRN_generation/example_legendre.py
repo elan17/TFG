@@ -1,3 +1,6 @@
+def quadratic_residues(p):
+    return set([i**2 %p for i in range(p)])
+
 def legendre_symbol(a, p):
     residues = quadratic_residues(p)
     m = a % p

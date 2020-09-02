@@ -1,24 +1,24 @@
 \section{Gold Codes}
 
-Gold codes\cite{gold_codes} are a family of sequences, derived from
-m-sequences, with very important properties that are used in several
-applications such as wireless communication and geolocalisation. A Gold Code
-generator gets two m-sequences sequences that fulfill:
+Gold codes\cite{gold_codes} are a family of sequences derived from
+m-sequences, with good properties to several
+applications such as wireless communication and geolocalization.\\
 
-\begin{property}
-  Given two m-sequences that can generate Gold Codes, $S1$ and $S2$, of length
-  $2^{n}-1$, $CC$ the crosscorrelation function defined in Equation \eqref{eq:7}:
-    \begin{equation}\label{gold:eq:1}
+A Gold Code generator gets two m-sequences $S1$ and $S2$  of length
+ $2^{n}-1$ ($n$ is a natural number), that fulfill that the crosscorrelation function $CC$ (See Equation \eqref{eq:7}) is 
+  \begin{equation}\label{gold:eq:1}
       max |CC(S1, S2)| \leq 2^{\frac{n+2}{2}}
     \end{equation}
-\end{property}
 
-And XORs all their relative shifts generating a family of $2^{n} + 1$ sequences
-($2^{n} - 1$ XORed sequences + 2 m-sequences).
+The family called Gold codes is defined by the sequence 
+$$
+\{S_1, S_2, S_1\oplus S_2, S_1\oplus shift(S_2, 1), \ldots, S_1\oplus shift(S_2,2^n-2)\}.
+$$
+
 
 \begin{property}
-  Given any two sequences, S1 and S2, from a Gold family of sequences of length
-  $2^{n}-1$, $CC$ the crosscorrelation function defined in Equation \eqref{eq:7}:
+  Given any two sequences, $S1$ and $S2$, from a Gold family of sequences of length
+  $2^{n}-1$,  the crosscorrelation function $CC$ defined in Equation \eqref{eq:7} satisfies 
   \begin{equation}
         max |CC(S1, S2)| \leq \left\{\begin{array}{lr}
             2^{\frac{n+2}{2}}+1 & \textnormal{ if n is even } \\
@@ -28,33 +28,29 @@ And XORs all their relative shifts generating a family of $2^{n} + 1$ sequences
 \end{property}
 
 This property means that the crosscorrelation between any given pair of
-sequences from a Gold family is low enough to differentiate them. This proves
-useful when several devices are transmiting in the same frecuency and
-signals that are not the one being received must be treated as
-noise.\\
+sequences from a Gold family is low enough to differentiate them.
+ In practical, several devices can transmit over the same medium, then the receiver can recover the information only if it knows the corresponding Gold code. In other case it  resembles noise.
 
-Gold also showed  a way to generate this pair of sequences,
-using a decimation of one m-sequence.
+Gold also proposed  a way to find $S1$ and $S2$ by decimation..
 
 \begin{definition}[Decimation]
-  Given a sequence $S$ of length $n$, a decimation by $q$ of $S$ is defined as:
+  Given a sequence $S$ of length $n$, a decimation by $q$ of $S$ is defined as
   \begin{equation}
-    S[q]_{i} = S_{((q·i) \bmod n)}
+    S[q]_{i} = S_{((q·i) \bmod n)}.
   \end{equation}
 \end{definition}
 
 \begin{property}
-  Given a m-sequence $S$ of length $2^n - 1$ where n is odd and and a
-  coprime of $n$ named $k$, the sequence pair $(S, S[2^{k} + 1])$ number
-  fulfills Equation \eqref{gold:eq:1}.
+  Given a m-sequence $S$ of length $2^n - 1$, where n is odd and
+  coprime with an integer $k$, the sequence pair $(S, S[2^{k} + 1])$ 
+  satisfies Equation \eqref{gold:eq:1}.
 \end{property}
 
 \begin{figure}[ht!]
   \inputpython{Chapters/PRN_generation/example_gold.py}{0}{100}
-  \caption{An example implementation of a generation of a family of gold
-  sequences relying in the example at Figure \ref{mls:fig:1}.}
+  \caption{An  implementation of a Gold family generator family in Python}
   \label{}
 \end{figure}
 
-Notice that this construction has the same problem as m-sequences. It's
-an exponential contruction so it might not be enough for some applications.
+
+Notice that this construction has the same problem as m-sequences, which is that only few choices of  sequence length are possible . It may not be suitable for some applications.

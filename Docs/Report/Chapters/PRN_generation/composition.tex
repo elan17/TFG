@@ -1,10 +1,10 @@
 \section{Composition method}
 
-\subsection{Algorythm}
+\subsection{Algorithm}
 
-The composition method (introduced by \citet{tirkel_composition} as Prime
-Arrays) uses a base sequence and a sequence of shifts to create a matrix of
-sequence components as follows:
+The composition method  was introduced by \citet{tirkel_composition}, initially called prime
+arrays,  uses a base sequence and a sequence of shifts to create a matrix  whose columns are 
+shifts of the base sequence as follows:
 
 \begin{definition}[Composite matrix]
   Given a base sequence $S$ of length $n$ and a sequence of integers $T$ of
@@ -17,7 +17,7 @@ sequence components as follows:
   \end{equation}
 
   Given the $shift$ function defined in Equation \eqref{eq:3},
-   the composite matrix is defined as:
+   the composite matrix is defined as
 
   \begin{equation}\label{composition:eq:3}
     CM(S, T) = \begin{bmatrix}
@@ -28,20 +28,20 @@ sequence components as follows:
     \end{bmatrix}
   \end{equation}
 
-  In other words, each column represents a shift of the base sequence defined
-  by the sequence of shifts.
+%  In other words, each column represents a shift of the base sequence defined
+ % by the sequence of shifts.
 \end{definition}
 
 \begin{definition}[Composite sequence]
-  Given a base sequence $S$ of length $n$ and a sequence of integers $T$ of
-  length $m$ that fulfill Equations \eqref{composition:eq:1} and
+  Given a base sequence $S$ of length $n$, a shift sequence $T$ of
+  length $m$ that satisfy Equations \eqref{composition:eq:1} and 
   \eqref{composition:eq:2} and the composite matrix defined at Equation
   \eqref{composition:eq:3}, the composite sequence is defined as:
   \begin{equation}
     CS(S, T)_{i} = CM(S, T)_{(i \bmod m), (i \bmod n)}
   \end{equation}
 \end{definition}
-
+The fact that the sequence has length $nm$ and the correlation function can be deduce from the matrix is a consequence of the Chinese Remainder Theorem.  This is informally called the diagonal method, because it unfolds the array following the diagonal and using the wrap around provided by the modulo operation.
 \begin{figure}[ht!]
   $$S = \begin{bmatrix}
     0 & 1 & 2 & 3 & 4\\
@@ -60,16 +60,15 @@ sequence components as follows:
   $$
   $$CS(S, T) = \text{[0 4 1 4 1 4 1 0 2 0 2 0 2 1 3 1 3 1 3 2 4 2 4 2 4 3 0 3 0 3]}\\
   $$
-  \caption{Example of a computation of the composition method(note that
-  a non-binary sequence is used to illustrate better the method).}
+  \caption{Example of a computation of the composition method. For clarity purposes, the example uses a non binary base sequence.}
   \label{}
 \end{figure}
 
 \begin{definition}[Composite matrix correlation]
-  Given 2 composite matrixes $M0$ and $M1$ with $n$ rows and $m$ columns,
-  it's correlation is defined as:
+  Given two composite matrices $M$ and $R$ with $n$ rows and $m$ columns,
+  its correlation is defined as
   \begin{equation}
-    C(M0, M1) = \sum_{i=0}^{m-1}\sum_{j=0}^{n-1}M0_{j, i}M1_{j,i}
+    C(M, R) = \sum_{i=0}^{m-1}\sum_{j=0}^{n-1}M_{j, i}R_{j,i}.
   \end{equation}
 \end{definition}
 
@@ -80,7 +79,7 @@ sequence components as follows:
     shift(M, \tau)_{i, j} = M_{(i-\tau \bmod m), (j-\tau \bmod n)}
   \end{equation}
 \end{definition}
-This means that the following relation can be stablished:
+This means that the following relation can be established:
   \begin{corollary} Getting a shift of the composite sequence is equivalent to
   applying a shift to the matrix and then extracting the corresponding
   sequence.
@@ -89,20 +88,18 @@ This means that the following relation can be stablished:
     \end{equation}
   \end{corollary}
 
+The previous corollary has an interesting implication for computing the autocorrelation function.
 
-When the autocorrelation function is defined for a composite matrix, an
-interesting property arises:
-
-\begin{definition}
-  Given a composite matrix $M$ of $n$ rows and $m$ columns, it's
+\begin{corollary}
+  Given a composite matrix $M$ of $n$ rows and $m$ columns, its
   autocorrelation function is defined as:
   \begin{equation}
     \begin{split}
       A(M)_{\tau} = C(M, shift(M, \tau)) = \sum_{i=0}^{m-1}\sum_{j=0}^{n-1}M_{j, i}M_{(j-\tau \bmod m),(i - \tau \bmod n)} = \\
-      \sum_{i=0}^{m-1}\sum_{j=0}^{n-1}shift(S, T_{i})_{j}shift(S, T_{(i - \tau \bmod n)})_{(j-\tau \bmod m)}
+      \sum_{i=0}^{m-1}\sum_{j=0}^{n-1}shift(S, T_{i})_{j}shift(S, T_{(i - \tau \bmod n)})_{(j-\tau \bmod m)}.
     \end{split}
   \end{equation}
-\end{definition}
+\end{corollary}
 
 Notice that if $i$ is kept constant, a particular component of the
 autocorrelation function of $S$ is obtained.
@@ -120,20 +117,18 @@ sequence can be defined in terms of the autocorrelation function as follows:
 
 \end{property}
 
-This property will prove useful in our software project as it's a fast method
-of computing the autocorrelation function.
+This property is useful  as a fast method for computing the autocorrelation function for composed sequences and this will be implemented for efficiency. 
 
 \subsection{Costas arrays}
 
 Costas arrays, discovered independently by John P. Costas\cite{costas_costas}
-and E.N. Gilbert \cite{gilbert_costas} in 1965, are a set of sequences highly
-used in radar and sonar applications. Both definitions will be provided
-as both will be useful for different purposes:
+and E.N. Gilbert \cite{gilbert_costas} in 1965, are a family of sequences highly
+used in radar and sonar applications. The equivalent definitions from both works has been included as both will be useful for different purposes.
 
-\begin{definition}[Costas array(Costas)]
-  Square matrix of size $n×n$ filled with 0s and 1s such that there
-  aren't more than multiple 1s in each row or column and that every
-  displacement vector is distinct from the rest.
+\begin{definition}[Costas array by Costas cite{costas_costas})]
+ An Square matrix of size $n×n$  is filled with 0s and 1s such that there is a single
+ 1 in each row and column. Thus if the
+  displacement vector is calculated by substracting all pairs of positions of the 1s, then  the results are unique.
 \end{definition}
 
 This definition is used in several deployments of sonar and radar to generate
@@ -157,7 +152,7 @@ Notice that the representation can be compacted by just having a list of the
 rows in which each 1 lives:
 
 \begin{figure}[ht!]
-  $$[4, 2, 1, 3]$$
+  $$[3, 1, 0, 2]$$
   \caption{The compact representation of the Costas array of Figure
   \ref{fig:costas_1}.}
   \label{fig:costas_2}
@@ -179,7 +174,7 @@ by Gilbert:
 \end{definition}
 
 \begin{definition}[Costas array(Gilbert)]
-  Given a sequence $S$ satisfying Equation \eqref{eq:costas_1}, it's called a
+  Given a sequence $S$ satisfying Equation \eqref{eq:costas_1}, it is called a
   Costas array if, for any given $r$ value, it satisfies Equation
   \eqref{eq:costas_2}.
 \end{definition}
@@ -188,20 +183,17 @@ This compact representation can be feeded into the composition method as
 a sequence of shifts generating interesting new
 sequences\cite{moreno_costas}.\\
 
-Several construction methods have
-been proposed. For sake of simplicity, just the Welsh
-construction will be introduced which is defined in Gilbert\cite{gilbert_costas}
-as:\\
+Several construction methods for Costas arrays have
+been proposed. For sake of simplicity, just the Welch
+construction will be introduced following the work of  Gilbert\cite{gilbert_costas}.
 
-Given a prime number $p$ and a primitive root $g$ of $p$, a Costas array $S$
+Given a prime number $p$ and a primitive root $g$ of $p$ such as all the powers of $g$ in $[0, p-1]$ modulo $p$ are different from each other.  A Costas array $S$
 can be constructed as follows:
 \begin{equation}
-  S_{i} \equiv g^{i} \bmod p
+  S_{i} \equiv g^{i} \bmod p, \quad 0 \leq i <p-1
 \end{equation}
 
-Notice that this contruction can generate sequences of a prime length as
-the Legendre Sequences. However, it can generate several sequences for a given
-length. As the number of possible sequences depend on the number of primitive
-elements of the finite field of order $p$, the number of possible costas arrays
+This  construction can generate sequences of  length $p-1$ for a given $g$. As the number of possible sequences depend on the number of primitive
+elements of the finite field of order $p$, the number of possible Costas arrays
 for a given length using this construction is $\phi(p-1)$ where $\phi$ is the
-Euler's totient function.
+Euler's totient function. \domingo{Meter referencia a la totient function}

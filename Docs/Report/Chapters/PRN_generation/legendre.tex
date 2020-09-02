@@ -1,19 +1,19 @@
 \section{Legendre sequences}
 
 Legendre sequences, as explained in \citet{legendre_sequences}, are binary
-sequences defined through quadratic residues as follows:
+sequences defined through quadratic residues. A quadratic residue modulo $p$ is an integer number $x$ between $0$ and $p-1$ such as exist an integer y satisfying $x=y^2 \bmod p$.
 
 \begin{definition}
-  Let $p$ be an odd prime and the function "Legendre Symbol" be:
+  Let $p$ be an odd prime and the  Legendre Symbol function  be
     \begin{equation}
       LSy(n, p) = \left\{\begin{array}{lr}
           1  & \textnormal{if n is a quadratic residue mod p}   \\
           -1 & \textnormal{otherwise} \\
       \end{array}\right.
     \end{equation}
-  The Legendre Sequence can be defined as:
+  The Legendre sequence can be defined as:
     \begin{equation}
-      LSs(p)_{i} = LSy(i-1, p) \textnormal{  where  } 1 < i \leq p
+      LSs(p)_{i} = LSy(i-1, p) \textnormal{  where  } 0 \leq i \leq p-1
     \end{equation}
 \end{definition}
 
@@ -22,19 +22,8 @@ sequences defined through quadratic residues as follows:
   \caption{An example implementation of the generation of a Legendre sequence.}
   \label{}
 \end{figure}
+ Legendre sequences with length  satisfying $p=3\bmod 4$ have flat autocorrelation, i.e. 
+ the value of the autocorrelation for any nonzero shift is $-1$. There is a generalization of this property by \citet{legendre_sequences}  but it requires the sequence 
+ to be non-binary.\\ 
 
-Some Legendre Sequences have interesting autocorrelation properties:
-\begin{property}\label{property:2.3.1}
-  Given an odd prime $p$ such as $p \equiv 3 \bmod 4$,
-  $LSs(p)$ has a flat autocorrelation.\cite{legendre_sequences}
-\end{property}
-
-Even though \citet{legendre_sequences} has a generalization of property
-\ref{property:2.3.1} to all Legendre Sequences, it requires the introduction of
-a third symbol making the sequence non-binary. \\
-
-As $p$ is the variable defining the size of the generated sequence, the
-distribution of Legendre Sequences is related to the Prime Number Theorem. This
-means that Legendre Sequences have more possible lengths than in m-sequences or
-other exponential contructions. However, Legendre Sequences have the drawback
-that there is only one per sequence length.
+As $p$ is the length of the generated sequence, the distribution of Legendre sequences is related to the Prime Number Theorem. This means that Legendre sequences have more possible lengths than in m-sequences or other constructions based on them. However, Legendre sequences have the drawback that there exists only one per sequence length.

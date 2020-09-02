@@ -1,34 +1,22 @@
 \section{Binary sequences}
 
-Before diving into the matter, it is needed to point out the specific definition
-of binary sequences for this field:\\
-
-In computer science, binary symbols are normally defined with the set $\{0, 1\}$ to
+In computer science, binary symbols are normally defined by the set $\{0, 1\}$ to
 be used in boolean logic and arithmetics. This approach is useful when dealing
-with the inner workings of a computer or its theoretical constructs.\\
+with the inner workings of a computer or its theoretical constructs as it is a natural way to represent a binary state.\\
 
-However, the discussed topic in this work takes a mathematical approach. In fact,
-most parts of the theory exposed here are just specific versions of general
-definitions for complex numbers. With this in mind and to avoid redefining
-needlessly the equations, we will stick to sequences composed by the elements
-$1$ and $-1$, taken from the ring of integers.
-
-
-
-
-
-
-
+However, the discussed topic takes a general mathematical approach in this work, where there is not a direct equivalence to a bit. 
+In fact for designing sequences in $k$ symbols, each symbol correspond to a sequence whose elements are $k$ roots of unity in the complex numbers.
+With this in mind and to avoid  needlessly redefining the equations found in the literature, we will stick to sequences composed by the elements
+$1$ and $-1$, taken from the ring of integers $\mathbb{Z}$. Note that multiplying two sequences element by element is equivalent to the binary XOR operation.
 
 \section{Correlation function}
 
-According to \citet{golomb_ref}, the correlation function measures how similar
+According to Golomb\citet{golomb_ref}, the correlation function measures how similar
 two phenomena are. If properly normalized, the function ranges from
-+1 (identical) to -1 (opposite); 0 meaning completly unrelated phenomena.
-If those phenomena are represented as vectors, the correlation can be conceived
-as the normalized dot product between those 2 vectors.
-In the discrete case where both sequences have the same length, the one in which
-this project focus on, the normalized version is defined as follows:
++1 (identical) to -1 (opposite); 0 meaning statistical independent phenomena.
+For sequences represented as vectors, the correlation can be conceived
+as the normalized dot product between those two vectors.
+When both sequences have the same finite length the normalized version is defined as follows:
 
 \begin{definition}[Normalized correlation]\label{def:1}
 
@@ -36,7 +24,7 @@ Given $\alpha$ and $\beta$ two vectors of the same length n and $\alpha_{i}$
 and $\beta_{i}$ the components of the vectors:
 
 \begin{equation}\label{eq:1}
-C(\alpha , \beta)=\frac{(\alpha \cdot  \beta)}{|\alpha||\beta|}=\frac{\sum_{i=0}^{n-1} \alpha_{i}\beta_{i}}{(\sum_{i=0}^{n-1} \alpha_{i}^{2})^{\frac{1}{2}}(\sum_{i=0}^{n-1} \beta_{i}^{2})^\frac{1}{2}}.
+C(\alpha , \beta)=\frac{(\alpha \cdot  \beta)}{\|\alpha\|\|\beta\|}=\frac{\sum_{i=0}^{n-1} \alpha_{i}\beta_{i}}{(\sum_{i=0}^{n-1} \alpha_{i}^{2})^{\frac{1}{2}}(\sum_{i=0}^{n-1} \beta_{i}^{2})^\frac{1}{2}}.
 \end{equation}
 \end{definition}
 
@@ -50,13 +38,8 @@ representation:
   correlation value of -1.
 \end{itemize}
 
-Even though the normalized version is a good way to grasp the
-concept of the degree of similarity between two phenomen, for the rest of the
-document the unnormalized version is going to be used unless it is stated.
-This definition of the correlation function have several advantages for our
-research as it is simpler and carries the same amount of information while
-saving us some computation resources and complexity on our theoretical
-analysis. The unnormalized correlation is defined as:
+
+The unnormalized correlation has computational advantages over the normalized version, as can be computed using only sums and multiplications. For this reason, we recall the definition.
 
 \begin{definition}[Unnormalized correlation]\label{def:2}
   Given $\alpha$ and $\beta$ two vectors of the same length n and $\alpha_{i}$
@@ -269,8 +252,8 @@ deterministic and efficient fashion.\\
 
 This kind of sequences are called Pseudo Noise (PN). Although for most
 applications, the off peak autocorrelation and crosscorrelation should be equal to
-zero, it is conjetured that such sequence do not exist apart from length four. That
-is why pseudo noise are use in practical applications. Then a threshold is defined
+zero, it is conjectured that such sequence do not exist apart from length four. That
+is why pseudonoise are commonly employed in practical applications. Then a threshold is defined
 so that the system will not mistake intermediate values with the peak in the
 autocorrelation.
 

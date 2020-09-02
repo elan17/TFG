@@ -1,46 +1,98 @@
-This is BibTeX, Version 0.99d (TeX Live 2020/Arch Linux)
+This is BibTeX, Version 0.99d (TeX Live 2019)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: tfg.aux
 The style file: abbrvnat_trucado.bst
 Database file #1: refs.bib
-You've used 6 entries,
+Warning--entry type for "DSSS_1" isn't style-file defined
+--line 36 of file refs.bib
+Warning--string name "https://web.archive.org/web/20200729211042/https://apps.dtic.mil/dtic/tr/fulltext/u2/268167.pdf" is undefined
+--line 91 of file refs.bib
+Warning--entry type for "QuickCheck" isn't style-file defined
+--line 148 of file refs.bib
+Warning--entry type for "Hypothesis" isn't style-file defined
+--line 153 of file refs.bib
+Warning--entry type for "Sage" isn't style-file defined
+--line 165 of file refs.bib
+Warning--entry type for "cocalc" isn't style-file defined
+--line 170 of file refs.bib
+Warning--entry type for "Python" isn't style-file defined
+--line 175 of file refs.bib
+Warning--entry type for "Cython" isn't style-file defined
+--line 180 of file refs.bib
+Warning--entry type for "postgres" isn't style-file defined
+--line 203 of file refs.bib
+Warning--entry type for "POSIX_arguments" isn't style-file defined
+--line 208 of file refs.bib
+Warning--entry type for "mpich" isn't style-file defined
+--line 213 of file refs.bib
+Warning--entry type for "calderon" isn't style-file defined
+--line 218 of file refs.bib
+Warning--to sort, need author or key in POSIX_arguments
+Warning--to sort, need author or key in QuickCheck
+Warning--to sort, need author or key in Hypothesis
+Warning--to sort, need author or key in Sage
+Warning--to sort, need author or key in cocalc
+Warning--to sort, need author or key in Python
+Warning--to sort, need author or key in Cython
+Warning--to sort, need author or key in postgres
+Warning--to sort, need author or key in mpich
+Warning--to sort, need author or key in calderon
+Warning--empty year in Cython
+Warning--empty year in Hypothesis
+Warning--empty year in POSIX_arguments
+Warning--empty year in Python
+Warning--empty year in QuickCheck
+Warning--empty year in Sage
+Warning--empty year in calderon
+Warning--empty year in cocalc
+Warning--empty year in mpich
+Warning--empty year in postgres
+Warning--empty institution in costas_costas
+Warning--empty year in costas_costas
+Warning--empty year in costas_costas
+Warning--empty journal in GPS
+Warning--empty booktitle in moreno_costas
+Warning--empty year in DSSS_1
+Warning--empty journal in tirkel_composition
+You've used 32 entries,
             2796 wiz_defined-function locations,
-            647 strings with 5583 characters,
-and the built_in function-call counts, 2531 in all, are:
-= -- 260
-> -- 91
-< -- 5
-+ -- 33
-- -- 27
-* -- 181
-:= -- 440
-add.period$ -- 17
-call.type$ -- 6
-change.case$ -- 21
-chr.to.int$ -- 6
-cite$ -- 12
-duplicate$ -- 110
-empty$ -- 224
-format.name$ -- 35
-if$ -- 533
+            775 strings with 8163 characters,
+and the built_in function-call counts, 10542 in all, are:
+= -- 1020
+> -- 344
+< -- 21
++ -- 134
+- -- 102
+* -- 659
+:= -- 1634
+add.period$ -- 75
+call.type$ -- 32
+change.case$ -- 99
+chr.to.int$ -- 32
+cite$ -- 101
+duplicate$ -- 547
+empty$ -- 1066
+format.name$ -- 134
+if$ -- 2332
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 5
-newline$ -- 43
-num.names$ -- 24
-pop$ -- 46
+missing$ -- 20
+newline$ -- 158
+num.names$ -- 88
+pop$ -- 340
 preamble$ -- 1
-purify$ -- 15
+purify$ -- 66
 quote$ -- 0
-skip$ -- 80
+skip$ -- 426
 stack$ -- 0
-substring$ -- 121
-swap$ -- 6
-text.length$ -- 0
+substring$ -- 252
+swap$ -- 44
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 66
-warning$ -- 0
-while$ -- 27
+type$ -- 337
+warning$ -- 27
+while$ -- 76
 width$ -- 0
-write$ -- 94
+write$ -- 371
+(There were 39 warnings)

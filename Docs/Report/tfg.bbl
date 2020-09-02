@@ -1,45 +1,171 @@
-\begin{thebibliography}{6}
+\begin{thebibliography}{32}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[Dijkstra(1968)]{1968_Dijkstra}
-E.~W. Dijkstra.
-\newblock {GO TO} statement considered harmful.
-\newblock \emph{Commun. ACM}, 11\penalty0 (3):\penalty0 147--148, 1968.
-\newblock \\ \url{http://doi.org/10.1145/362929.362947}
+\bibitem[Cyt()]{Cython}
+Cython.
+\newblock \\ \url{https://cython.org/}
 
-\bibitem[Dijkstra(1987)]{1987_Dijkstra}
-E.~W. Dijkstra.
-\newblock On a somewhat disappointing correspondence, 1987.
-\newblock \\ \url{http://www.cs.utexas.edu/users/EWD/ewd10xx/EWD1009.PDF}
+\bibitem[Hyp()]{Hypothesis}
+Hypothesis library.
+\newblock \\ \url{https://hypothesis.readthedocs.io/en/latest/}
 
-\bibitem[Knuth(1974)]{1974_Knuth}
-D.~E. Knuth.
-\newblock Structured programming with {\bf go to} statements.
-\newblock \emph{ACM Comput. Surv.}, 6\penalty0 (4):\penalty0 261--301, 1974.
-\newblock \\ \url{http://doi.org/10.1145/356635.356640}
+\bibitem[POS()]{POSIX_arguments}
+Posix.
+\newblock \\
+  \url{https://web.archive.org/web/20200804110243/https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html}
 
-\bibitem[Knuth y Floyd(1972)]{1972_Knuth}
-D.~E. Knuth y R.~W. Floyd.
-\newblock Notes on avoiding ‘go to’ statements.
-\newblock \emph{Information processing letters}, 1\penalty0 (4):\penalty0 177,
-  1972.
-\newblock \\ \url{http://doi.org/10.1016/0020-0190(71)90018-4}
+\bibitem[Pyt()]{Python}
+Python.
+\newblock \\ \url{https://www.python.org/}
 
-\bibitem[Moore et~al.(1987)Moore, Musciano, y Liebhaber]{1987_Moore}
-D.~Moore, C.~Musciano y M.~J. Liebhaber.
-\newblock “‘{GOTO} considered harmful’ considered harmful” considered
-  harmful?
-\newblock \emph{Commun. ACM}, 30\penalty0 (5):\penalty0 350--355, 1987.
-\newblock \\ \url{http://doi.org/10.1145/22899.315729}
+\bibitem[Qui()]{QuickCheck}
+Quickcheck library.
+\newblock \\ \url{https://hackage.haskell.org/package/QuickCheck}
 
-\bibitem[Rubin(1987)]{1987_Rubin}
-F.~Rubin.
-\newblock “{GOTO} considered harmful” considered harmful.
-\newblock \emph{Commun. ACM}, 30\penalty0 (3):\penalty0 195--196, 1987.
-\newblock \\ \url{http://doi.org/10.1145/214748.315722}
+\bibitem[Sag()]{Sage}
+Sagemath.
+\newblock \\ \url{https://sagemath.org/}
+
+\bibitem[cal()]{calderon}
+Calderon computer.
+\newblock \\
+  \url{https://web.archive.org/web/20200823200600/https://www.ce.unican.es/resource/computing/}
+
+\bibitem[coc()]{cocalc}
+Cocalc.
+\newblock \\ \url{https://cocalc.com/}
+
+\bibitem[mpi()]{mpich}
+Mpich.
+\newblock \\ \url{https://www.mpich.org/}
+
+\bibitem[pos()]{postgres}
+Postgresql.
+\newblock \\ \url{https://www.postgresql.org/}
+
+\bibitem[Costas()]{costas_costas}
+J.~P. Costas.
+\newblock Medium constraints on sonar design and performance.
+\newblock Technical report.
+
+\bibitem[Díaz(2019)]{Mario_diaz}
+M.~Díaz.
+\newblock Development of a game about management of software projects.
+\newblock Bachelor's thesis, Universidad de Cantabria, 2019.
+
+\bibitem[{Everett}(1966)]{everett}
+D.~{Everett}.
+\newblock Periodic digital sequences with pseudonoise properties.
+\newblock \emph{G.B.C. Journal}, 33\penalty0 (3), 1966.
+
+\bibitem[Fessler(1998)]{white_noise}
+J.~A. Fessler.
+\newblock On transformations of random vectors.
+\newblock Technical Report 314, The University of Michigan, Aug. 1998.
+
+\bibitem[{Flikkema}(1997)]{DSSS}
+P.~G. {Flikkema}.
+\newblock Spread-spectrum techniques for wireless communication.
+\newblock \emph{IEEE Signal Processing Magazine}, 14\penalty0 (3):\penalty0
+  26--36, 1997.
+
+\bibitem[Gilbert(1965)]{gilbert_costas}
+E.~N. Gilbert.
+\newblock Latin squares which contain no repeated digrams.
+\newblock \emph{SIAM Review}, 7\penalty0 (2):\penalty0 189--10, 04 1965.
+
+\bibitem[{Gold}(1967)]{gold_codes}
+R.~{Gold}.
+\newblock Optimal binary sequences for spread spectrum multiplexing (corresp.).
+\newblock \emph{IEEE Transactions on Information Theory}, 13\penalty0
+  (4):\penalty0 619--621, 1967.
+
+\bibitem[Golomb and Gong(2005)]{golomb_ref}
+S.~W. Golomb and G.~Gong.
+\newblock \emph{Signal Design for Good Correlation: For Wireless Communication,
+  Cryptography, and Radar}.
+\newblock Cambridge University Press, 2005.
+
+\bibitem[Herron(2013)]{Cython_book}
+P.~Herron.
+\newblock \emph{Learning Cython Programming}.
+\newblock Packt Publishing, 2013.
+
+\bibitem[{Hogberg} and {Si}(1999)]{prn_radar_example1}
+S.~W. {Hogberg} and J.~{Si}.
+\newblock Decimating pseudorandom noise receiver.
+\newblock \emph{IEEE Transactions on Aerospace and Electronic Systems},
+  35\penalty0 (1):\penalty0 338--343, 1999.
+
+\bibitem[{Holder} et~al.(2001){Holder}, {Aalfs}, {Keel}, and
+  {Dorsett}]{prn_radar_example2}
+E.~J. {Holder}, D.~{Aalfs}, B.~M. {Keel}, and M.~{Dorsett}.
+\newblock A comparison of prn and lfm waveforms and processing in terms of the
+  impact on radar resources.
+\newblock In \emph{2001 CIE International Conference on Radar Proceedings (Cat
+  No.01TH8559)}, pages 529--532, 2001.
+
+\bibitem[Ipatov and Shebshayevich(2010)]{GPS}
+V.~P. Ipatov and B.~V. Shebshayevich.
+\newblock Some proposals on signal formats for future gnss air interface.
+\newblock 2010.
+
+\bibitem[James W.~Cooley(1965)]{fast_fourier_transform}
+J.~W.~T. James W.~Cooley.
+\newblock An algorithm for the machine calculation of complex fourier series.
+\newblock \emph{Mathematics of Computation}, 19:\penalty0 297--301, 1965.
+
+\bibitem[Leukhin et~al.(2017)Leukhin, Bezrodnyi, and Kozlova]{anatoli}
+A.~Leukhin, V.~Bezrodnyi and Y.~Kozlova.
+\newblock Labs problem and ground state spin glasses system.
+\newblock \emph{EPJ Web Conf.}, 132:\penalty0 02013, 2017.
+
+\bibitem[Mertens(1996)]{Mertens_1996}
+S.~Mertens.
+\newblock Exhaustive search for low-autocorrelation binary sequences.
+\newblock \emph{Journal of Physics A: Mathematical and General}, 29\penalty0
+  (18), Sep. 1996.
+
+\bibitem[Moreno and Tirkel(2012)]{moreno_costas}
+O.~Moreno and A.~Tirkel.
+\newblock New optimal low correlation sequences for wireless communications.
+\newblock Jun. 2012.
+
+\bibitem[Packebusch and Mertens(2016)]{Packebusch_2016}
+T.~Packebusch and S.~Mertens.
+\newblock Low autocorrelation binary sequences.
+\newblock \emph{Journal of Physics A: Mathematical and Theoretical},
+  49\penalty0 (16):\penalty0 165001, mar 2016.
+
+\bibitem[{Poole}()]{DSSS_1}
+I.~{Poole}.
+\newblock Direct sequence spread spectrum: the basics.
+\newblock \\
+  \url{https://web.archive.org/web/20200724125605/https://www.electronics-notes.com/articles/radio/dsss/what-is-direct-sequence-spread-spectrum.php}
+
+\bibitem[{Shannon}(1998)]{shannon_noise}
+C.~E. {Shannon}.
+\newblock Communication in the presence of noise.
+\newblock \emph{Proceedings of the IEEE}, 86\penalty0 (2):\penalty0 447--457,
+  1998.
+
+\bibitem[Sommerville(2007)]{Sommerville}
+I.~Sommerville.
+\newblock \emph{Software Engineering}.
+\newblock Addison-Wesley, 8 edition, 2007.
+
+\bibitem[Tirkel et~al.(1997)Tirkel, Osborne, and Hall]{tirkel_composition}
+A.~Z. Tirkel, C.~F. Osborne and T.~E. Hall.
+\newblock Steganography - applications of coding theory.
+\newblock Jul. 1997.
+
+\bibitem[Zierler(1958)]{legendre_sequences}
+N.~Zierler.
+\newblock Legendre sequences.
+\newblock Technical report, Massachusetts Institute of Technology, May. 1958.
 
 \end{thebibliography}
