@@ -1,13 +1,11 @@
 \section{Verification}
-  One of the most important parts of software development is verifing the
+  One of the most important parts of software development is verifying the
   software. In other words, checking that the semantics of the program built
-  are the same as the intended ones. A lot of time can be invested building a
-  program to realize that it doesn't work in the last moment and waste a lot
-  of time trying to fix it. That fix might generate side effects that break other
-  parts of the program and so on. Testing since the early stages of a project
+  are the same as the intended ones. Testing since the early stages of a project
   is mandatory if a quality product and an efficient development
-  proccess is to be accomplish.
-
+  process is to be accomplish.  A lot of time can be invested building a
+  program to realize that it does not work or a fix might generate side effects that break other
+  parts of the program and so on. 
   \subsection{Unit tests}
 
     Unit testing is the smallest piece of test suite in a project. There exist
@@ -19,12 +17,12 @@
 
     Property-based testing is a not so well known type of black box testing that
     is built around the idea of defining properties of functions instead of
-    test cases. Originally implemented by the Haskell's libray
+    test cases. Originally implemented by the Haskell's library
     "QuickCheck"\cite{QuickCheck}, this paradigm excels at generating huge
     volumes of test cases with just some extra lines of code leading
-    to improvements on the coverage over the search space. It's similar to the
+    to improvements on the coverage over the search space. It is similar to the
     test automation explained by \citet{Sommerville} in Chapter 23, being the
-    main difference that an oracle that predicts the value isn't needed.
+    main difference that an oracle that predicts the value is not needed.
     Instead, just a property of the output is checked.\\
 
     A well implemented library(there are several of them, but in our case we are
@@ -32,7 +30,7 @@
     Python) should be capable of applying most well practices of black box
     testing, such as edge cases, all pairs, etc.\\
 
-    The main reason why this type of test suites were choosen is that all the
+    The main reason why this type of test suites were chosen is that all the
     properties are already defined in this document and can be used
     straightforward as test cases. In fact, as most of our functions
     are static and pure, the generator will be very simple so the

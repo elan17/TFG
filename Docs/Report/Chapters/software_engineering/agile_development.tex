@@ -1,41 +1,38 @@
 \section{Agile development}
 
     One of the most important tasks to do before starting a project is deciding
-    which project management model the project will follow.\\
+    which project management model to follow.\\
 
-    In our case, this project is going to avoid a waterfall model
-    (even though it is the taught model for branches of our degree not focused
-    in software engineering) favoring agile development techniques adapted to
+    In our case, this project is going to avoid a waterfall model, even though it is the taught model in branches  not focused
+    in software engineering. In this case  agile development techniques adapted better to
     our problem for several reasons:
     \begin{itemize}
       \item The client is an active part of the project. This means that
-      a lot of feedback can be obteined during development and fix issues earlier.
+      a lot of feedback can be obtained during development and issues can be fixed earlier in the development cycle.
       \item As this project is being developed in the middle of a health crisis,
       the availability of project resources cannot be predicted. This means
-      that having a rigid schedule planned too ahead of time wouldn't be
+      that having a rigid schedule planned too ahead of time would not  be
       useful.
     \end{itemize}
 
     \subsection{Role definition}
 
-    In the development of this project, 2 different roles will defined
-    assigned to 2 distinct people:
+    Two different roles have been defined:
     \begin{itemize}
-      \item Developer which will design, program, verify and manage the
-      software project. In this case, this person corresponds to the author of
-      this report (Juan Toca).
-      \item Client which will provide the requirements for the project, as well
-      as validating each iteration. In this case, this person corresponds to
-      the director of this project (Domingo Pérez).
+      \item Developer, which will design, program, verify and manage the
+      software project. 
+      %In this case, this person corresponds to the author of this report (Juan Toca).
+      \item Client, which will provide the requirements for the project, as well
+      as validating each iteration.
+      % In this case, this person corresponds to  the director of this project (Domingo Pérez).
     \end{itemize}
 
     \subsection{Iterations}
 
       In this subsection we will discuss how the development iterations went.\\
 
-      Some conventions: When we say a C function, we are referring to a Cython
-      code without CPython code, in other words, functions that don't call
-      the Python interpreter.
+      A  convention is that  when we say a C function, we are referring to a Cython
+      code without CPython code, in other words, functions that do not call the Python interpreter.
 
       \subsubsection{Iteration 1: Composite autocorrelation}
 
@@ -52,59 +49,59 @@
         composite autocorrelation exceeds the threshold provided.
       \end{itemize}
 
-      The 2 first functions aren't part of the actual exhaustive search
-      algorithm, but will be useful if it's properties
-      must be checked when retrieving them results from the database. \\
+      The two first functions are not  part of the actual exhaustive search
+      algorithm, but will be useful if properties have to be checked when retrieving the results from the database. \\
 
-      The test proccess consisted in checking that the python wrapper provided
-      the same results as a naive implementation of the algorythm based in
+      The test process consisted in checking that the python wrapper provided
+      the same results as a naive implementation of the algorithm based in
       the convolution theorem. From that, the third function was tested against the
       first one.\\
 
       At first, C functions with fused types were developed. Although it
-      favors extensibility, the compiler started to throw errors related with
-      fused types. As the problem would have gotten worse when the next parts of
-      the program were developed, it was decided to drop support for fused types
+      favors extensibility, the compiler presented errors related with
+      fused types. Finally  it was decided to drop support for fused types
       as it was only expected to work with integers of 32 bits.\\
 
-      \subsubsection{Iteration 2: Branch and bound algorythm}
+      \subsubsection{Iteration 2: Branch and bound algorithm}
 
       In this iteration we focused on a single threaded C implementation of the
-      branch and bound algorythm. This function receives a threshold of the
+      branch and bound algorithm. This function receives a threshold of the
       maximum autocorrelation the user is interested in, the maximum Hamming
-      autocorrelation for the prune part of the algorythm and the base sequence
+      autocorrelation for the prune part of the algorithm and the base sequence
       to use.\\
 
       For this purpose, a C implementation of the maximum Hamming
       autocorrelation was developed and an implementation of Legendre sequences
-      to be used as base sequences (more types of base sequences might be added
-      in the future, but this one was explicitly asked by the client).\\
+      to be used as base sequences. More types of base sequences can be added
+      in the future, but this one was explicitly asked by the client.\\
 
       The test designed for Legendre sequences exploits its flat
       autocorrelation to check the functions consistency. In the case of
       Hamming's autocorrelation, a test based on lower and upper
       bounds was designed.\\
 
-      In the case of the branch and bound method, it will be checked that all the
-      sequences returned satisfied the specified maximum autocorrelation.\\
+      In the case of the branch and bound method, it will check that all the
+      returned sequences satisfied the specified maximum autocorrelation.\\
 
       \subsubsection{Iteration 3: Parallelism}
 
-      In this iteration, the main focus was to adapt the branch and bound algorythm
-      to a parallel enviroment. To do that, the algorythm was incrementally
+      In this iteration, the main focus was to adapt the branch and bound algorithm
+      to a parallel environment. To do that, the algorithm was incrementally
       improved. At first, branch and bound was only applied from a given depth and
       then it was decided to also apply it at the master's process level.\\
 
-      In this case, this iteration was implemented in pure python as it isn't
+      In this case, this iteration was implemented in pure Python as it isn't
       critical code. Most runtime of slave processes will be spent in Cython
       functions and, for simplicity and reliability, it was decided to stick to
       Python.\\
 
       Tests in this iteration were made in a more manual fashion, running the
-      code and checking that all results were coherent. This was done like
-      this because the code being tested was completly impure and property
-      based tests wouldn't have a worthy coverage to effort relationship to
-      consider writing them.\\
+      code and checking that all results were coherent. Properly based test were not written in this iteration as the code was not mature enough.\\
+      
+      
+      %This was done like this because the code being tested was completly impure and property
+      %based tests wouldn't have a worthy coverage to effort relationship to
+      %consider writing them.\\
 
       \subsubsection{Iteration 4: User Interface}
 

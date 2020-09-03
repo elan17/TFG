@@ -1,6 +1,6 @@
 \section{Software requirements}
 
-In this section the software requirements of our project will be introduced.
+In this section the software requirements of our project will be introduced.  Interviews and document analysis have been the main source to define requirements. Later they have been validated with the intended users.
 
 \subsection{Functional requirements}
 
@@ -16,38 +16,40 @@ The functional requirements of the project are shown in Figure
       Identifier & Description \\
       \hline
       \hline
-      FR01 \label{FR01} & The researcher must be capable to set the base
+      FR01 \label{FR01} & The user must be capable to set the base
       sequence to use for the search \\
       \hline
-      FR02 \label{FR02} & The researcher must be capable to set the size
+      FR02 \label{FR02} & The user must be capable to set the size
       of the shift sequence to use for the search\\
       \hline
-      FR03 \label{FR03} & The researcher must be capable of setting the maximum
-      autocorrelation he is interested in \\
+      FR03 \label{FR03} & The user must be capable of setting the maximum
+      autocorrelation they are interested in \\
       \hline
-      FR04 \label{FR04} & The researcher must be capable to extract the
-      results while the computation is still running (this doesn't mean that
-      the data must be avalaible with a low latency)\\
+       FR04 \label{FR04new} & The user must be capable of store, recover and manage sequences.\\
       \hline
-      FR05 \label{FR05} & The system administrator must be capable of changing
+      FR05 \label{FR04} & The user must be capable to extract partial
+      results while the computation is still running \\
+      %(this doesn't mean that the data must be avalaible with a low latency)
+      \hline
+      FR06 \label{FR05} & The system administrator must be capable of changing
       the resources assigned to the program\\
       \hline
-      FR06 \label{FR06} & The system must provide an interface that shows
-      the progress of the computation (again, there's no need for low latency
+      FR07 \label{FR06} & The system must provide an interface that shows
+      the progress of the computation (No need for low latency
       as it would conflict with \hyperref[NFR01]{NFR01})\\
       \hline
-      FR07 \label{FR07} & Once established the parameters, the software must
-      run without needing supervision of any user \\
+      FR08 \label{FR07} & Software must
+      run without supervision  after parameters are established. \\
       \hline
-      FR08 \label{FR08} & The parameters of the load balancer must be editable
-      by the system admin (as different machines might need different values)
+      FR09 \label{FR08} & The parameters of the load balancer must be editable
+      by the system administrator in order to adapt to different hardware.
       \\
       \hline
-      FR09 \label{FR09} & An administrator must be capable of managing
-      privileges for accesing the database and running computations\\
+      FR09 \label{FR09} & An system administrator must be capable of managing
+      access privileges to the database and running computations\\
       \hline
-      FR10 \label{FR10} & The system must provide a way to queue different
-      searches to compute in succesion\\
+      FR10 \label{FR10} & The system must provide a way to queue concurrent
+      searches \\
       \hline
     \end{tabular}
   \end{center}
@@ -72,43 +74,34 @@ The non-functional requirements of the project are shown in Figure
     \hline
     \hline
     NFR01 \label{NFR01} & Performance & As sequences are being searched in a
-    huge space, speed is a top priority to continue with the research &
+    huge space, speed is a top priority. &
     Very high\\
     \hline
     NFR02 \label{NFR02} & Compability & As our project is being deployed in a
-    research enviroment with different arquitectures, it should be made as
-    compatible as posible in the case it must be changed to another node &
+    environment with different architectures, it should be made as
+    compatible as posible. &
     Medium \\
     \hline
     NFR03 \label{NFR03} & Usability & This software is expected to be used by
-    specialized researchers and it isn't an interactive application, so the
-    time spent dealing with the application by users is low. Interface
-    shouldn't be a priority & Very low \\
+    specialized personnel. Time spent by users interacting with the application is low. Interface should be minimal. & Very low \\
     \hline
     NFR04 \label{NFR04} & Arquitecture & The program must take full advantage
-    of the capabilities of a supercomputer, in particular the high
-    degree of parallelization of the system & High\\
+    of the capabilities of supercomputers, in particular  high parallelization of the system. & High\\
     \hline
-    NFR05 \label{NFR05} & Robustness & The program must not produce errors.
-    Corruption of data, miscalculations or precision errors must not be
-    tolerated as it would screw up the whole result & Very high \\
+    NFR05 \label{NFR05} & Robustness & The program must handle errors such as
+   data corruption, miscalculations or precision errors to avoid incorrect results. & Very high \\
     \hline
-    NFR06 \label{NFR06} & Robustness & The program cannot have memory leaks.
-    It's expected to run for a long time and a memory leak can cause a crash.
-    It can be fixed by restarting memory leaked threads without affecting the
+    NFR06 \label{NFR06} & Robustness & The program cannot have memory leaks that may cause a crash. Restarting memory leaked threads without affecting the
     end result & Medium \\
     \hline
-    NFR07 \label{NFR07} & Extensibility & Since the program is used as part of
-    a research, the parts of the software should be reusable in case the
-    research shows a new posible use for the project as part of a new
-    development & Medium \\
+    NFR07 \label{NFR07} & Extensibility & Parts of the software should be reusable to suit each research project needs. & Medium \\
     \hline
     NFR08 \label{NFR08} & Data availability & The availability of the data
-    isn't a main concern as the project doesn't aim to be an interactive
-    platform & Low \\
+    is not  a main concern as the project does not aim to be an interactive
+    platform. & Low \\
     \hline
     NFR09 \label{NFR09} & Robustness & The persistence layer must be robust
-    enough to avoid data loses since it is costly to produce & High \\
+    enough to avoid data loses since it is costly to produce a result. & High \\
     \hline
 
     \end{tabular}
@@ -125,15 +118,15 @@ UI design is an important topic of software engineering as the success of a
 project is related directly to the users experience and how they relate to the
 software.\\
 
-First of all, note that the users are supposed to be experienced in the use of
-computers, so a complex UI shouldn't be a problem. In this case, even though
+First of all, note that the users are expected to be experienced in the use of
+computers, so a complex UI should not be a problem. In this case, even though
 the easier the better, our development has a huge constraint on UI design that
 should be taken into account: the special type of OS this project
-will be deployed in.\\
+will be deployed in. As the main focus are supercomputers, a minimalist environment
+with no graphical desktop is to be expected.\\
 
-As the main focus are supercomputers, a minimalist enviroment
-with no graphical desktop is to be expected. For this reason, a
-command line based application is preferred with 2 different main sections:\\
+For this reason, a command-line interface (CLI) is preferred over other alternatives as it requires fewer system resources, allows scripting and commands can be entered more rapidly as text. 
+The inferface is divided in two different  main sections:\\
 \begin{itemize}
   \item Application launcher (resource allocation, parallelism model, etc.)
   \item Runtime interaction with the system (tasks management, database
@@ -145,6 +138,6 @@ the POSIX\cite{POSIX_arguments} standard on the way it treats arguments.
 It should follow conventions such as the use of flags such as --help or
 --verbose and providing a man page.\\
 
-It will also provide a way to store the configuration of the system in case
+It will also provide the capability to store the configuration of the system in case
 the application must be restarted quickly (mainly platform specific
 configuration such as parameters of the load balancer). \\

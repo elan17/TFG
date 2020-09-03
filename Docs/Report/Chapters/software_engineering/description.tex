@@ -1,63 +1,59 @@
 \section{Overall description}
 
-  In this section a general idea behind the software project will be provided.
+  In this section we describe the  general idea behind the software project  and the requirements that needs to fulfill.
   \subsection{Project description}
 
-  This project is developed to assist in the research of binary sequences with
-  good autocorrelation functions. These sequences are used in applications such
-  as radar, wifi or GPS.\\
+  The main purpose of this project is to developed a software application to assist in the research of binary sequences with
+  good correlation properties.The expected end-users are researchers but also designers for wireless communications systems such as radar, Wifi or GPS.\\
 
-  The primary focus will be understanding the problem domain to create a
-  software as useful as possible. Then create an extensible program that
-  implements an exhaustive search to look for new sequences to add to the
-  existing scientific literature.\\
+  The primary challenge is to understand the problema domain to create a software as useful as possible. Then, it is necessary to create an extensible program that assist in the   search  for new sequences to add to the existing scientific literature. Furthermore, a user has to  be able to  manage the sequences and  to check and compare their properties. As this process is computationally costly,  the software is expected to offer support for parallel computing.\\
 
-  \subsection{Product functions}
+ % \subsection{Product functions}
 
-  The functionalities that are expected from
-  this software will be summarized in a general way:
+A summary of the functionalities that are expected from
+  this software is provided.
 
   \begin{itemize}
-    \item Perform computations in search for sequences.\\
+    \item Perform computations in search for new sequences.\\
             \begin{itemize}
-              \item Obtain real-time information of the computation proccess.
+              \item Obtain real-time information of the computation process.
               \item Change dedicated resources to computation.
             \end{itemize}
     \item Manage the set of found sequences.
             \begin{itemize}
-              \item Query by different parameters of the sequences.
               \item Handle found sequences manually.
+              \item Query by different sequence parameters .
               \item Plot sequence properties.
             \end{itemize}
   \end{itemize}
 
   \subsection{User classes and characteristics}
 
-  Users of this project can be divided in 2 main groups:\\
+  Users of this project can be divided in two main groups:\\
 
-  Researchers that will control the search for new sequences, being capable of
+  Researchers that will manage the search for new sequences, being capable of
   starting computations and modifying the database. These researchers are highly
-  specialized personnel and are expected to understand common abbreviations in
+  specialized personnel and are expected to be familiar with common abbreviations in
   the field, as well as knowing which parameters are more promising to get a
   successful computation.\\
 
-  System administrators that will optimize the application according to the
-  specificiations of the system in which it is deployed. System administrators
+  System administrators that will optimize the performance of the software according to the
+  specifications of the system in which it is deployed. System administrators
   are specialized professionals which know how to run benchmarks, maximize
-  performance and understand advanced concepts of parallel computing. They are
-  expected to be capable of optimizing the software with a manual that explains
-  the inner workings of the program in a technical jargon.\\
+  performance and understand advanced concepts of parallel computing. 
+  
+  %They are  expected to be capable  of optimizing the software with a manual that explains the inner workings of the program in a technical jargon.\\
 
-  In the real world, both roles might overlapp in the same person.\\
+  In the real world, both roles may overlap in the same person.\\
 
-  \subsection{Operating Enviroment}
+  \subsection{Operating Environment}
 
   The computation module is expected to run in highly parallelized systems such
-  as super-computers. This is the enviroment in which researchers work, so it
-  would be a shame if the software wouldn't take full advantage of
+  as super-computers. Most researchers work with this kind of environments, so the software
+  would be less competitive if it would not take full advantage of
   the capabilities of these systems.\\
 
-  Taking this into account, the software installed in those enviroments should be
-  targeted. This leads us to assume a Linux enviroment(as most supercomputers
-  run it) and a Python interpreter(as it's a popular language in the scientific
-  community).\\
+  Taking this into account, the most common software installed in those environments should be
+  targeted. This leads us to choose a Linux environment as most supercomputers
+  run it.   We have chosen a Python interpreter as it is a popular language in the scientific
+  community.\\
