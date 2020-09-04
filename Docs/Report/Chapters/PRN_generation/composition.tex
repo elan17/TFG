@@ -3,7 +3,7 @@
 \subsection{Algorithm}
 
 The composition method  was introduced by \citet{tirkel_composition}, initially called prime
-arrays,  uses a base sequence and a sequence of shifts to create a matrix  whose columns are 
+arrays,  uses a base sequence and a sequence of shifts to create a matrix  whose columns are
 shifts of the base sequence as follows:
 
 \begin{definition}[Composite matrix]
@@ -34,7 +34,7 @@ shifts of the base sequence as follows:
 
 \begin{definition}[Composite sequence]
   Given a base sequence $S$ of length $n$, a shift sequence $T$ of
-  length $m$ that satisfy Equations \eqref{composition:eq:1} and 
+  length $m$ that satisfy Equations \eqref{composition:eq:1} and
   \eqref{composition:eq:2} and the composite matrix defined at Equation
   \eqref{composition:eq:3}, the composite sequence is defined as:
   \begin{equation}
@@ -117,7 +117,7 @@ sequence can be defined in terms of the autocorrelation function as follows:
 
 \end{property}
 
-This property is useful  as a fast method for computing the autocorrelation function for composed sequences and this will be implemented for efficiency. 
+This property is useful  as a fast method for computing the autocorrelation function for composed sequences and this will be implemented for efficiency.
 
 \subsection{Costas arrays}
 
@@ -196,4 +196,5 @@ can be constructed as follows:
 This  construction can generate sequences of  length $p-1$ for a given $g$. As the number of possible sequences depend on the number of primitive
 elements of the finite field of order $p$, the number of possible Costas arrays
 for a given length using this construction is $\phi(p-1)$ where $\phi$ is the
-Euler's totient function. \domingo{Meter referencia a la totient function}
+Euler's totient function(see
+\citet{manfred}).
