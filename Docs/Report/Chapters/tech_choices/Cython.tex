@@ -6,9 +6,9 @@ software being developed has performance constraints, using just the reference
 implementation is not an option.\\
 
 Fortunatly, there are alternative implementations such as Jython, IronPython,
-etc. In our case, Cython\cite{Cython}\cite{Cython_book} was the chosen one as
-it provides a compiler to build C code with pseudo-Python. Python code can be
-called from C functions an viceversa, proving useful when a system
+etc. In our case, Cython\footnote{https://cython.org/}\cite{Cython_book} was the
+chosen one as it provides a compiler to build C code with pseudo-Python. Python code
+can be called from C functions an viceversa, proving useful when a system
 with C level performance to operate with high-level Python libraries is needed.\\
 
 To support the decision of using Cython for the critical parts of the code,
@@ -40,7 +40,9 @@ computation is done in C.\\
       Cython GSL:         & 8.24 seg & 095.1 \%
     \end{tabular}
   \end{center}
-  \caption{Results of a benchmark of vector operations using Numpy or GSL.}
+  \caption{Results of a benchmark of vector operations using
+  Numpy\footnote{https://numpy.org/} or
+  GSL\footnote{https://gnu.org/software/gsl/}.}
   \label{Cython:fig:2}
 \end{figure}
 

@@ -18,17 +18,18 @@
     Property-based testing is a not so well known type of black box testing that
     is built around the idea of defining properties of functions instead of
     test cases. Originally implemented by the Haskell's library
-    "QuickCheck"\cite{QuickCheck}, this paradigm excels at generating huge
-    volumes of test cases with just some extra lines of code leading
+    "QuickCheck"\footnote{
+    https://hackage.haskell.org/package/QuickCheck}, this paradigm excels at
+    generating huge volumes of test cases with just some extra lines of code leading
     to improvements on the coverage over the search space. It is similar to the
     test automation explained by \citet{Sommerville} in Chapter 23, being the
     main difference that an oracle that predicts the value is not needed.
     Instead, just a property of the output is checked.\\
 
     A well implemented library(there are several of them, but in our case we are
-    working with Hypothesis\cite{Hypothesis} since our project is built in
-    Python) should be capable of applying most well practices of black box
-    testing, such as edge cases, all pairs, etc.\\
+    working with Hypothesis\footnote{https://hypothesis.readthedocs.io/en/latest/}
+    since our project is built in Python) should be capable of applying most well
+    practices of black box testing, such as edge cases, all pairs, etc.\\
 
     The main reason why this type of test suites were chosen is that all the
     properties are already defined in this document and can be used
