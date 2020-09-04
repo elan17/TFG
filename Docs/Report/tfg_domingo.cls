@@ -158,7 +158,8 @@
   {\fuentea
   \begin{tabular}{rl}
   Autor:& \@autor\\[3mm]
-  Director:& Domingo Gómez Pérez\\[6mm]
+  Codirector:& Domingo Gómez Pérez\\[3mm]
+  Codirector:& Ana Isabel Gómez Pérez\\[6mm]
   \end{tabular}\par
   \@fecha}
   \end{flushright}
