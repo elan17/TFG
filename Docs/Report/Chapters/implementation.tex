@@ -11,7 +11,7 @@
         The naive approach for the autocorrelation function consists in
         computing all the displacements of the sequence and then
         their correlation with the base sequence as shown in Figure
-        \ref{naive_auto:fig:1}. Even though this algorythm it's simple and
+        \ref{naive_auto:fig:1}. Even though this algorithm it's simple and
         follows the mathematical definition, is too slow. The correlation function
         for each component have to be computed, leading to a
         complexity of $O(n^{2})$ (where $n$ is the size of the sequence) with a
@@ -65,15 +65,15 @@
       computational characteristics exploting the pecularities of this
       construction might exist.\\
 
-      Taking advantage of Property \ref{composition:prop:1}, an algorythm with
+      Taking advantage of Property \ref{composition:prop:1}, an algorithm with
       interesting properties can be designed. First of all, the complexity
       function depends on the size of the shift sequence. Being $m$ the
       length of the shift sequence and $n$ the length of the composite
       sequence, the resulting algortyhm has a complexity of $O(nm)$. This means
-      that when $m < log(n)$ this algorythm has a better complexity than the
+      that when $m < log(n)$ this algorithm has a better complexity than the
       Fourier Transform's approach.\\
 
-      In addition, this algorythm has a better constant. It only needs to
+      In addition, this algorithm has a better constant. It only needs to
       iterate once through the autocorrelation sequence. This method is more
       cache friendly too as the data source of the function is smaller and it
       doesn't need to use complex operations in binary sequences.\\
@@ -85,7 +85,7 @@
       of the autocorrelation is needed, there is no need to compute the whole
       function.\\
 
-      An example implementation of this algorythm is shown in Figure
+      An example implementation of this algorithm is shown in Figure
       \ref{composite_auto:fig:1}.
 
       \begin{figure}[ht!]
@@ -103,7 +103,7 @@
 
   \begin{figure}[ht!]
     \inputpython{Chapters/Implementation/branch_and_bound.py}{0}{100}
-    \caption{A Cython implementation of the branch and bound algorythm. Notice
+    \caption{A Cython implementation of the branch and bound algorithm. Notice
     the amount of extra code to achive C performance.}
     \label{composite_auto:fig:2}
   \end{figure}
@@ -147,7 +147,7 @@
   if $t$ is close to $l$, but this will raise an issue with the task balancer as
   there wouldn't be enough tasks to balance the load.\\
 
-  A second version of the algorithm applies the branch and bound algorythm in
+  A second version of the algorithm applies the branch and bound algorithm in
   the master proccess to generate only tasks with good Hamming properties.
   This rules out all tasks that would instantly result in a bad
   autocorrelation and wouldn't generate any useful sequences. The code
