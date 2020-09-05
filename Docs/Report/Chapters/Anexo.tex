@@ -1,0 +1,23 @@
+\appendix
+\section{An overview on finite fields}
+The particular type of LFSR used in m-sequences can be simulated with extensions of binary
+Finite Fields.  A formal definition is that m-sequences are a trace mapping from an extension field $GF(p^d)$ to a base field $GF(p)$. The base field consists of the integers modulo $p$ with $p$ prime. In this work, we will restrict ourselves to binary sequences $p=2$, that have attracted the most interest.  As shown in \citet{golomb_ref}, a sequence $a(i)$, where $i$ is an indexing integer, is formed by taking the elements of the extension field in consecutive increasing powers of $\alpha$, a primitive element, and computing  the trace to the base field.
+
+\begin{definition}[Finite Fields]
+  Given $E/GF(2)$, $\alpha$ a primitive element of $E$ and $S$ the resulting
+  sequence:
+  \begin{equation}
+    S_{i} = Tr(\alpha^{i})
+  \end{equation}
+\end{definition}
+ The base field consists of the integers modulo $p$ with $p$ prime. If $\beta$ is an element of $GF(p^d)$ then
+\begin{equation}
+ Tr^d(\beta)=\sum_{i=0}^{d-1} \beta^{p^i}.
+\end{equation}
+
+\begin{figure}[ht!]
+  \inputpython{Chapters/PRN_generation/example_mls.py}{0}{100}
+  \caption{An example of a posible implementation of m-sequences}
+  \label{mls:fig:1}
+\end{figure}
+ 

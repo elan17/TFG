@@ -141,3 +141,71 @@ It should follow conventions such as the use of flags such as --help or
 It will also provide the capability to store the configuration of the system in case
 the application must be restarted quickly (mainly platform specific
 configuration such as parameters of the load balancer). \\
+
+The previous discussion were translated to the following implementation of the command-line interface.
+  First, a --help option was developed to list all the flags:
+  \begin{lstlisting}
+    $ python main.py --help
+    usage: python main.py [option...]
+
+    Options and arguments:
+    -n : number of threads to use(must be compatible with your MPI enviroment)
+         Defaults to the MPI configuration default
+
+    -p : delay between polls in the master thread(higher values will make the
+         slaves to wait more until the next task, lower values will increase
+         CPU usage of master)
+
+    -s : length of the base sequence(in this version must be a prime number to
+         generate Legendre sequences. Other values have undefined behaviour)
+
+    -l : length of shift sequences(this option must be coprime with value
+         of s, other values have undefined behaviour)
+
+    -t : size of the task for each thread(this option must be lower than the
+         value provided by -l, other values have undefined behaviour)
+
+    -h : maximum hamming autocorrelation allowed(this option must be a
+         positive integer other values have undefined behaviour) Defaults to -l
+
+    -c : maximum autocorrelation we are interested in(this option must be a
+         positive integer other values have undefined behaviour) Defaults to
+         the square root of (-l*-s)
+
+    -v : verbose mode
+  \end{lstlisting}
+
+  The verbose mode can log which tasks have been assigned and saves a the time stamp as well. Finally
+   it tracks the end of child processes and their idle time.
+
+  \begin{lstlisting}
+    $ python main.py -s 5 -l 23 -t 20 -c 7 -h 3 -v
+    2020-08-23 19:27:49 [1] : TASK_ASSIGNED [0, 0, 1] 9ms
+    2020-08-23 19:27:49 [3] : TASK_ASSIGNED [0, 0, 3] 10ms
+    2020-08-23 19:27:49 [5] : TASK_ASSIGNED [0, 0, 4] 6ms
+    2020-08-23 19:27:49 [7] : TASK_ASSIGNED [0, 1, 1] 17ms
+    2020-08-23 19:27:49 [6] : TASK_ASSIGNED [0, 1, 0] 3ms
+    2020-08-23 19:27:49 [2] : TASK_ASSIGNED [0, 0, 2] 0ms
+                            .
+                            .
+                            .
+    2020-08-23 19:28:41 [1] : TASK_ASSIGNED [0, 4, 0] 0ms
+    2020-08-23 19:28:42 [7] : TASK_ASSIGNED [0, 4, 3] 0ms
+    2020-08-23 19:28:45 [1] : EXITED
+    2020-08-23 19:28:45 [5] : TASK_ASSIGNED [0, 4, 2] 0ms
+    2020-08-23 19:28:47 [2] : EXITED
+    2020-08-23 19:28:48 [4] : TASK_ASSIGNED [0, 4, 4] 0ms
+    2020-08-23 19:28:49 [6] : EXITED
+    2020-08-23 19:28:52 [3] : EXITED
+    2020-08-23 19:28:55 [5] : EXITED
+    2020-08-23 19:28:56 [7] : EXITED
+    2020-08-23 19:28:57 [4] : EXITED
+
+  \end{lstlisting}
+
+  Notice that, as standard stdout is used, the log can be piped to a file. The
+  output format is designed in a way that eases the use of utilities such as
+  awk to process the data of the program (one word message, well defined
+  columns, etc.).\\
+
+  Verbosity is completly optional and does not impact performance when inactive. Through the experiments, this option is useful to find a good parameter configuration.

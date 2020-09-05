@@ -48,102 +48,63 @@
 \input{Chapters/tech_choices.tex}
 
 \input{Chapters/implementation.tex}
+\chapter{Conclusions and future work}
 
-\chapter{Future work}
+  In general, the objectives for this project were  accomplished. A first version of the software has been deployed in a supercomputer to be ready to use for research. The main objective  for this project was to learn how a project of scientific   computation must be developed in term of  needs, requirements and peculiarities.\\
 
-  Even though we have a working prototype that can perform the algorythm,
-  there's still a lot of work to be done:\\
-
-  First of all, the persistency part of the program needs a complete rewrite.
-  Nowadays, the search results are dumped in plain text files and have no
-  kind of advanced queries or a way to store sequence properties.\\
-
-  The program has a design limitation on the diversity of base sequences
-  that can be used for the computation. It would be interesting to be capable
-  of using different kinds from Legendre sequences. This leads us to the topic
-  of a whole refactor of the code if Domingo wants to publish it as part as
-  the research project he is doing. Some parts can be written more clearly
-  and the MPI usage isn't the most efficient one. For example, all the tasks
-  are assigned unbuffered which means that the interconnection network delay
-  hasn't been mitigated at all.\\
-
-  Apart from that, the program haven't been tested in a production environment.
-  Some incompatibility problems must be fixed between the development
-  enviroment in which, among other things, OpenMPI was used rather than
-  MPICH and I wasn't able to compile MPI4PY in the supercomputer(I have to
-  say that I hadn't much time to do so because of limitations out of
-  my control). Needless to say that this means we haven't extended the
-  existing literature on the topic yet.\\
-
-  To finish my contribution to Domingo's research, I need to develop a
-  complexity analysis of the algorythm in a similar fashion to the previous
-  works of exhaustive research. To do so, we need to run the code for a long
-  time to gather enough data to estimate the said complexity.\\
-
-  Last but not least, the UI needs some tweaking too. We should provide the
-  possibility of storing the parameters in a configuration file as some of
-  them will be shared between most of the tasks (for example, the number of
-  processes used). I should also review if the program really needs a
-  permissions system for the database. As its running in an isolated
-  enviroment to perform the computation, no external user has access to the
-  data unless it's uploaded to an external server through the VPN(which would
-  be a terrible practice and it would result in another different app).\\
-
-  This seems like a really long lists of TODOs. Keep in mind that this
-  Bachelor thesis is a part of a research project that isn't yet finished. I
-  think I've accomplish the goals that my director had for this thesis.
-
-\chapter{Conclusions}
-
-  In general, I think I can say I've accomplished my personal objectives for
-  this project. My main objective was to learn how a project of scientific
-  computation must be developed: its needs, requirements and peculiarities.\\
-
-  First, and probably the most difficult task for a developer is to understand
-  the problem domain. This kind of sofware, in contrast with other consulting
-  projects, requires a high level of knowledge in a scientific research to be
+  First, the most difficult task has been to understand
+  the problem domain. This software, in contrast with other consulting
+  projects, requires a high level of knowledge in the state of the art of scientific research to be
   able to grasp the semantics of the program. This adds a huge challenge to
-  the software engineer, as they must have a close relation with the client to
-  ensure the correctness of the program. I can affirm with confidence that
+  the software engineer to ensure the correctness of the results. I can affirm with confidence that
   two thirds of the time was spent in learning all the concepts that where
   going to be used later to gather all the software requisites and semantics.\\
 
-  Apart from that, new coding challenges arised. The deployment on a
+  Apart from that, the deployment on a
   supercomputer needs a paradigm shift in program design. Shared-memory
   parallelism is no longer an option as we are working with several computers
   connected by a "slow" interconnection network. Instead, a message-passing
   based approach is preferred with its added complexities and new ways of
   structuring the program.\\
 
-  As the program was supposed to be extendable by the researchers, I had to
+  As the program was supposed to be extendable in the future, I had to
   find a way to create a code as familiar for them as possible. This lead me to
   develop a Python program (for its extensibility and readability) with
   critical code written Cython to get a competent performance. Looking
   backwards, I think that using Cython instead of C++ was an error as the
   compiler gave me some troubles. If I have to participate in a similar project,
   I will probably write all critical code directly on C++ and use Cython as
-  an easy way to create the bndings for my Python code.\\
+  an easy way to create the bindings for my Python code.\\
 
-  One of the things I enjoyed the most of this project is how well a
+ From a personal point of view,  one of the things I enjoyed the most of this project is how well a
   functional programming mindset adapts to this particular problem. Being
   used to the pureness and robustness of FP languages such as Haskell,
   code can be written more effectively by exporting their features to this
-  project.\\
-
-  COVID-19 has shown me one of the big problems of waterfall-based project
-  management: its low fault tolerance. If I hadn't used an agile development
-  method with more flexibility, I would probably have not been capable reaching
-  this progress to this date. Instead, I would have been waiting for the
-  situation to change to allocate the projects resources.\\
-
-  Last but not least, I've briefly worked with a supercomputer and got a grasp
+  project.  I have briefly worked with a supercomputer and got a grasp
   on how tasks are deployed. There is still a lot of work to be done and I
   should have started to work with it earlier to develop a program more
-  compatible with its arquitecture as I didn't expect to be so different from
-  my development enviroment but... we learn from mistakes. \\
+  compatible with its architecture as I did not expect to be so different from
+  my development environment but... we learn from mistakes. \domingo{Yo no te recomendaria decir esto, puede afectar negativamente a la percepción del trabajo}\\
 
-  To sum up, we can say that this project has been a good first approach to
-  scientific computing and high performance software.\\
+
+ Even though we have a working prototype, there is still a lot of work to be done:\\
+
+  First of all, the persistency part of the program can be improved to acommodate advanced queries or a way to store sequence properties.
+  Nowadays, the search results are dumped in plain text files.\\
+
+  The program has to be extended to cope with the diversity of base sequences of using different kinds from Legendre sequences. Additionally, there is room for improvement in the MPI usage to allow buffer assign to the task  to reduce the interconnection network delay.  Further work has to be done for testing the program in a production environment\\
+
+To contribute to the research on the area on binary sequences, we need to run the code for a long time to find candidate sequences, as it have seen in the introduction the length of the sequences is of the order of $85$.\\
+
+  Last but not least, the UI is still open to improvement. We should provide the
+  possibility of storing the parameters in a configuration file as some of
+  them will be shared between most of the tasks (for example, the number of
+  processes used).After deployment a  permissions system for the database must be implemented to allow multiple users. As it is  running in an isolated
+  environment to perform the computation, no external user has access to the
+  data unless it is uploaded to an external server through the VPN.\\
+
+ 
+
 
 
 
@@ -151,5 +112,5 @@
 \backmatter
 % Indique aquí el fichero .bib que contenga su bibliografía.
 \bibliography{refs}
-
+\input{Chapters/Anexo}
 \end{document}
