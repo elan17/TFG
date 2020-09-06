@@ -68,20 +68,26 @@ In this chapter,  computational aspects of the application are discussed.
 
   \section{Parallelism model}
 
-  For the parallelism of the project, it was decided to work with MPI (Message Passing Interface).  MPI is a library specification for message-passing, proposed as a de facto standard for parallel computing implementation. There are several implementations of MPI, many of which are open-source or in the public domain.\\
+  For the parallelism of the project, it was decided to work with MPI (Message
+  Passing Interface).  MPI is a library specification for message-passing, proposed
+  as a de facto standard for parallel computing implementation. As the software
+  will be deployed in a system with an interconnection network, a shared-
+  memory parallelism would lead to a high latency in the assignation of tasks
+  reducing performance. There are several implementations of MPI, many of which are
+  open-source or in the public domain.\\
 
- From the available implementation in different programming languages, a pure Python one (MPI4PY) was chosen based on the fastness of the development and after some testing, the performance was sufficient for the scope of the project.
-  \domingo{\textit{Esto no se entiende.}  However, a low latency assignation of tasks is needed. If shared
-  memory was used, every node would need to access memory through the "slow"
-  interconnection network. Instead, with MPI, proccesses to talk between them.\\
-
-  For the purpose of this project, MPICH\footnote{https://www.mpich.org/} is used
-  as the bindings of MPI4PY support it and it is the implementation of the cluster
-  we are working with\footnote{https://web.archive.org/web/20200823200600/https://www.ce.unican.es/resource/computing/}.\\
+ From the available implementations, a pure
+ Python one (MPI4PY) was chosen based on the easiness of the development and
+ its compatibility with different implementations of the MPI standard.\\ For the
+ purpose of this project, MPICH\footnote{https://www.mpich.org/} is used as the
+ reference MPI implementation as the bindings of MPI4PY support it and it is the
+ implementation used in the cluster we are working with\footnote{https://web.archive.org/web/20200823200600/https://www.ce.unican.es/resource/computing/}.\\
 
   In our particular problem, a set of tasks was defined to be
   distributed between the different nodes. This tasks are subtrees from the
-  search space with a given height that defines the size of the task  see Figure \ref{tasks:fig:1} for an example. Due to different sizes of the tasks,  a static scheduler would not be efficient.\\
+  search space with a given height that defines the size of the task  see Figure
+  \ref{tasks:fig:1} for an example. Due to different sizes of the tasks,  a static
+  scheduler would not be efficient.\\
 
 
   \begin{figure}[ht!]
