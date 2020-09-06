@@ -28,7 +28,7 @@ The idea is finding the sequence $S$ belonging to a given set of possible sequen
      \begin{equation}
       E_{min} = \operatorname*{min}_{subset} \sum_{k=1}^{n-1} A'^{2}_{k}.
     \end{equation}
-    
+
 An improvement for this method was   proposed by \citet{Mertens_1996} in which he provided an algorithm  with complexity  $O(1.85^n)$. In his work, he applied a branch and bound
 approach that rules out equivalent sequences and uses an heuristic based on how complementing a single symbol of the sequence affects the autocorrelation.\\
 
@@ -81,7 +81,7 @@ approach that rules out equivalent sequences and uses an heuristic based on how 
   constructed through the composition method with Legendre base sequences.\\
 
   This approach haves some pros and cons. First of all, the search space is
-  reduced from $O(2^n)$ to $O(p^m)$ where $p*m = n$. This clearly means that
+  reduced from $O(2^n)$ to $O(p^m)$ where $p \cdot m = n$. This clearly means that
   the complexity grows slower than in previous works. In fact, the
   autocorrelation function can be optimized for sequences generated through the
   composition method as shown in a following chapter. \domingo {referencia el capitulo}\\
@@ -89,7 +89,7 @@ approach that rules out equivalent sequences and uses an heuristic based on how 
   The problem is that the possible lengths for the sequences are limited as $m$
   and $p$ are required to be coprime. Even though it means that
   these method cannot find optimal sequences for all lengths, the restriction is
-  looser than the non-exhaustive methods. Apart from that, this method does not 
+  looser than the non-exhaustive methods. Apart from that, this method does not
   explore all possible permutations and it does not ensure to find a pseudonoise
   sequence if it exists. To sum up, this method is a good way to construct useful sequences but should not
   be used to prove the non existence of pseudonoise sequences for a given
@@ -109,7 +109,7 @@ approach that rules out equivalent sequences and uses an heuristic based on how 
    permutations that start with the same component are computed,
   then the whole search space would be covered as any other permutations would just
   be shifts of one permutation from the computed set. This optimization narrows
-  our search space to $n^{(m-1)}$.\\
+  our search space to $p^{(m-1)}$.\\
 
   Other optimization arises from the form of the shift sequences. In general,
   if the symbols are repeated often, they tend to generate higher

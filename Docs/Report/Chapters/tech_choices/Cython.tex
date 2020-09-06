@@ -1,14 +1,14 @@
 \section{Cython}
 
 Python as a language comes in several implementations. CPython as the reference
-implementation has it's flaws, mainly it's performance issues. As the
+implementation has its flaws, mainly its performance issues. As the
 software being developed has performance constraints, using just the reference
 implementation is not an option.\\
 
 Fortunatly, there are alternative implementations such as Jython, IronPython,
-etc. In our case, Cython\cite{Cython}\cite{Cython_book} was the chosen one as
-it provides a compiler to build C code with pseudo-Python. Python code can be
-called from C functions an viceversa, proving useful when a system
+etc. In our case, Cython\footnote{https://cython.org/}\cite{Cython_book} was the
+chosen one as it provides a compiler to build C code with pseudo-Python. Python code
+can be called from C functions an viceversa, proving useful when a system
 with C level performance to operate with high-level Python libraries is needed.\\
 
 To support the decision of using Cython for the critical parts of the code,
@@ -40,12 +40,14 @@ computation is done in C.\\
       Cython GSL:         & 8.24 seg & 095.1 \%
     \end{tabular}
   \end{center}
-  \caption{Results of a benchmark of vector operations using Numpy or GSL.}
+  \caption{Results of a benchmark of vector operations using
+  Numpy\footnote{https://numpy.org/} or
+  GSL\footnote{https://gnu.org/software/gsl/}.}
   \label{Cython:fig:2}
 \end{figure}
 
 One might think that, if vector operations are so efficient in CPython, it would
-be simpler to just use Numpy methods to implement our algorythms (which was
+be simpler to just use Numpy methods to implement our algorithms (which was
 indeed done in the general autocorrelation function with the algortyhm
 based on the convolution theorem). The problem raises when it is needed to
 access the Numpy array in an undefined way by the library and to code a loop to
@@ -56,7 +58,7 @@ C level performance. In fact, as it supports fused types (the equivalent to
 templates in C++), functions that can work with diverse types
 depending on the input arguments can be defined. Even though in our case it will
 be skipped as it comes with extra headaches and only integers are needed for the
-purposes of this project, it's a nice feature if it was needed to extend Sage to
+purposes of this project, it is a nice feature if it was needed to extend Sage to
 fully support our research field.\\
 
 One important thing to take into account when developing with Cython is that
