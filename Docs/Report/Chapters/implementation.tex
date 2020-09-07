@@ -20,6 +20,12 @@ In this chapter,  computational aspects of the application are discussed.
         performance. Some overhead could be avoided by using slice of the sequence
         but it will not affect the complexity.\\
 
+        \begin{figure}[ht!]
+          \inputpython{Chapters/Implementation/naive.py}{0}{100}
+          \caption{An example implementation of the naive autocorrelation}
+          \label{naive_auto:fig:1}
+        \end{figure}
+
       \subsection{Circular convolution theorem}\label{section:impl:convolution}
       We explore the properties of the autocorrelation function. The convolution theorem\cite{golomb_ref} gives a  direct relation between between the correlation function and the Discrete Fourier Transform (DFT)\\
       \begin{theorem}
@@ -37,12 +43,14 @@ In this chapter,  computational aspects of the application are discussed.
         numbers. Then according to property \ref{autocorrelation:prop:1}, it will
         always return the same type as the original sequence. This means that the
         operations are more computationally expensive due to operating with
-        complex numbers instead of integers.
-          \begin{figure}
-            \inputpython{Chapters/Implementation/naive.py}{0}{100}
-            \caption{An example implementation of the naive autocorrelation}
-            \label{naive_auto:fig:1}
-          \end{figure}
+        complex numbers instead of integers. An example is shown in Figure
+        \ref{convolution_auto:fig:1}.\\
+
+        \begin{figure}[ht!]
+          \inputpython{Chapters/Implementation/circular_convolution.py}{0}{100}
+          \caption{An example implementation of the naive autocorrelation}
+          \label{convolution_auto:fig:1}
+        \end{figure}
 
       \subsection{Composition method implementation}
 
