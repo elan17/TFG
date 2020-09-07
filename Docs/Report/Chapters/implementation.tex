@@ -51,7 +51,7 @@ In this chapter,  computational aspects of the application are discussed.
 
       \begin{figure}[ht!]
         \inputpython{Chapters/Implementation/composite.py}{0}{100}
-        \caption{The Cython implementation of the autocorrelation for the composition method.  Branchless programming is used to improve performance.}
+        \caption{The Cython implementation of the autocorrelation for the composition method.}
         \label{composite_auto:fig:1}
       \end{figure}
 
@@ -121,8 +121,3 @@ In this chapter,  computational aspects of the application are discussed.
     \caption{A Python implementation of an slave proccess}
     \label{parallelism_example:fig:2}
   \end{figure}
-
- \domingo{ Esto parece lo mismo, explicalo o quitalo  A third version to be implemented could be done by using the Hamming as an
-  heuristic to determine the size of the task. Instead of using a fixed size
-  for the subtrees, the tasks to can be given to the process at hand based on the
-  Hamming autocorrelation of the root of the task.}\\
