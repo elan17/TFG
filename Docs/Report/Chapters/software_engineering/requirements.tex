@@ -25,7 +25,8 @@ The functional requirements of the project are shown in Figure
       FR03 \label{FR03} & The user must be capable of setting the maximum
       autocorrelation they are interested in \\
       \hline
-       FR04 \label{FR04new} & The user must be capable of store, recover and manage sequences.\\
+       FR04 \label{FR04new} & The user must be capable to store, recover and
+       manage sequences.\\
       \hline
       FR05 \label{FR04} & The user must be capable to extract partial
       results while the computation is still running \\
@@ -73,35 +74,29 @@ The non-functional requirements of the project are shown in Figure
     Identifier & Type  & Description & Relevance\\
     \hline
     \hline
-    NFR01 \label{NFR01} & Performance & As sequences are being searched in a
-    huge space, speed is a top priority. &
+    NFR01 \label{NFR01} & Performance & Speed is a top priority. &
     Very high\\
     \hline
-    NFR02 \label{NFR02} & Compability & As our project is being deployed in a
-    environment with different architectures, it should be made as
-    compatible as posible. &
+    NFR02 \label{NFR02} & Compability & It should be made as
+    compatible as posible with different supercomputers. &
     Medium \\
     \hline
-    NFR03 \label{NFR03} & Usability & This software is expected to be used by
-    specialized personnel. Time spent by users interacting with the application is low. Interface should be minimal. & Very low \\
+    NFR03 \label{NFR04} & Arquitecture & The program must take full advantage
+    of the capabilities of supercomputers, in particular  high parallelization of
+    the system. & High\\
     \hline
-    NFR04 \label{NFR04} & Arquitecture & The program must take full advantage
-    of the capabilities of supercomputers, in particular  high parallelization of the system. & High\\
+    NFR04 \label{NFR05} & Robustness & The program must handle errors such as
+    data corruption, miscalculations or precision errors to avoid incorrect
+    results. & Very high \\
     \hline
-    NFR05 \label{NFR05} & Robustness & The program must handle errors such as
-   data corruption, miscalculations or precision errors to avoid incorrect results. & Very high \\
+    NFR05 \label{NFR06} & Robustness & The program cannot stop unexpectly
+    and must provide a way to recover from said crashes & Medium \\
     \hline
-    NFR06 \label{NFR06} & Robustness & The program cannot have memory leaks that may cause a crash. Restarting memory leaked threads without affecting the
-    end result & Medium \\
+    NFR06 \label{NFR07} & Extensibility & Parts of the software should be reusable
+    to suit each research project needs. & Medium \\
     \hline
-    NFR07 \label{NFR07} & Extensibility & Parts of the software should be reusable to suit each research project needs. & Medium \\
-    \hline
-    NFR08 \label{NFR08} & Data availability & The availability of the data
-    is not  a main concern as the project does not aim to be an interactive
-    platform. & Low \\
-    \hline
-    NFR09 \label{NFR09} & Robustness & The persistence layer must be robust
-    enough to avoid data loses since it is costly to produce a result. & High \\
+    NFR07 \label{NFR09} & Robustness & The persistence layer must be robust
+    enough to avoid data losses. & High \\
     \hline
 
     \end{tabular}
@@ -114,8 +109,8 @@ The non-functional requirements of the project are shown in Figure
 
 \subsection{User interface requirements}
 
-UI design is an important topic of software engineering as the success of a
-project is related directly to the users experience and how they relate to the
+UI design is an important topic of software engineering as the sucess of a
+project is related directly to the users experience and how they use the
 software.\\
 
 First of all, note that the users are expected to be experienced in the use of
@@ -123,10 +118,12 @@ computers, so a complex UI should not be a problem. In this case, even though
 the easier the better, our development has a huge constraint on UI design that
 should be taken into account: the special type of OS this project
 will be deployed in. As the main focus are supercomputers, a minimalist environment
-with no graphical desktop is to be expected.\\
+with no graphical desktop is preferred.\\
 
-For this reason, a command-line interface (CLI) is preferred over other alternatives as it requires fewer system resources, allows scripting and commands can be entered more rapidly as text.
-The inferface is divided in two different  main sections:\\
+For this reason, a command-line interface (CLI) is preferred over other
+alternatives as it requires fewer system resources, allows scripting and commands
+can be entered more rapidly as text. The inferface is divided in two different
+main sections:\\
 \begin{itemize}
   \item Application launcher (resource allocation, parallelism model, etc.)
   \item Runtime interaction with the system (tasks management, database
@@ -134,15 +131,17 @@ The inferface is divided in two different  main sections:\\
 \end{itemize}
 
 As most supercomputers run UNIX-based systems, our application should follow
-the POSIX\footnote{https://web.archive.org/web/20200804110243/https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html} standard on the way it treats arguments.
+the POSIX\footnote{https://web.archive.org/web/20200804110243/https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html} standard on the
+way it treats arguments.
 It should follow conventions such as the use of flags such as --help or
 --verbose and providing a man page.\\
 
-It will also provide the capability to store the configuration of the system in case
-the application must be restarted quickly (mainly platform specific
+It will also provide the capability to store the configuration of the system in
+case the application must be restarted quickly (mainly platform specific
 configuration such as parameters of the load balancer). \\
 
-The previous discussion were translated to the following implementation of the command-line interface.
+The previous discussion were translated to the following implementation of the
+command-line interface.
   First, a --help option was developed to list all the flags:
   \begin{lstlisting}
     $ python main.py --help
@@ -175,8 +174,8 @@ The previous discussion were translated to the following implementation of the c
     -v : verbose mode
   \end{lstlisting}
 
-  The verbose mode can log which tasks have been assigned and saves a the time stamp as well. Finally
-   it tracks the end of child processes and their idle time.
+  The verbose mode can log which tasks have been assigned and saves the time stamp
+  as well. Finally it tracks the end of child processes and their idle time.
 
   \begin{lstlisting}
     $ python main.py -s 5 -l 23 -t 20 -c 7 -h 3 -v
@@ -208,4 +207,6 @@ The previous discussion were translated to the following implementation of the c
   awk to process the data of the program (one word message, well defined
   columns, etc.).\\
 
-  Verbosity is completly optional and does not impact performance when inactive. Through the experiments, this option is useful to find a good parameter configuration.
+  Verbosity is completly optional and does not impact performance when inactive.
+  Through the experiments, this option is useful to find a good parameter
+  configuration.
