@@ -14,7 +14,7 @@
   {binary sequences, low autocorrelation, exhaustive search, branch-and-bound}
 
 \usepackage{lipsum} % Esto solo es relleno.
-\newcommand{\domingo}[1]{}
+\newcommand{\domingo}[1]{\textcolor{red}{#1}}
 \begin{document}
 
 % Si alguna palabra se divide entre dos líneas en un punto
@@ -50,15 +50,20 @@
 \input{Chapters/implementation.tex}
 \chapter{Conclusions and future work}
 
-  In general, the objectives for this project were  accomplished. A first version of the software has been deployed in a supercomputer to be ready to use for research. The main objective  for this project was to learn how a project of scientific   computation must be developed in term of  needs, requirements and peculiarities.\\
+  In general, the objectives for this project were  accomplished. A first version
+  of the software has been deployed in a supercomputer to be ready to use for
+  research. The main objective  for this project was to learn how a project of
+  scientific computation must be developed in term of  needs, requirements and
+  peculiarities.\\
 
   First, the most difficult task has been to understand
   the problem domain. This software, in contrast with other consulting
-  projects, requires a high level of knowledge in the state of the art of scientific research to be
-  able to grasp the semantics of the program. This adds a huge challenge to
-  the software engineer to ensure the correctness of the results. I can affirm with confidence that
-  two thirds of the time was spent in learning all the concepts that where
-  going to be used later to gather all the software requisites and semantics.\\
+  projects, requires a high level of knowledge in the state of the art of
+  scientific research to be able to grasp the semantics of the program. This adds a
+  huge challenge to the software engineer to ensure the correctness of the results.
+  I can affirm with confidence that two thirds of the time was spent in learning
+  all the concepts that where going to be used later to gather all the software
+  requisites and semantics.\\
 
   Apart from that, the deployment on a
   supercomputer needs a paradigm shift in program design. Shared-memory
@@ -76,30 +81,31 @@
   I will probably write all critical code directly on C++ and use Cython as
   an easy way to create the bindings for my Python code.\\
 
- From a personal point of view,  one of the things I enjoyed the most of this project is how well a
-  functional programming mindset adapts to this particular problem. Being
-  used to the pureness and robustness of FP languages such as Haskell,
+ From a personal point of view,  one of the things I enjoyed the most of this
+ project is how well a functional programming mindset adapts to this particular
+ problem. Being used to the pureness and robustness of FP languages such as Haskell,
   code can be written more effectively by exporting their features to this
   project.  I have briefly worked with a supercomputer and got a grasp
-  on how tasks are deployed. There is still a lot of work to be done and I
-  should have started to work with it earlier to develop a program more
-  compatible with its architecture as I did not expect to be so different from
-  my development environment but... we learn from mistakes. \domingo{Yo no te recomendaria decir esto, puede afectar negativamente a la percepción del trabajo}\\
+  on how tasks are deployed.\\
 
+ Even though we have a working prototype, there is still a lot of work to be done.
+First of all, the persistency part of the program can be improved to acommodate
+advanced queries or a way to store sequence properties. Nowadays, the search
+results are dumped in plain text files. In addition, the program has to be extended
+to cope with the diversity of base sequences of using different kinds from Legendre
+sequences. Additionally, there is room for improvement in the MPI usage to allow
+buffer assign to the task  to reduce the interconnection network delay.  Further
+work has to be done for testing the program in a production environment.\\
 
- Even though we have a working prototype, there is still a lot of work to be done:\\
-
-  First of all, the persistency part of the program can be improved to acommodate advanced queries or a way to store sequence properties.
-  Nowadays, the search results are dumped in plain text files.\\
-
-  The program has to be extended to cope with the diversity of base sequences of using different kinds from Legendre sequences. Additionally, there is room for improvement in the MPI usage to allow buffer assign to the task  to reduce the interconnection network delay.  Further work has to be done for testing the program in a production environment\\
-
-To contribute to the research on the area on binary sequences, we need to run the code for a long time to find candidate sequences, as it have seen in the introduction the length of the sequences is of the order of $85$.\\
+To contribute to the research on the area on binary sequences, we need to run the
+code for a long time to find candidate sequences, as it have seen in the introduction
+the length of the sequences is of the order of $85$.\\
 
   Last but not least, the UI is still open to improvement. We should provide the
   possibility of storing the parameters in a configuration file as some of
   them will be shared between most of the tasks (for example, the number of
-  processes used).After deployment a  permissions system for the database must be implemented to allow multiple users. As it is  running in an isolated
+  processes used).After deployment a  permissions system for the database must
+  be implemented to allow multiple users. As it is  running in an isolated
   environment to perform the computation, no external user has access to the
   data unless it is uploaded to an external server through the VPN.\\
 
