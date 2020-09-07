@@ -84,16 +84,16 @@ approach that rules out equivalent sequences and uses an heuristic based on how 
   reduced from $O(2^n)$ to $O(p^m)$ where $p \cdot m = n$. This clearly means that
   the complexity grows slower than in previous works. In fact, the
   autocorrelation function can be optimized for sequences generated through the
-  composition method as shown in a following chapter. \domingo {referencia el capitulo}\\
+  composition method as shown in Chapter \ref{chap:computational_analysis}.\\
 
   The problem is that the possible lengths for the sequences are limited as $m$
   and $p$ are required to be coprime. Even though it means that
   these method cannot find optimal sequences for all lengths, the restriction is
   looser than the non-exhaustive methods. Apart from that, this method does not
   explore all possible permutations and it does not ensure to find a pseudonoise
-  sequence if it exists. To sum up, this method is a good way to construct useful sequences but should not
-  be used to prove the non existence of pseudonoise sequences for a given
-  length.\\
+  sequence if it exists. To sum up, this method is a good way to construct useful
+  sequences but should not be used to prove the non existence of pseudonoise
+  sequences for a given length.\\
 
   Given a base sequence of length $p$ and  shift sequences of length $m$ ,
   our program needs to find all the shift sequences that generate a composite
