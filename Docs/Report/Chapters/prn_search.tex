@@ -95,7 +95,7 @@ approach that rules out equivalent sequences and uses an heuristic based on how 
   sequences but should not be used to prove the non existence of pseudonoise
   sequences for a given length.\\
 
-  Given a base sequence of length $p$ and  shift sequences of length $m$ ,
+  Given a base sequence of length $p$ and  shift sequences of length $m$,
   our program needs to find all the shift sequences that generate a composite
   sequence with a good autocorrelation.\\
 
@@ -104,12 +104,24 @@ approach that rules out equivalent sequences and uses an heuristic based on how 
   relations between the different shift sequences that let us narrow the
   search space.\\
 
-  For example, if a constant is added to every component of the shift sequence,
-  a shifted version of the same sequence is obtained. This means that if only
-   permutations that start with the same component are computed,
-  then the whole search space would be covered as any other permutations would just
-  be shifts of one permutation from the computed set. This optimization narrows
-  our search space to $p^{(m-1)}$.\\
+  For example, taking into account the property:
+
+  \begin{property}
+    Given a shift sequence $S$, a base sequence $B$ and an arbitrary constant
+    $k$, it exists a shift sequence $S'$ and a constant $a$ that fulfills:
+        \begin{equation}
+          S'_{0} = k
+        \end{equation}
+        \begin{equation}
+          shift(CS(B, S), a) = CS(B, S')
+        \end{equation}
+  \end{property}
+
+  it can be said that all the posible shift sequences of length $m$ when
+  applied in the composition method generate sequences equivalent to at least
+  one in the subset of sequences of length $m$ where the first component is $k$.
+  This reduces the search space to $p^{(m-1)}$.\\
+
 
   Other optimization arises from the form of the shift sequences. In general,
   if the symbols are repeated often, they tend to generate higher
