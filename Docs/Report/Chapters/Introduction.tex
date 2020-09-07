@@ -2,20 +2,19 @@ Advances in wireless communication and signal proccessing have drastically
 changed the capabilities of transmitting information. Several wireless
 networks can share the same channel amongst several users thanks to technologies like
 CDMA (Coding Division Multiplexing Access). Similarly, GPS \cite{GPS} satellites implementing direct-sequence spread
-spectrum(DSSS) can broadcast their information to provide its service.  Radar technologies recovers the echo of a sent signal to calculate 
+spectrum(DSSS) can broadcast their information to provide its service.  Radar technologies recovers the echo of a sent signal to calculate
 the distance to a target by comparing the arrival time with the emitted time. For all these applications, sequences with good properties
 of crosscorrelation and autocorrelation function are required. To keep things simple and just for illustration purposes, we are going to focus in just
 two technologies through this document: spread-spectrum and radar. \\
 
 An example for the former is the direct-sequence spread spectrum technology\cite{DSSS_1}\cite{DSSS}, which is
-designed to share a given frequency band between multiple transmissions. 
-
+designed to share a given frequency band between multiple transmissions.
 To do so, DSSS employs a set of spreading sequences. A spreading sequence from this set is pre-shared
 between emisor and receptor, that the emisor will use to modulate its transmitted signals. Then, the receiver demodulates the signal and correlates the received
-sequence with the pre-shared sequence. If it founds a peak in this correlation, the received sequence is processed. Otherwise, it can not be detected.
+sequence with the pre-shared sequence. If it finds a peak in this correlation, the received sequence is processed. Otherwise, it can not be detected.
 The sequences should mimic the properties of white noise to avoid an eavesdropper to be able to recover the communications, thus  a set of  sequences with low peak
 crosscorrelations is denoted as pseudonoise (PN). This method limits greatly the bandwidth of each individual transmission but improves security to
-jamming and interception.  It is  suitable to be used in applications that require with low data rate but with several emitters.  In GPS, satellites broadcast their current position and timestamp and from that information the distance to the satellite can be computed. Combining the information from several satellites, the position of the receiver can be triangulated. Another example of location system would be UWB (Ultra Wide Band) based technologies\\
+jamming and interception.  It is  suitable to be used in applications that require with low data rate but with several emitters.  In GPS, satellites broadcast their current position and timestamp and from that information the distance to the satellite can be computed. Combining the information from several satellites, the position of the receiver can be triangulated. Another example of location system would be UWB (Ultra Wide Band) based technologies.\\
 
 A radar (radio detection and ranging) uses a radio-frequency electromagnetic
 signal reflected from a target to determine properties such as position, speed,
