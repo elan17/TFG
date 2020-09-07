@@ -25,7 +25,6 @@
 
 \portada
 \frontmatter
-% \sucinto{A Sofía}
 \gracias{\input{Chapters/agradecimientos.txt}}
 \resumen{\input{Chapters/resumen.tex}}{\input{Chapters/abstract.tex}}
 \tableofcontents
@@ -34,12 +33,10 @@
 
 
 \chapter{Introduction}
-
-\input{Chapters/Introduction.tex}
+  \input{Chapters/Introduction.tex}
 
 \chapter{Pseudonoise sequence generation}
-
-\input{Chapters/PRN_generation.tex}
+  \input{Chapters/PRN_generation.tex}
 
 \input{Chapters/prn_search.tex}
 
@@ -50,7 +47,7 @@
 \input{Chapters/implementation.tex}
 \chapter{Conclusions and future work}
 
-  In general, the objectives for this project were  accomplished. A first version
+  In general, the objectives for this project were accomplished. A first version
   of the software has been deployed in a supercomputer to be ready to use for
   research. The main objective  for this project was to learn how a project of
   scientific computation must be developed in term of  needs, requirements and
@@ -62,7 +59,7 @@
   scientific research to be able to grasp the semantics of the program. This adds a
   huge challenge to the software engineer to ensure the correctness of the results.
   I can affirm with confidence that two thirds of the time was spent in learning
-  all the concepts that where going to be used later to gather all the software
+  all the concepts that were going to be used later to gather all the software
   requisites and semantics.\\
 
   Apart from that, the deployment on a
@@ -83,10 +80,12 @@
 
  From a personal point of view,  one of the things I enjoyed the most of this
  project is how well a functional programming mindset adapts to this particular
- problem. Being used to the pureness and robustness of FP languages such as Haskell,
-  code can be written more effectively by exporting their features to this
-  project.  I have briefly worked with a supercomputer and got a grasp
-  on how tasks are deployed.\\
+ problem. Being used to the pureness and robustness of FP languages such as
+ Haskell, code can be written more effectively by exporting their features to this
+ project. On the other hand, I have briefly worked with a supercomputer and got a
+ grasp on how tasks are deployed. As science-oriented development is one of the
+ topics I am very interested in, this bachelor thesis suits in my future
+ profesional career.\\
 
  Even though we have a working prototype, there is still a lot of work to be done.
 First of all, the persistency part of the program can be improved to acommodate
@@ -94,12 +93,20 @@ advanced queries or a way to store sequence properties. Nowadays, the search
 results are dumped in plain text files. In addition, the program has to be extended
 to cope with the diversity of base sequences of using different kinds from Legendre
 sequences. Additionally, there is room for improvement in the MPI usage to allow
-buffer assign to the task  to reduce the interconnection network delay.  Further
+buffer assign to the task  to reduce the interconnection network delay. Further
 work has to be done for testing the program in a production environment.\\
 
 To contribute to the research on the area on binary sequences, we need to run the
-code for a long time to find candidate sequences, as it have seen in the introduction
-the length of the sequences is of the order of $85$.\\
+code for a long time to find candidate sequences, as it have been seen in the
+introduction the length of the sequences is of the order of $85$.\\
+
+As we introduced Gold codes in the report, a reader could ask why we didn't
+cover families of sequences in our search as they are needed to have a practical
+use in  some applications such as DSSS. The reason behind this is that the
+construction of these families depend directly in the search of sequences with
+good autocorrelation properties. If we extend the set of known sequences with
+a low-peak autocorrelation, it can be used in future work to extend the
+literature in families of sequences.\\
 
   Last but not least, the UI is still open to improvement. We should provide the
   possibility of storing the parameters in a configuration file as some of
