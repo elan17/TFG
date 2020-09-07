@@ -1,4 +1,4 @@
-\chapter{ Algorithm Complexity Analysis}
+\chapter{ Computational Analysis}
 
 In this chapter,  computational aspects of the application are discussed.
  % This chapter introduces some specifications of the implementation of our solution.\\
@@ -11,12 +11,14 @@ In this chapter,  computational aspects of the application are discussed.
       \subsection{Naive approach}
         The naive approach for the autocorrelation function consists in
         compute all possible shifts of the sequence and then
-         correlate them with the base sequence as shown in Figure
+        correlate them with the base sequence as shown in Figure
         \ref{naive_auto:fig:1}.  This algorithm is simple to implement and
-        follows from the mathematical definition, however it  is too slow. The correlation function
-        for each component have to be computed, leading to a
-        complexity of $O(n^{2})$, where $n$ is the length of the sequence. The overhead
-        due to the building of  the shifted sequence weights on the performance. Some overhead could be avoided by using slice of the sequence but it will not affect the complexity.\\
+        follows from the mathematical definition, however it is too slow. The
+        correlation function for each component have to be computed, leading to a
+        complexity of $O(n^{2})$, where $n$ is the length of the sequence. The
+        overhead due to the building of  the shifted sequence weights on the
+        performance. Some overhead could be avoided by using slice of the sequence
+        but it will not affect the complexity.\\
 
       \subsection{Circular convolution theorem}\label{section:impl:convolution}
       We explore the properties of the autocorrelation function. The convolution theorem\cite{golomb_ref} gives a  direct relation between between the correlation function and the Discrete Fourier Transform (DFT)\\
