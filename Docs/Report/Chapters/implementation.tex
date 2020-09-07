@@ -18,12 +18,12 @@ In this chapter,  computational aspects of the application are discussed.
         complexity of $O(n^{2})$, where $n$ is the length of the sequence. The overhead
         due to the building of  the shifted sequence weights on the performance. Some overhead could be avoided by using slice of the sequence but it will not affect the complexity.\\
 
-      \subsection{Circular convolution theorem}
+      \subsection{Circular convolution theorem}\label{section:impl:convolution}
       We explore the properties of the autocorrelation function. The convolution theorem\cite{golomb_ref} gives a  direct relation between between the correlation function and the Discrete Fourier Transform (DFT)\\
       \begin{theorem}
           Given a sequence $S$ and its DFT, then
           \begin{equation}
-            A(S) = DFT^{-1}[DFT\{S\} · DFT\{S\}^{*},]
+            A(S) = DFT^{-1}[DFT\{S\} · DFT\{S\}^{*}]
           \end{equation}
           where $DFT\{S\}^{*}$ represents the complex conjugate of $DFT\{S\}$.
         \end{theorem}
