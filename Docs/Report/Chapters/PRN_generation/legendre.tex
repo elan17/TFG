@@ -1,7 +1,7 @@
 \section{Legendre sequences}
 
 Legendre sequences, as explained in \citet{legendre_sequences}, are binary
-sequences defined through quadratic residues. A quadratic residue modulo $p$ is an integer number $x$ between $0$ and $p-1$ such as exist an integer y satisfying $x=y^2 \bmod p$.
+sequences defined through quadratic residues. A quadratic residue modulo $p$ is an integer number $x$ between $0$ and $p-1$ such that an integer $y$ exists satisfying $x=y^2 \bmod p$.
 
 \begin{definition}
   Let $p$ be an odd prime and the  Legendre Symbol function  be
@@ -22,8 +22,12 @@ sequences defined through quadratic residues. A quadratic residue modulo $p$ is 
   \caption{An example implementation of the generation of a Legendre sequence.}
   \label{}
 \end{figure}
- Legendre sequences with length  satisfying $p=3\bmod 4$ have flat autocorrelation, i.e. 
- the value of the autocorrelation for any nonzero shift is $-1$. There is a generalization of this property by \citet{legendre_sequences}  but it requires the sequence 
- to be non-binary.\\ 
+ Legendre sequences with length  satisfying $p=3\bmod 4$ have flat autocorrelation, i.e.
+ the value of the autocorrelation for any nonzero shift is $-1$. There is a generalization of this property by \citet{legendre_sequences}  but it requires the sequence
+ to be non-binary.\\
 
-As $p$ is the length of the generated sequence, the distribution of Legendre sequences is related to the Prime Number Theorem. This means that Legendre sequences have more possible lengths than in m-sequences or other constructions based on them. However, Legendre sequences have the drawback that there exists only one per sequence length.
+As $p$ is the length of the generated sequence, the distribution of Legendre
+sequences is related to the Prime Number Theorem\cite{manfred_prime_theorem}. This
+means that Legendre sequences have more possible lengths than in m-sequences or
+other constructions based on them. However, Legendre sequences have the drawback
+that there exists only one per sequence length.
