@@ -61,7 +61,7 @@ In this chapter,  computational aspects of the application are discussed.
   \begin{figure}[ht!]
     \inputpython{Chapters/Implementation/branch_and_bound.py}{0}{100}
     \caption{A Cython implementation of the branch and bound algorithm. Notice
-    the amount of extra code to achive C performance.}
+    the amount of extra boilerplate code to achive C performance.}
     \label{composite_auto:fig:2}
   \end{figure}
 
@@ -71,8 +71,8 @@ In this chapter,  computational aspects of the application are discussed.
   For the parallelism of the project, it was decided to work with MPI (Message
   Passing Interface).  MPI is a library specification for message-passing, proposed
   as a de facto standard for parallel computing implementation. As the software
-  will be deployed in a system with an interconnection network, a shared-
-  memory parallelism would lead to a high latency in the assignation of tasks
+  will be deployed in a system with an interconnection network, a shared-memory
+  parallelism would lead to a high latency in the assignation of tasks
   reducing performance. There are several implementations of MPI, many of which are
   open-source or in the public domain.\\
 
