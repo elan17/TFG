@@ -40,11 +40,15 @@ computation is done in C.\\
       Cython GSL:         & 8.24 seg & 095.1 \%
     \end{tabular}
   \end{center}
+
   \caption{Results of a benchmark of vector operations using
-  Numpy\footnote{https://numpy.org/} or
-  GSL\footnote{https://gnu.org/software/gsl/}.}
+  Numpy\footnotemark  \ or
+  GSL\footnotemark.}
   \label{Cython:fig:2}
 \end{figure}
+
+\footnotetext[5]{https://numpy.org/}
+\footnotetext{https://gnu.org/software/gsl/}
 
 One might think that, if vector operations are so efficient in CPython, it would
 be simpler to just use Numpy methods to implement our algorithms (which was
