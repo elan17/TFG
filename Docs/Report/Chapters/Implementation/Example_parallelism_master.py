@@ -13,7 +13,7 @@ def master( polling_delay # Time between polls
             requests.append(comm.issend(shift_to_int(next(task_iter), task_size, max_value), dest=x, tag=11))
     except StopIteration: # If there are not enough tasks
         kill_slaves()
-        print("The number of tasks found where too low for the number of threads, "\
+        print("The number of tasks found were too low for the number of threads, "\
               "consider lowering the size of the task or assigning less cores")
         exit(0)
 
