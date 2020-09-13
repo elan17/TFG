@@ -109,10 +109,10 @@ The autocorrelation function of the composite
 sequence can be defined in terms of the autocorrelation function as follows:
 
 \begin{equation}
-  \sum_{j=0}^{n-1}shift(S, T_{i})_{j}shift(S, T_{(i - \tau \bmod n)})_{(j-\tau \bmod m)} = A(S)_{|((T_{j} - \tau) \bmod m) - T_{(j + \tau) \bmod n}|}
+  \sum_{j=0}^{n-1}shift(S, T_{i})_{j}shift(S, T_{(i - \tau \bmod n)})_{(j-\tau \bmod m)} = A(S)_{|((T_{i} - \tau) \bmod m) - T_{(i + \tau) \bmod n}|}
 \end{equation}
 \begin{equation}
-  A(M)_{\tau} = \sum_{i=0}^{m-1} A(S)_{|((T_{j} - \tau) \bmod m) - T_{(j + \tau) \bmod n}|}
+  A(M)_{\tau} = \sum_{i=0}^{m-1} A(S)_{|((T_{i} - \tau) \bmod m) - T_{(i + \tau) \bmod n}|}
 \end{equation}
 
 \end{property}

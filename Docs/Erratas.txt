@@ -1,1 +1,3 @@
 pag 10 : Figure 8 : T sequence is missing a component (1)
+
+pag 11: Equation 22 : The indexes don't match
